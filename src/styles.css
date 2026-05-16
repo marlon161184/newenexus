@@ -4,6 +4,66 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Newe Brand Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500&family=Outfit:wght@300;400;500&family=Space+Mono&display=swap");
+
+/* Newe Brand Tokens (monochrome — never replace with color) */
+:root {
+  --newe-preto: #0A0A0A;
+  --newe-grafite-prof: #1C1C1C;
+  --newe-grafite: #2E2E2E;
+  --newe-prata-escura: #6B6B6B;
+  --newe-prata: #9A9A9A;
+  --newe-prata-classica: #C0C0C0;
+  --newe-prata-brilhante: #B8B8B8;
+  --newe-prata-clara: #D8D8D8;
+  --newe-prata-gelo: #EBEBEB;
+  --newe-platina: #E5E4E2;
+  --newe-branco-quente: #F7F6F4;
+  --newe-branco: #FAFAFA;
+
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--newe-branco-quente);
+  color: var(--newe-grafite);
+}
+
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); }
+.font-mono-newe { font-family: var(--font-mono); }
+
+.newe-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--newe-prata-escura);
+}
+
+.newe-placeholder-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--newe-prata);
+  border-bottom: 1px dashed var(--newe-prata-clara);
+}
+
+@keyframes newe-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+.newe-pulse { animation: newe-pulse 1.8s ease-in-out infinite; }
+
+@keyframes newe-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.newe-fade-up { animation: newe-fade-up 0.6s ease forwards; }
+
 /*
  * Design system definition.
  *
