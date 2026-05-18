@@ -1,0 +1,538 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ResourceButton } from "@/components/newe/ResourceButton";
+
+export const Route = createFileRoute("/cultura")({
+  head: () => ({
+    meta: [
+      { title: "Cultura · Nosso Jeito de Ser — Nexus" },
+      {
+        name: "description",
+        content:
+          "Cultura do grupo Hyndra | Newe: manifesto, valores, rituais e história. Aqui você entende quem somos e por que faz parte disso.",
+      },
+    ],
+  }),
+  component: CulturaPage,
+});
+
+function CulturaPage() {
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-12 px-6 md:px-12 py-12 md:py-16 max-w-[1280px]">
+      <div className="min-w-0">
+        <Hero />
+        <Tabs />
+        <Manifesto />
+        <Values />
+        <Rituals />
+        <History />
+        <Articles />
+        <div className="mt-10">
+          <ResourceButton label="Contribuir com a Cultura" />
+        </div>
+      </div>
+      <Aside />
+    </div>
+  );
+}
+
+/* ------------------------------- HERO ------------------------------- */
+
+function Hero() {
+  return (
+    <header className="pb-12 border-b border-[#D8D8D8]">
+      <div className="flex items-start gap-6">
+        <div className="text-[#6B6B6B] shrink-0">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="1">
+            <circle cx="36" cy="36" r="30" />
+            <circle cx="36" cy="36" r="20" />
+            <circle cx="36" cy="36" r="10" />
+          </svg>
+        </div>
+        <div className="min-w-0">
+          <p className="font-mono-newe text-[10px] tracking-[0.35em] uppercase text-[#6B6B6B]">
+            Módulo · Nosso Jeito de Ser
+          </p>
+          <h1 className="mt-3 font-display font-light text-[40px] text-[#0A0A0A] leading-[1.05]">
+            Cultura
+          </h1>
+          <p className="mt-3 font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#9A9A9A]">
+            Círculo · Irradiação · Pertencimento
+          </p>
+        </div>
+      </div>
+
+      <div
+        className="mt-10 pl-6 max-w-2xl"
+        style={{ borderLeft: "2px solid #C0C0C0" }}
+      >
+        <p className="font-display font-light italic text-[20px] text-[#1C1C1C] leading-snug">
+          Aqui você entende quem somos — e por que você faz parte disso.
+        </p>
+      </div>
+
+      <dl className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
+        {[
+          ["Artigos", "12"],
+          ["Valores", "06"],
+          ["Rituais", "04"],
+          ["Empresas", "02"],
+          ["Atualizado", "Hoje"],
+        ].map(([k, v]) => (
+          <div key={k} className="bg-[#FAFAFA] px-5 py-4">
+            <dt className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+              {k}
+            </dt>
+            <dd className="mt-2 font-display font-light text-[18px] text-[#0A0A0A]">{v}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div className="mt-8 flex flex-wrap gap-3">
+        <ResourceButton label="☆ Favoritar" />
+        <ResourceButton label="+ Contribuir" variant="filled" />
+      </div>
+    </header>
+  );
+}
+
+/* ------------------------------- TABS ------------------------------- */
+
+const TABS = [
+  "Visão Geral",
+  "Valores",
+  "Rituais",
+  "Nossa História",
+  "Artigos",
+  "Contribuições",
+];
+
+function Tabs() {
+  return (
+    <nav
+      aria-label="Navegação do módulo Cultura"
+      className="sticky top-14 z-10 bg-[#F7F6F4] -mx-6 md:-mx-12 px-6 md:px-12 py-3 mt-6 border-b border-[#D8D8D8]"
+    >
+      <ul className="flex flex-wrap gap-x-7 gap-y-2">
+        {TABS.map((t, i) => (
+          <li key={t}>
+            <a
+              href={`#${t.toLowerCase().replace(/\s/g, "-")}`}
+              className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B] hover:text-[#0A0A0A] transition-colors"
+              style={i === 0 ? { color: "#0A0A0A" } : undefined}
+            >
+              {t}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+/* ----------------------------- MANIFESTO ---------------------------- */
+
+function Manifesto() {
+  return (
+    <section id="manifesto" className="mt-16 bg-[#FAFAFA] p-8 md:p-12" style={{ borderLeft: "2px solid #C0C0C0", borderRadius: 2 }}>
+      <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+        Manifesto · Hyndra Group
+      </p>
+      <blockquote className="mt-6 font-display font-light italic text-[22px] md:text-[24px] text-[#1C1C1C] leading-[1.45] max-w-3xl">
+        Construímos com intenção.
+        <br />
+        Cada espaço que criamos carrega a marca de quem somos —
+        pessoas que acreditam que o ambiente transforma vidas.
+        <br />
+        <br />
+        Não fazemos apenas urbanismo. Fazemos pertencimento.
+        <br />
+        Não gerimos apenas pessoas. Cultivamos trajetórias.
+      </blockquote>
+      <p className="mt-8 font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#9A9A9A]">
+        Hyndra Group · Fundadores · 2019
+      </p>
+    </section>
+  );
+}
+
+/* ------------------------------- VALORES ----------------------------- */
+
+const VALUES: { n: string; name: string; desc: string; ev: string }[] = [
+  {
+    n: "01",
+    name: "Integração radical",
+    desc: "Nenhuma decisão de projeto ignora seu impacto no entorno, nas pessoas e no tempo.",
+    ev: "Estudo de impacto urbano antes de cada projeto",
+  },
+  {
+    n: "02",
+    name: "Curadoria com propósito",
+    desc: "Cada escolha — parceiro, material, arquiteto — é feita por razão, não por conveniência.",
+    ev: "Briefing público para cada parceria",
+  },
+  {
+    n: "03",
+    name: "Beleza como ética",
+    desc: "O cuidado estético não é decoração — é respeito pela experiência de quem vai habitar.",
+    ev: "Comitê estético interno",
+  },
+  {
+    n: "04",
+    name: "Comunidade como projeto",
+    desc: "O empreendimento não termina na entrega das chaves — começa aí.",
+    ev: "Programa de vida em comunidade",
+  },
+  {
+    n: "05",
+    name: "Transparência construtiva",
+    desc: "Compartilhamos o processo, as tensões e as escolhas difíceis — não só os resultados.",
+    ev: "Almanaque do projeto, atualizado a cada fase",
+  },
+  {
+    n: "06",
+    name: "Longevidade responsável",
+    desc: "Construímos para durar décadas, não para vender rapidamente.",
+    ev: "Garantias estendidas e manutenção planejada",
+  },
+];
+
+function Values() {
+  return (
+    <section id="valores" className="mt-20">
+      <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+        Os 6 valores oficiais
+      </p>
+      <h2 className="mt-2 mb-8 font-display font-light text-[28px] text-[#0A0A0A]">
+        Nossos Valores
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
+        {VALUES.map((v) => (
+          <article
+            key={v.n}
+            className="group relative bg-[#FAFAFA] p-8 transition-colors hover:bg-[#F7F6F4]"
+          >
+            <span
+              aria-hidden
+              className="absolute left-0 bottom-0 h-px w-0 group-hover:w-full transition-all duration-500"
+              style={{ backgroundColor: "#C0C0C0" }}
+            />
+            <p className="font-display font-extralight text-[32px] text-[#D8D8D8] leading-none">
+              {v.n}
+            </p>
+            <h3 className="mt-4 font-display font-light text-[20px] text-[#0A0A0A]">
+              {v.name}
+            </h3>
+            <p className="mt-3 font-body font-light text-[13px] text-[#2E2E2E] leading-relaxed max-w-md">
+              {v.desc}
+            </p>
+            <p className="mt-6 font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+              Evidência · {v.ev}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------- RITUAIS ---------------------------- */
+
+const RITUALS = [
+  {
+    n: "01",
+    name: "Roda de Abertura",
+    desc: "Cada semana começa com a equipe reunida por 20 minutos — não para falar de tarefas, mas para se reconectar como grupo.",
+    freq: "Semanal",
+    scope: "Todo o grupo",
+  },
+  {
+    n: "02",
+    name: "Reconhecimento Público",
+    desc: "Uma vez por mês, celebramos publicamente quem viveu nossos valores de forma exemplar — indicado pelos próprios colegas.",
+    freq: "Mensal",
+    scope: "Todo o grupo",
+  },
+  {
+    n: "03",
+    name: "Conversa Franca",
+    desc: "Espaço trimestral de diálogo aberto entre lideranças e equipes — sem pauta fixa, sem hierarquia, com escuta real.",
+    freq: "Trimestral",
+    scope: "Newe · Hyndra",
+  },
+  {
+    n: "04",
+    name: "Dia de Chegada",
+    desc: "O primeiro dia de cada pessoa no grupo é um ritual — não é onboarding, é uma chegada celebrada com presença e atenção.",
+    freq: "A cada chegada",
+    scope: "Todo o grupo",
+  },
+];
+
+function Rituals() {
+  return (
+    <section id="rituais" className="mt-20">
+      <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+        Práticas vivas
+      </p>
+      <h2 className="mt-2 mb-8 font-display font-light text-[28px] text-[#0A0A0A]">
+        Nossos Rituais
+      </h2>
+      <ul>
+        {RITUALS.map((r) => (
+          <li
+            key={r.n}
+            className="grid grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-start py-8 border-t last:border-b border-[#D8D8D8]"
+          >
+            <p className="font-display font-extralight text-[44px] text-[#D8D8D8] leading-none">
+              {r.n}
+            </p>
+            <div className="min-w-0">
+              <h3 className="font-display font-light text-[20px] text-[#0A0A0A]">{r.name}</h3>
+              <p className="mt-2 font-body font-light text-[13px] text-[#2E2E2E] leading-relaxed max-w-2xl">
+                {r.desc}
+              </p>
+            </div>
+            <div className="hidden md:flex flex-col items-end gap-2 shrink-0">
+              <span
+                className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase px-2.5 py-1"
+                style={{ border: "1px solid #D8D8D8", color: "#6B6B6B", borderRadius: 2 }}
+              >
+                {r.freq}
+              </span>
+              <p className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A]">
+                {r.scope}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/* -------------------------- NOSSA HISTÓRIA --------------------------- */
+
+const TIMELINE = [
+  {
+    year: "2019",
+    title: "Fundação da Hyndra",
+    desc: "O grupo nasce com uma crença: que ambientes bem construídos transformam vidas.",
+    state: "past" as const,
+  },
+  {
+    year: "2021",
+    title: "Nasce a Newe Urbanismo Integrativo",
+    desc: "A primeira empresa do grupo focada em real estate de alto padrão — Newe Atma como primeiro projeto.",
+    state: "past" as const,
+  },
+  {
+    year: "2023",
+    title: "Nosso Jeito de Ser é nomeado",
+    desc: "O que já existia como prática passou a ter nome e estrutura.",
+    state: "past" as const,
+  },
+  {
+    year: "2025",
+    title: "O Nexus entra em operação",
+    desc: "A cultura ganha um produto digital. O sistema operacional cultural do grupo.",
+    state: "current" as const,
+  },
+  {
+    year: "—",
+    title: "Próximos capítulos",
+    desc: "Novas empresas, novos projetos, novas pessoas. O grupo segue se escrevendo.",
+    state: "future" as const,
+  },
+];
+
+function History() {
+  return (
+    <section id="nossa-história" className="mt-20">
+      <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+        Linha do tempo
+      </p>
+      <h2 className="mt-2 mb-10 font-display font-light text-[28px] text-[#0A0A0A]">
+        Nossa História
+      </h2>
+      <ol className="relative pl-8">
+        <span
+          aria-hidden
+          className="absolute left-[7px] top-2 bottom-2 w-px"
+          style={{ backgroundColor: "#D8D8D8" }}
+        />
+        {TIMELINE.map((t) => (
+          <li key={t.year + t.title} className="relative pb-12 last:pb-0">
+            <span
+              aria-hidden
+              className="absolute -left-[26px] top-1 w-3.5 h-3.5 rounded-full"
+              style={{
+                backgroundColor:
+                  t.state === "future" ? "transparent" : t.state === "current" ? "#0A0A0A" : "#C0C0C0",
+                border:
+                  t.state === "future"
+                    ? "1px solid #D8D8D8"
+                    : t.state === "current"
+                    ? "2px solid #0A0A0A"
+                    : "1px solid #C0C0C0",
+              }}
+            >
+              {t.state === "current" && (
+                <span className="block w-full h-full rounded-full newe-pulse" style={{ backgroundColor: "#0A0A0A" }} />
+              )}
+            </span>
+            <p className="font-display font-extralight text-[28px] text-[#0A0A0A] leading-none">
+              {t.year}
+            </p>
+            <p className="mt-3 font-display font-light text-[18px] text-[#0A0A0A]">{t.title}</p>
+            <p className="mt-2 font-body font-light text-[13px] text-[#6B6B6B] leading-relaxed max-w-2xl">
+              {t.desc}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+/* ------------------------------ ARTIGOS ------------------------------ */
+
+const ARTICLES = [
+  {
+    tag: "Manifesto",
+    title: "Por que dizemos pertencimento e não engajamento",
+    author: "Editorial Hyndra",
+    read: "6 min",
+  },
+  {
+    tag: "Ritual",
+    title: "Como nasce uma Roda de Abertura — bastidores",
+    author: "Pessoas & Cultura",
+    read: "4 min",
+  },
+  {
+    tag: "Valor 05",
+    title: "Transparência construtiva na prática: o Almanaque do projeto",
+    author: "Time Newe Atma",
+    read: "9 min",
+  },
+];
+
+function Articles() {
+  return (
+    <section id="artigos" className="mt-20">
+      <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+        Repertório editorial
+      </p>
+      <h2 className="mt-2 mb-8 font-display font-light text-[28px] text-[#0A0A0A]">
+        Artigos recentes
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
+        {ARTICLES.map((a) => (
+          <a
+            key={a.title}
+            href="#"
+            className="group bg-[#FAFAFA] p-6 flex flex-col gap-4 transition-colors hover:bg-[#F7F6F4]"
+          >
+            <span
+              className="self-start font-mono-newe text-[8.5px] tracking-[0.3em] uppercase px-2 py-1"
+              style={{ border: "1px solid #D8D8D8", color: "#6B6B6B", borderRadius: 2 }}
+            >
+              {a.tag}
+            </span>
+            <h3 className="font-display font-light text-[17px] text-[#0A0A0A] leading-snug group-hover:underline decoration-[#C0C0C0] underline-offset-4">
+              {a.title}
+            </h3>
+            <p className="mt-auto font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A]">
+              {a.author} · {a.read}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------- ASIDE ------------------------------ */
+
+function Aside() {
+  return (
+    <aside className="hidden lg:block sticky top-20 self-start space-y-10">
+      <div>
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] mb-3">
+          Nesta página
+        </p>
+        <ul className="space-y-2">
+          {[
+            ["Manifesto", "#manifesto"],
+            ["Valores", "#valores"],
+            ["Rituais", "#rituais"],
+            ["Nossa História", "#nossa-história"],
+            ["Artigos", "#artigos"],
+          ].map(([l, h]) => (
+            <li key={h}>
+              <a
+                href={h}
+                className="font-body font-light text-[12px] text-[#6B6B6B] hover:text-[#0A0A0A] transition-colors"
+              >
+                {l}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] mb-3">
+          Contribuidores
+        </p>
+        <ul className="space-y-3">
+          {[
+            ["AC", "Ana Couto", "Branding"],
+            ["RV", "Rafael V.", "Liderança · Newe"],
+            ["MT", "Marina T.", "Pessoas & Cultura"],
+          ].map(([i, n, r]) => (
+            <li key={n} className="flex items-center gap-3">
+              <span
+                className="w-7 h-7 flex items-center justify-center font-mono-newe text-[9px]"
+                style={{
+                  border: "1px solid #D8D8D8",
+                  backgroundColor: "#FAFAFA",
+                  color: "#2E2E2E",
+                  borderRadius: 2,
+                }}
+                aria-hidden
+              >
+                {i}
+              </span>
+              <div className="min-w-0">
+                <p className="font-body font-light text-[12px] text-[#0A0A0A] truncate">{n}</p>
+                <p className="font-mono-newe text-[8px] tracking-[0.3em] uppercase text-[#9A9A9A] truncate">
+                  {r}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="pt-6 border-t border-[#D8D8D8]">
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] mb-3">
+          Sobre este módulo
+        </p>
+        <dl className="space-y-2 font-body font-light text-[12px]">
+          {[
+            ["Criado em", "Mar/2023"],
+            ["Atualizado", "Hoje"],
+            ["Visitas no mês", "1.284"],
+            ["Empresas", "Hyndra · Newe"],
+          ].map(([k, v]) => (
+            <div key={k} className="flex items-baseline justify-between gap-3">
+              <dt className="text-[#6B6B6B]">{k}</dt>
+              <dd className="text-[#0A0A0A]">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </aside>
+  );
+}
