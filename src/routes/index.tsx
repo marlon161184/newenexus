@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ResourceButton } from "@/components/newe/ResourceButton";
+import { NexusHero } from "@/components/nexus/NexusHero";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,44 +17,9 @@ export const Route = createFileRoute("/")({
 });
 
 function NexusHome() {
-  const today = new Date();
-  const data = today.toLocaleDateString("pt-BR", { day: "2-digit" });
-  const mes = today
-    .toLocaleDateString("pt-BR", { month: "long" })
-    .toUpperCase();
-
   return (
     <div className="px-6 md:px-12 py-12 md:py-16 max-w-[1280px]">
-      {/* HERO — Boas-vindas */}
-      <section className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 items-start pb-16 border-b border-[#D8D8D8]">
-        <div>
-          <p className="font-mono-newe text-[10px] tracking-[0.35em] uppercase text-[#6B6B6B]">
-            Bem-vindo de volta
-          </p>
-          <h1 className="mt-4 font-display font-light text-[44px] leading-[1.05] text-[#0A0A0A]">
-            Olá, <span className="newe-placeholder-text">[Nome]</span>.
-          </h1>
-          <p className="mt-5 font-body font-extralight text-[18px] max-w-xl text-[#2E2E2E] leading-relaxed">
-            Hoje é uma boa oportunidade para explorar o que o grupo sabe, faz e é.
-          </p>
-        </div>
-        <aside
-          className="hidden md:flex flex-col justify-between p-5 min-w-[180px] h-[160px]"
-          style={{ border: "1px solid #D8D8D8", borderRadius: 2, backgroundColor: "#FAFAFA" }}
-        >
-          <p className="font-display font-extralight text-[42px] leading-none text-[#0A0A0A]">
-            {data}
-          </p>
-          <div>
-            <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B]">
-              {mes}
-            </p>
-            <p className="mt-2 font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A]">
-              Newe Urbanismo
-            </p>
-          </div>
-        </aside>
-      </section>
+      <NexusHero />
 
       {/* FRASE DO DIA */}
       <section className="py-14">
