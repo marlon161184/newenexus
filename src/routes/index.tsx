@@ -17,12 +17,6 @@ export const Route = createFileRoute("/")({
 });
 
 function NexusHome() {
-  const today = new Date();
-  const data = today.toLocaleDateString("pt-BR", { day: "2-digit" });
-  const mes = today
-    .toLocaleDateString("pt-BR", { month: "long" })
-    .toUpperCase();
-
   return (
     <div className="px-6 md:px-12 py-12 md:py-16 max-w-[1280px]">
       <NexusHero />
