@@ -575,88 +575,287 @@ function PhaseNode({
   );
 }
 
-function ModuleButton({ mod, onClick }: { mod: ModuleEntry; onClick: () => void }) {
+function ModuleButton({
+  mod,
+  isOpen,
+  onClick,
+}: {
+  mod: ModuleEntry;
+  isOpen: boolean;
+  onClick: () => void;
+}) {
   const [hover, setHover] = useState(false);
   const Icon = mod.icon;
+  const active = isOpen || hover;
   return (
     <button
       onClick={onClick}
+      aria-expanded={isOpen}
+      aria-label={`Explorar módulo ${mod.title}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="flex flex-col items-center transition-all"
+      className="relative flex flex-col items-start text-left transition-all"
       style={{
-        background: hover ? "rgba(157,202,121,0.05)" : "transparent",
-        border: "1px solid rgba(192,192,192,0.12)",
-        borderTop: hover ? "2px solid #9DCA79" : "2px solid rgba(192,192,192,0.12)",
+        background: isOpen
+          ? "rgba(157,202,121,0.08)"
+          : hover
+            ? "rgba(157,202,121,0.05)"
+            : "transparent",
+        borderRight: "1px solid rgba(192,192,192,0.12)",
+        borderBottom: isOpen
+          ? "2px solid #9DCA79"
+          : "1px solid rgba(192,192,192,0.12)",
         padding: "2rem 1rem 1.75rem",
         gap: 16,
         transition: "all 0.25s",
       }}
     >
-      <Icon size={44} color={hover ? "#9DCA79" : "#C0C0C0"} strokeWidth={1.2} />
+      {isOpen && (
+        <span
+          aria-hidden
+          className="absolute left-0 top-0 bottom-0"
+          style={{ width: 2, backgroundColor: "#9DCA79" }}
+        />
+      )}
+      <Icon size={44} color={active ? "#9DCA79" : "#C0C0C0"} strokeWidth={1.2} />
+      <span
+        className="font-mono-newe uppercase"
+        style={{
+          fontSize: 9,
+          letterSpacing: "0.35em",
+          color: "#9A9A9A",
+        }}
+      >
+        {mod.tag}
+      </span>
       <span
         className="font-mono-newe uppercase"
         style={{
           fontSize: 12,
           letterSpacing: "0.2em",
-          color: hover ? "#FFFFFF" : "#C0C0C0",
+          color: active ? "#FFFFFF" : "#C0C0C0",
         }}
       >
-        {mod.name}
+        {mod.title}
       </span>
       <span
         className="font-body"
-        style={{ fontSize: 11, fontWeight: 300, color: "#6B6B6B" }}
+        style={{ fontSize: 12, fontWeight: 300, color: "#6B6B6B", lineHeight: 1.5 }}
       >
-        {mod.products.length} produtos
+        {mod.desc}
       </span>
+      <div className="mt-2 flex w-full items-center justify-between">
+        <span
+          className="font-mono-newe uppercase"
+          style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9A9A9A" }}
+        >
+          {mod.count}
+        </span>
+        <span
+          className="font-mono-newe uppercase"
+          style={{
+            fontSize: 9,
+            letterSpacing: "0.3em",
+            color: active ? "#9DCA79" : "#C0C0C0",
+            transform: isOpen ? "rotate(90deg)" : "none",
+            transition: "transform 0.3s, color 0.2s",
+          }}
+        >
+          →
+        </span>
+      </div>
     </button>
   );
 }
 
-function ProductCard({ product, route }: { product: ModuleProduct; route: string }) {
-  const [hover, setHover] = useState(false);
-  const Icon = product.icon;
+function ProductPanel({
+  module,
+  onClose,
+}: {
+  module: ModuleEntry;
+  onClose: () => void;
+}) {
+  if (!module.products.length) {
+    return (
+      <div
+        className="flex items-center justify-between"
+        style={{
+          padding: "1.5rem 2rem",
+          backgroundColor: "rgba(247,246,244,0.04)",
+          borderLeft: "2px solid #9DCA79",
+          borderRight: "1px solid rgba(192,192,192,0.12)",
+          borderBottom: "1px solid rgba(192,192,192,0.12)",
+          animation: "newe-fade-up 0.3s ease forwards",
+        }}
+      >
+        <p
+          className="font-mono-newe uppercase"
+          style={{ fontSize: 10, letterSpacing: "0.3em", color: "#9A9A9A" }}
+        >
+          Em construção · Em breve
+        </p>
+        <button
+          onClick={onClose}
+          className="font-mono-newe uppercase transition-colors hover:text-white"
+          style={{ fontSize: 9, letterSpacing: "0.3em", color: "#6B6B6B" }}
+        >
+          Fechar ×
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <Link
-      to={route}
+    <div
+      style={{
+        backgroundColor: "#0A0A0A",
+        borderLeft: "1px solid rgba(192,192,192,0.12)",
+        borderRight: "1px solid rgba(192,192,192,0.12)",
+        borderBottom: "1px solid rgba(192,192,192,0.12)",
+        backgroundImage:
+          "linear-gradient(rgba(192,192,192,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.025) 1px, transparent 1px)",
+        backgroundSize: "56px 56px",
+        animation: "newe-fade-up 0.3s ease forwards",
+      }}
+    >
+      <div className="flex items-center justify-between" style={{ padding: "1.25rem 1.75rem 0.75rem" }}>
+        <div className="flex items-center gap-3">
+          <span
+            aria-hidden
+            style={{ display: "block", width: 20, height: 1, backgroundColor: "#9DCA79" }}
+          />
+          <p
+            className="font-mono-newe uppercase"
+            style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}
+          >
+            {module.title} · {module.products.length} produto
+            {module.products.length > 1 ? "s" : ""}
+          </p>
+        </div>
+        <button
+          onClick={onClose}
+          aria-label="Fechar painel"
+          className="font-mono-newe uppercase transition-colors hover:text-white"
+          style={{ fontSize: 9, letterSpacing: "0.3em", color: "#6B6B6B" }}
+        >
+          Fechar ×
+        </button>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: 8,
+          padding: "0.75rem 1.25rem 1.5rem",
+        }}
+      >
+        {module.products.map((p) => (
+          <ProductExternalCard key={p.url} product={p} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProductExternalCard({ product }: { product: Product }) {
+  const [hover, setHover] = useState(false);
+  const isLight = product.logoTextColor === "#0A0A0A";
+  return (
+    <a
+      href={product.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Abrir ${product.name}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="relative block transition-colors"
+      className="group relative flex flex-col overflow-hidden transition-colors"
       style={{
-        backgroundColor: hover ? "#1C1C1C" : "#0A0A0A",
-        padding: "1.25rem 1.25rem 1.25rem 1.5rem",
+        backgroundColor: "#111110",
+        border: hover ? "1px solid #9DCA79" : "1px solid #2E2E2E",
+        borderRadius: 2,
       }}
     >
       <span
-        className="absolute"
+        aria-hidden
         style={{
+          position: "absolute",
           left: 0,
           top: 0,
           bottom: 0,
           width: 2,
-          backgroundColor: hover ? "#9DCA79" : "transparent",
-          transition: "background-color 0.2s",
+          backgroundColor: "#9DCA79",
+          opacity: hover ? 1 : 0,
+          transition: "opacity 0.2s",
         }}
       />
-      <Icon
-        size={15}
-        color={hover ? "#9DCA79" : "#6B6B6B"}
-        style={{ marginBottom: "0.65rem" }}
-      />
-      <p
-        className="font-display"
-        style={{ fontSize: 14, fontWeight: 400, color: "#FFFFFF" }}
+      <div
+        className="flex items-center justify-center px-4"
+        style={{
+          backgroundColor: product.logoBg ?? "#1C1C1C",
+          height: 110,
+          borderBottom: "1px solid #2E2E2E",
+        }}
       >
-        {product.name}
-      </p>
-      <p
-        className="font-mono-newe uppercase mt-2"
-        style={{ fontSize: 9, letterSpacing: "0.1em" }}
-      >
-        <span style={{ color: "#6B6B6B" }}>Fase EE · </span>
-        <span style={{ color: "#9DCA79" }}>{product.phase}</span>
-      </p>
-    </Link>
+        <div className="text-center">
+          <p
+            className="font-display leading-tight"
+            style={{
+              fontSize: (product.logoText ?? "").length > 15 ? 15 : 20,
+              fontWeight: 200,
+              color: product.logoTextColor ?? "#FFFFFF",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {product.logoText}
+          </p>
+          {product.logoSub && (
+            <p
+              className="font-mono-newe uppercase"
+              style={{
+                marginTop: 6,
+                fontSize: 7,
+                letterSpacing: "0.22em",
+                color: isLight ? "#6B6B6B" : "rgba(255,255,255,0.45)",
+              }}
+            >
+              {product.logoSub}
+            </p>
+          )}
+        </div>
+      </div>
+      <div style={{ padding: "0.9rem 1.1rem 1rem" }}>
+        <p
+          className="font-body"
+          style={{ fontSize: 13, fontWeight: 300, color: "#E8E2D9", lineHeight: 1.4 }}
+        >
+          {product.name}
+        </p>
+        <p
+          className="font-mono-newe uppercase"
+          style={{
+            marginTop: 6,
+            fontSize: 8.5,
+            letterSpacing: "0.25em",
+            color: "#6B6B6B",
+          }}
+        >
+          {product.tagline}
+        </p>
+        <span
+          className="font-mono-newe uppercase"
+          style={{
+            display: "inline-block",
+            marginTop: 12,
+            fontSize: 8,
+            letterSpacing: "0.3em",
+            color: hover ? "#FFFFFF" : "#9DCA79",
+            transition: "color 0.2s",
+          }}
+        >
+          Acessar →
+        </span>
+      </div>
+    </a>
   );
 }
