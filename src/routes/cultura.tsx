@@ -374,7 +374,7 @@ const TIMELINE = [
   {
     year: "2025",
     title: "O Nexus entra em operação",
-    desc: "A cultura ganha um produto digital. O sistema operacional cultural do grupo.",
+    desc: "A cultura ganha um produto digital — o Nexus. O sistema operacional cultural do grupo, onde Nosso Jeito de Ser vive e se atualiza.",
     state: "current" as const,
   },
   {
@@ -407,17 +407,17 @@ function History() {
               className="absolute -left-[26px] top-1 w-3.5 h-3.5 rounded-full"
               style={{
                 backgroundColor:
-                  t.state === "future" ? "transparent" : t.state === "current" ? "#0A0A0A" : "#C0C0C0",
+                  t.state === "future" ? "transparent" : t.state === "current" ? "#9DCA79" : "#C0C0C0",
                 border:
                   t.state === "future"
                     ? "1px solid #D8D8D8"
                     : t.state === "current"
-                    ? "2px solid #0A0A0A"
+                    ? "2px solid #9DCA79"
                     : "1px solid #C0C0C0",
               }}
             >
               {t.state === "current" && (
-                <span className="block w-full h-full rounded-full newe-pulse" style={{ backgroundColor: "#0A0A0A" }} />
+                <span className="block w-full h-full rounded-full newe-pulse" style={{ backgroundColor: "#9DCA79" }} />
               )}
             </span>
             <p className="font-display font-extralight text-[28px] text-[#0A0A0A] leading-none">
