@@ -604,7 +604,7 @@ const MODULES: ModuleEntry[] = [
     tag: "Módulo · 05",
     title: "Governança",
     desc: "Políticas, compliance e a estrutura que sustenta o grupo.",
-    count: "1 produto",
+    count: "2 produtos",
     shape: "square",
     products: [
       {
