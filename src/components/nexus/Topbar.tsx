@@ -1,4 +1,5 @@
-import { useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { NexusLogo } from "@/components/nexus/NexusLogo";
 
 const LABELS: Record<string, string> = {
   "": "Início",
@@ -25,12 +26,16 @@ export function Topbar() {
 
   return (
     <header
-      className="sticky top-0 z-30 flex items-center gap-4 px-5 lg:px-8 h-14"
+      className="sticky top-0 z-30 flex items-center gap-5 px-5 lg:px-8 h-16"
       style={{
         backgroundColor: "#F7F6F4",
         borderBottom: "1px solid #D8D8D8",
       }}
     >
+      <Link to="/" aria-label="Nexus · Início" className="shrink-0">
+        <NexusLogo variant="positive" size="sm" withDescriptor />
+      </Link>
+      <span aria-hidden className="h-7 w-px shrink-0" style={{ backgroundColor: "#D8D8D8" }} />
       <nav aria-label="Breadcrumb" className="min-w-0 flex-1">
         <ol className="flex items-center gap-2 overflow-hidden">
           {crumbs.map((c, i) => (
