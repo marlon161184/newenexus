@@ -9,6 +9,7 @@ import hubHyndraLogo from "@/assets/products/hub-hyndra.jpg";
 import habitarEstruturaLogo from "@/assets/products/habitar-estrutura.jpg";
 import decidirIntencaoLogo from "@/assets/products/decidir-intencao.jpg";
 import allAboardLogo from "@/assets/products/all-aboard.jpg";
+import plataformaMarcaLogo from "@/assets/products/plataforma-marca.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
