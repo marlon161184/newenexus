@@ -345,7 +345,7 @@ function ModuleCard({
     <button
       onClick={onClick}
       aria-expanded={isOpen}
-      className="group relative bg-[#FAFAFA] p-8 flex flex-col gap-4 transition-colors hover:bg-[#F7F6F4] w-full text-left"
+      className="group relative bg-[#FAFAFA] p-10 flex flex-col gap-5 transition-colors hover:bg-[#F7F6F4] w-full text-left"
       style={{ borderBottom: isOpen ? "2px solid #9DCA79" : "2px solid transparent" }}
     >
       {isOpen && (
@@ -355,13 +355,13 @@ function ModuleCard({
       <div style={{ color: isOpen ? "#9DCA79" : "#6B6B6B" }}>
         <ModuleShape shape={shape} />
       </div>
-      <p className="font-mono-newe text-[8.5px] tracking-[0.35em] uppercase text-[#9A9A9A]">{tag}</p>
-      <h3 className="font-display font-light text-[22px] text-[#0A0A0A] leading-tight">{title}</h3>
-      <p className="font-body font-extralight text-[13px] text-[#6B6B6B] leading-relaxed">{desc}</p>
-      <div className="mt-2 flex items-center justify-between">
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#9A9A9A]">{count}</span>
+      <p className="font-mono-newe text-[10px] tracking-[0.35em] uppercase text-[#9A9A9A]">{tag}</p>
+      <h3 className="font-display font-light text-[30px] text-[#0A0A0A] leading-tight tracking-[-0.01em]">{title}</h3>
+      <p className="font-body font-extralight text-[16px] text-[#6B6B6B] leading-relaxed">{desc}</p>
+      <div className="mt-3 flex items-center justify-between">
+        <span className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#9A9A9A]">{count}</span>
         <span
-          className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#0A0A0A] transition-transform duration-300"
+          className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A] transition-transform duration-300"
           style={{ transform: isOpen ? "rotate(90deg)" : "none" }}
         >
           →
