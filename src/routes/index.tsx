@@ -362,8 +362,17 @@ function ProductTile({ product: p }: { product: Product }) {
       />
       <div
         className="flex items-center justify-center px-4 relative"
-        style={{ backgroundColor: p.logoBg ?? "#1C1C1C", height: 96, borderBottom: "1px solid #2E2E2E" }}
+        style={{ backgroundColor: p.logoBg ?? "#1C1C1C", height: 140, borderBottom: "1px solid #2E2E2E", overflow: "hidden" }}
       >
+        {p.logoImg ? (
+          <img
+            src={p.logoImg}
+            alt={p.name}
+            className="w-full h-full object-contain"
+            style={{ padding: 12 }}
+            loading="lazy"
+          />
+        ) : (
         <div className="text-center px-2">
           <p
             className="font-display font-extralight leading-tight"
@@ -380,6 +389,7 @@ function ProductTile({ product: p }: { product: Product }) {
             </p>
           )}
         </div>
+        )}
       </div>
       <div className="px-5 py-4 flex-1 flex flex-col">
         <p className="font-body font-light text-[14px]" style={{ color: "#F7F6F4" }}>{p.name}</p>
@@ -392,29 +402,82 @@ function ProductTile({ product: p }: { product: Product }) {
   );
 }
 
-function CompanyCard({ name, type, badge }: { name: string; type: string; badge: string }) {
+function ProductsFooter() {
+  const all = MODULES.flatMap((m) => m.products);
   return (
-    <div className="p-7 md:p-8 flex flex-col gap-4" style={{ backgroundColor: "#111110", border: "1px solid #1C1C1C", borderLeft: "3px solid #9DCA79", borderRadius: 2 }}>
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>{type}</p>
-          <p className="mt-3 font-display font-extralight text-[24px] md:text-[30px] leading-tight tracking-[-0.01em]" style={{ color: "#F7F6F4" }}>{name}</p>
-        </div>
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-2.5 py-1 shrink-0" style={{ border: "1px solid #2E2E2E", color: "#9DCA79", borderRadius: 2 }}>{badge}</span>
+    <footer
+      className="px-5 sm:px-8 md:px-16 lg:px-24 pt-12 pb-10"
+      style={{ backgroundColor: "#0A0A0A", borderTop: "1px solid #1C1C1C" }}
+    >
+      <div className="flex items-center gap-3 mb-6">
+        <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
+        <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+          Produtos · ecossistema Nexus
+        </p>
       </div>
-    </div>
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3">
+        {all.map((p) => {
+          const isPlaceholder = p.url === "#";
+          return (
+            <a
+              key={p.name}
+              href={p.url}
+              target={isPlaceholder ? undefined : "_blank"}
+              rel={isPlaceholder ? undefined : "noopener noreferrer"}
+              onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
+              title={p.name}
+              className="group relative flex items-center justify-center transition-all hover:-translate-y-0.5"
+              style={{
+                backgroundColor: p.logoBg ?? "#111110",
+                border: "1px solid #2E2E2E",
+                borderRadius: 2,
+                height: 64,
+                opacity: isPlaceholder ? 0.45 : 0.85,
+                cursor: isPlaceholder ? "default" : "pointer",
+              }}
+            >
+              <span
+                aria-hidden
+                className="opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, backgroundColor: "#9DCA79" }}
+              />
+              {p.logoImg ? (
+                <img
+                  src={p.logoImg}
+                  alt={p.name}
+                  className="w-full h-full object-contain"
+                  style={{ padding: 6 }}
+                  loading="lazy"
+                />
+              ) : (
+                <span
+                  className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-center px-1"
+                  style={{ color: p.logoTextColor ?? "#F7F6F4" }}
+                >
+                  {p.logoText}
+                </span>
+              )}
+            </a>
+          );
+        })}
+      </div>
+      <div className="mt-10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ borderTop: "1px solid #1C1C1C" }}>
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#6B6B6B" }}>
+          Nexus · Sistema Operacional da Cultura · Hyndra Group
+        </p>
+        <a
+          href="https://newemanifesto.lovable.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono-newe text-[9px] tracking-[0.3em] uppercase hover:opacity-80"
+          style={{ color: "#9DCA79" }}
+        >
+          Nosso Jeito de Ser ↗
+        </a>
+      </div>
+    </footer>
   );
 }
-
-const EE_PHASES = [
-  { label: "Atração", products: ["Employer Brand", "Vitrine Cultural"] },
-  { label: "Seleção", products: ["Assessment Cultural", "Painel de Talentos"] },
-  { label: "Integração", products: ["All Aboard", "Nosso Jeito de Ser", "Benefícios"] },
-  { label: "Desenvolvimento", products: ["Academia de Líderes", "Academia de Vendas"] },
-  { label: "Engajamento", products: ["HYNstaNewe", "Hub Hyndra"] },
-  { label: "Performance", products: ["PAR 2026"] },
-  { label: "Transição", products: ["Offboarding", "Alumni Newe"] },
-];
 
 const MODULES: ModuleEntry[] = [
   {
