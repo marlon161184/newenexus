@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { Link } from "@tanstack/react-router";
 import {
   Flame,
   Users,
@@ -65,6 +66,7 @@ type ModuleEntry = {
   key: string;
   name: string;
   icon: LucideIcon;
+  route: string;
   products: ModuleProduct[];
 };
 
@@ -73,6 +75,7 @@ const MODULES: ModuleEntry[] = [
     key: "cultura",
     name: "Cultura",
     icon: Flame,
+    route: "/cultura",
     products: [
       { name: "Nosso Jeito de Ser", phase: "Integração", icon: Heart },
       { name: "Plataforma de Marca", phase: "Integração", icon: Sparkles },
@@ -82,6 +85,7 @@ const MODULES: ModuleEntry[] = [
     key: "pessoas",
     name: "Pessoas",
     icon: Users,
+    route: "/pessoas",
     products: [
       { name: "All Aboard", phase: "Integração", icon: Compass },
       { name: "PAR", phase: "Performance", icon: Target },
@@ -92,6 +96,7 @@ const MODULES: ModuleEntry[] = [
     key: "conhecimento",
     name: "Conhecimento",
     icon: GraduationCap,
+    route: "/conhecimento",
     products: [
       { name: "Academia Newe by Hyndra", phase: "Desenvolvimento", icon: BookOpen },
       { name: "Academia de Vendas", phase: "Desenvolvimento", icon: BookOpen },
@@ -102,6 +107,7 @@ const MODULES: ModuleEntry[] = [
     key: "comunidade",
     name: "Comunidade",
     icon: Network,
+    route: "/pessoas",
     products: [
       { name: "HYNstaNewe", phase: "Engajamento", icon: Network },
       { name: "Org & Design", phase: "Engajamento", icon: Briefcase },
@@ -111,6 +117,7 @@ const MODULES: ModuleEntry[] = [
     key: "governanca",
     name: "Governança",
     icon: ShieldCheck,
+    route: "/conhecimento",
     products: [{ name: "Hub Hyndra", phase: "Engajamento", icon: ShieldCheck }],
   },
 ];
@@ -360,7 +367,7 @@ export function NexusHero() {
             }}
           >
             {activeModuleData.products.map((p) => (
-              <ProductCard key={p.name} product={p} />
+              <ProductCard key={p.name} product={p} route={activeModuleData.route} />
             ))}
           </div>
         </div>
