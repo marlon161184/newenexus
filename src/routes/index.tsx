@@ -36,25 +36,6 @@ function NexusHome() {
         </div>
       </section>
 
-      {/* GRID DE MÓDULOS */}
-      <section className="pb-16">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
-              Ecossistema
-            </p>
-            <h2 className="mt-2 font-display font-light text-[28px] text-[#0A0A0A]">
-              Explore os módulos do Nexus
-            </h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
-          {MODULES.map((m) => (
-            <ModuleCard key={m.slug} {...m} />
-          ))}
-        </div>
-      </section>
-
       {/* RECENTES + DESTAQUE CULTURA */}
       <section className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 pb-16">
         <div style={{ border: "1px solid #D8D8D8", borderRadius: 2, backgroundColor: "#FAFAFA" }}>
@@ -154,49 +135,6 @@ function NexusHome() {
 
 /* ---------- subcomponentes ---------- */
 
-function ModuleCard({
-  slug,
-  tag,
-  title,
-  desc,
-  count,
-  shape,
-}: ModuleEntry) {
-  return (
-    <a
-      href={`#${slug}`}
-      aria-label={`Explorar módulo ${title}`}
-      className="group relative bg-[#FAFAFA] p-8 flex flex-col gap-4 transition-colors hover:bg-[#F7F6F4]"
-    >
-      <span
-        aria-hidden
-        className="absolute left-0 bottom-0 h-px w-0 group-hover:w-full transition-all duration-500"
-        style={{ backgroundColor: "#C0C0C0" }}
-      />
-      <div className="text-[#6B6B6B]">
-        <ModuleShape shape={shape} />
-      </div>
-      <p className="font-mono-newe text-[8.5px] tracking-[0.35em] uppercase text-[#9A9A9A]">
-        {tag}
-      </p>
-      <h3 className="font-display font-light text-[22px] text-[#0A0A0A] leading-tight">
-        {title}
-      </h3>
-      <p className="font-body font-extralight text-[13px] text-[#6B6B6B] leading-relaxed">
-        {desc}
-      </p>
-      <div className="mt-2 flex items-center justify-between">
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#9A9A9A]">
-          {count}
-        </span>
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#0A0A0A] transition-transform duration-300 group-hover:translate-x-1">
-          Explorar →
-        </span>
-      </div>
-    </a>
-  );
-}
-
 function StatCard({
   label,
   value,
@@ -276,56 +214,6 @@ function CompanyCard({
 
 /* ---------- ícones / formas ---------- */
 
-function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
-  const common = {
-    width: 28,
-    height: 28,
-    viewBox: "0 0 32 32",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1,
-  } as const;
-  switch (shape) {
-    case "circle":
-      return (
-        <svg {...common}>
-          <circle cx="16" cy="16" r="13" />
-          <circle cx="16" cy="16" r="6" />
-        </svg>
-      );
-    case "circle-small":
-      return (
-        <svg {...common}>
-          <circle cx="16" cy="16" r="8" />
-        </svg>
-      );
-    case "triangle":
-      return (
-        <svg {...common}>
-          <path d="M16 4l13 24H3z" />
-        </svg>
-      );
-    case "square":
-      return (
-        <svg {...common}>
-          <rect x="4" y="4" width="24" height="24" />
-        </svg>
-      );
-    case "diamond":
-      return (
-        <svg {...common}>
-          <path d="M16 3l13 13-13 13L3 16z" />
-        </svg>
-      );
-    case "circle-dashed":
-      return (
-        <svg {...common} strokeDasharray="3 3">
-          <circle cx="16" cy="16" r="13" />
-        </svg>
-      );
-  }
-}
-
 function RecentIcon({ kind }: { kind: "doc" | "video" | "link" | "sheet" }) {
   const common = {
     width: 16,
@@ -368,66 +256,6 @@ function RecentIcon({ kind }: { kind: "doc" | "video" | "link" | "sheet" }) {
 }
 
 /* ---------- dados ---------- */
-
-type ModuleEntry = {
-  slug: string;
-  tag: string;
-  title: string;
-  desc: string;
-  count: string;
-  shape: "circle" | "circle-small" | "triangle" | "square" | "diamond" | "circle-dashed";
-};
-
-const MODULES: ModuleEntry[] = [
-  {
-    slug: "cultura",
-    tag: "Módulo · 01",
-    title: "Cultura",
-    desc: "Valores, rituais e a história que nos une como grupo.",
-    count: "12 artigos",
-    shape: "circle",
-  },
-  {
-    slug: "conhecimento",
-    tag: "Módulo · 02",
-    title: "Conhecimento",
-    desc: "Base de conhecimento, documentos e aprendizados do grupo.",
-    count: "84 documentos",
-    shape: "circle-small",
-  },
-  {
-    slug: "pessoas",
-    tag: "Módulo · 03",
-    title: "Pessoas",
-    desc: "Desenvolvimento, remuneração e sua jornada no grupo.",
-    count: "9 trilhas",
-    shape: "triangle",
-  },
-  {
-    slug: "governanca",
-    tag: "Módulo · 04",
-    title: "Governança",
-    desc: "Políticas, compliance e como as coisas funcionam.",
-    count: "21 políticas",
-    shape: "square",
-  },
-  {
-    slug: "workspace",
-    tag: "Módulo · 05",
-    title: "Workspace",
-    desc: "Ferramentas, processos e fluxos do dia a dia.",
-    count: "16 ferramentas",
-    shape: "diamond",
-  },
-  {
-    slug: "comunidade",
-    tag: "Módulo · 06",
-    title: "Comunidade",
-    desc: "Pessoas, reconhecimento e o que acontece no grupo.",
-    count: "47 pessoas",
-    shape: "circle-dashed",
-  },
-];
 
 const RECENT: { title: string; crumb: string; time: string; kind: "doc" | "video" | "link" | "sheet" }[] = [
   {
