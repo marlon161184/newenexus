@@ -125,57 +125,6 @@ function NexusHome() {
         </div>
       </section>
 
-      {/* ── LINHA DO TEMPO EE ── */}
-      <section
-        className="px-5 sm:px-8 md:px-16 lg:px-24 pt-16 pb-20"
-        style={{ backgroundColor: "#0A0A0A", borderTop: "1px solid #1C1C1C" }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2.5rem" }}>
-          <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
-            Employee Experience Journey
-          </p>
-        </div>
-
-        {/* desktop timeline */}
-        <div className="hidden md:block" style={{ position: "relative" }}>
-          <div style={{ position: "absolute", top: 5, left: 0, right: 0, height: 1, backgroundColor: "#2E2E2E" }}>
-            <div style={{ width: 60, height: 1, backgroundColor: "#9DCA79" }} />
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {EE_PHASES.map(({ label, products }) => (
-              <div key={label} className="group" style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1, position: "relative" }}>
-                <div className="opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200"
-                  style={{ position: "absolute", bottom: "calc(100% + 12px)", left: "50%", transform: "translateX(-50%)", backgroundColor: "#111110", border: "1px solid rgba(157,202,121,0.3)", borderTop: "2px solid #9DCA79", padding: "0.6rem 0.85rem", minWidth: 140, zIndex: 50, borderRadius: 2 }}>
-                  <p className="font-mono-newe text-[10px] tracking-[0.15em] uppercase mb-1.5" style={{ color: "#9DCA79" }}>{label}</p>
-                  {products.map((p) => (
-                    <p key={p} className="font-body font-light text-[12px]" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>· {p}</p>
-                  ))}
-                </div>
-                <div className="group-hover:scale-[1.8] group-hover:bg-[#9DCA79] group-hover:border-[#9DCA79] transition-all duration-200"
-                  style={{ width: 12, height: 12, borderRadius: "50%", border: "1px solid #6B6B6B", backgroundColor: "#0A0A0A", zIndex: 2 }} />
-                <p className="font-mono-newe text-center group-hover:text-[#9DCA79] transition-colors mt-3"
-                  style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B6B6B", maxWidth: 96, lineHeight: 1.4 }}>
-                  {label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* mobile vertical timeline */}
-        <div className="md:hidden flex flex-col gap-4">
-          {EE_PHASES.map(({ label, products }) => (
-            <div key={label} className="flex gap-3" style={{ borderLeft: "1px solid #2E2E2E", paddingLeft: 14, paddingBottom: 8 }}>
-              <div className="flex-1">
-                <p className="font-mono-newe text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: "#9DCA79" }}>{label}</p>
-                <p className="font-body font-light text-[12px]" style={{ color: "#9A9A9A" }}>{products.join(" · ")}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── BLOCO CULTURA ── */}
       <section className="px-5 sm:px-8 md:px-16 lg:px-24 pb-20 md:pb-24" style={{ backgroundColor: "#0A0A0A" }}>
         <div
@@ -205,21 +154,8 @@ function NexusHome() {
         </div>
       </section>
 
-      {/* ── EMPRESAS DO GRUPO ── */}
-      <section className="px-5 sm:px-8 md:px-16 lg:px-24 pb-20 md:pb-24" style={{ backgroundColor: "#0A0A0A" }}>
-        <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
-          Empresas do grupo
-        </p>
-        <h2 className="mt-3 mb-10 md:mb-12 font-display font-extralight text-[28px] sm:text-[36px] md:text-[44px] tracking-[-0.02em]" style={{ color: "#F7F6F4" }}>
-          O ecossistema Hyndra
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          {COMPANIES.map((c) => (
-            <CompanyCard key={c.name} {...c} />
-          ))}
-        </div>
-      </section>
-
+      {/* ── FOOTER ── */}
+      <ProductsFooter />
     </div>
   );
 }
