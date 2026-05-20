@@ -118,7 +118,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col w-full bg-[#F7F6F4] text-[#0A0A0A]">
+      <div className="min-h-screen flex flex-col w-full bg-[#0A0A0A] text-[#F7F6F4]">
         <Topbar />
         <main className="flex-1 min-w-0">
           <Outlet />
