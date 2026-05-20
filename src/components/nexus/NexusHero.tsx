@@ -528,28 +528,28 @@ function ModuleButton({ mod, onClick }: { mod: ModuleEntry; onClick: () => void 
       onMouseLeave={() => setHover(false)}
       className="flex flex-col items-center transition-all"
       style={{
-        background: "transparent",
-        border: "1px solid rgba(192,192,192,0.10)",
-        borderTop: hover ? "2px solid #9DCA79" : "2px solid transparent",
-        padding: "0.9rem 0.5rem 0.8rem",
-        gap: 8,
+        background: hover ? "rgba(157,202,121,0.05)" : "transparent",
+        border: "1px solid rgba(192,192,192,0.12)",
+        borderTop: hover ? "2px solid #9DCA79" : "2px solid rgba(192,192,192,0.12)",
+        padding: "2rem 1rem 1.75rem",
+        gap: 16,
         transition: "all 0.25s",
       }}
     >
-      <Icon size={18} color={hover ? "#9DCA79" : "#6B6B6B"} />
+      <Icon size={44} color={hover ? "#9DCA79" : "#C0C0C0"} strokeWidth={1.2} />
       <span
         className="font-mono-newe uppercase"
         style={{
-          fontSize: 9,
-          letterSpacing: "0.1em",
-          color: hover ? "#FFFFFF" : "#6B6B6B",
+          fontSize: 12,
+          letterSpacing: "0.2em",
+          color: hover ? "#FFFFFF" : "#C0C0C0",
         }}
       >
         {mod.name}
       </span>
       <span
         className="font-body"
-        style={{ fontSize: 9, fontWeight: 300, color: "#6B6B6B" }}
+        style={{ fontSize: 11, fontWeight: 300, color: "#6B6B6B" }}
       >
         {mod.products.length} produtos
       </span>
