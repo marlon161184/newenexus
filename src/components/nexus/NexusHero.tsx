@@ -502,14 +502,15 @@ function ModuleButton({ mod, onClick }: { mod: ModuleEntry; onClick: () => void 
   );
 }
 
-function ProductCard({ product }: { product: ModuleProduct }) {
+function ProductCard({ product, route }: { product: ModuleProduct; route: string }) {
   const [hover, setHover] = useState(false);
   const Icon = product.icon;
   return (
-    <div
+    <Link
+      to={route}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="relative transition-colors"
+      className="relative block transition-colors"
       style={{
         backgroundColor: hover ? "#1C1C1C" : "#0A0A0A",
         padding: "1.25rem 1.25rem 1.25rem 1.5rem",
@@ -544,6 +545,6 @@ function ProductCard({ product }: { product: ModuleProduct }) {
         <span style={{ color: "#6B6B6B" }}>Fase EE · </span>
         <span style={{ color: "#9DCA79" }}>{product.phase}</span>
       </p>
-    </div>
+    </Link>
   );
 }
