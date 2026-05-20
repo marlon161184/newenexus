@@ -583,9 +583,10 @@ const MODULES: ModuleEntry[] = [
         name: "HYNstaNewe",
         tagline: "Rede social interna do grupo",
         url: "#",
+        logoImg: hynstaneweLogo,
         logoText: "HYNstaNewe",
         logoSub: "REDE INTERNA · EM BREVE",
-        logoBg: "#0A0A0A",
+        logoBg: "#F7F6F4",
         logoTextColor: "#FFFFFF",
       },
       {
