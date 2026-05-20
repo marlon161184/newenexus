@@ -439,86 +439,51 @@ export function NexusHero() {
       />
 
       {/* MODULE GRID */}
-      <div
-        style={{
-          padding: "2.5rem 4rem 4rem",
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: 16,
-        }}
-      >
-        {MODULES.map((m) => (
-          <ModuleButton key={m.key} mod={m} onClick={() => setActiveModule(m.key)} />
-        ))}
-      </div>
-
-      {/* MODULE OVERLAY */}
-      {activeModuleData && (
+      <div style={{ padding: "2.5rem 4rem 4rem" }}>
         <div
-          className="absolute inset-0 overflow-y-auto"
           style={{
-            backgroundColor: "#0A0A0A",
-            borderRadius: 2,
-            padding: "2.5rem",
-            backgroundImage:
-              "linear-gradient(rgba(192,192,192,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.03) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
-            animation: "newe-fade-up 0.3s ease forwards",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 0,
+            border: "1px solid rgba(192,192,192,0.12)",
           }}
         >
-          <button
-            onClick={() => setActiveModule(null)}
-            className="flex items-center gap-2 group"
-          >
-            <ArrowLeft size={13} className="text-[#6B6B6B] group-hover:text-[#9DCA79] transition-colors" />
-            <span
-              className="font-mono-newe uppercase text-[#6B6B6B] group-hover:text-[#9DCA79] transition-colors"
-              style={{ fontSize: 9, letterSpacing: "0.2em" }}
-            >
-              Voltar ao Nexus
-            </span>
-          </button>
-
-          <div className="mt-8 flex items-center gap-2">
-            <span style={{ width: 20, height: 1, backgroundColor: "#9DCA79" }} />
-            <p
-              className="font-mono-newe uppercase"
-              style={{ fontSize: 9, letterSpacing: "0.3em", color: "#6B6B6B" }}
-            >
-              Módulo · {activeModuleData.name}
-            </p>
-          </div>
-          <h2
-            className="font-display"
-            style={{ fontWeight: 200, fontSize: 36, color: "#FFFFFF", marginTop: "1rem" }}
-          >
-            {activeModuleData.name}
-          </h2>
-          <hr
-            style={{
-              height: 1,
-              border: "none",
-              width: "100%",
-              margin: "1.5rem 0 2rem",
-              background:
-                "linear-gradient(90deg, #9DCA79 0px, #9DCA79 60px, #C0C0C0 60px, #C0C0C0 200px, transparent 200px)",
-            }}
-          />
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
-              gap: 1,
-              backgroundColor: "#1C1C1C",
-            }}
-          >
-            {activeModuleData.products.map((p) => (
-              <ProductCard key={p.name} product={p} route={activeModuleData.route} />
-            ))}
-          </div>
+          {row1.map((m) => (
+            <ModuleButton
+              key={m.slug}
+              mod={m}
+              isOpen={openModule === m.slug}
+              onClick={() => handleModuleClick(m.slug)}
+            />
+          ))}
         </div>
-      )}
+        {openInRow1 && (
+          <ProductPanel module={openInRow1} onClose={() => setOpenModule(null)} />
+        )}
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 0,
+            border: "1px solid rgba(192,192,192,0.12)",
+            borderTop: "none",
+            marginTop: openInRow1 ? 0 : 0,
+          }}
+        >
+          {row2.map((m) => (
+            <ModuleButton
+              key={m.slug}
+              mod={m}
+              isOpen={openModule === m.slug}
+              onClick={() => handleModuleClick(m.slug)}
+            />
+          ))}
+        </div>
+        {openInRow2 && (
+          <ProductPanel module={openInRow2} onClose={() => setOpenModule(null)} />
+        )}
+      </div>
     </section>
   );
 }
