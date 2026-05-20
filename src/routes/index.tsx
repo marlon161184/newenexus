@@ -40,11 +40,11 @@ function NexusHome() {
   const [openModule, setOpenModule] = useState<string | null>(null);
 
   return (
-    <div className="max-w-[1280px]">
+    <div className="w-full">
 
       {/* ── HERO ── */}
       <section
-        className="-mx-0 px-8 md:px-12 pt-14 pb-12"
+        className="-mx-0 px-8 md:px-16 lg:px-24 pt-20 pb-20"
         style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
@@ -52,38 +52,38 @@ function NexusHome() {
           backgroundSize: "56px 56px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1.25rem" }}>
-          <span style={{ display: "block", width: 20, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "1.75rem" }}>
+          <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
             Newe Nexus · Sistema Operacional da Cultura
           </p>
         </div>
 
-        <h1 style={{ marginBottom: "1.5rem", maxWidth: 420 }}>
+        <h1 style={{ marginBottom: "2rem", maxWidth: 640 }}>
           <span className="sr-only">Nexus · Nosso Jeito de Ser</span>
           <NexusLogo variant="negative" size="lg" withDescriptor />
         </h1>
 
         <p
           className="font-body font-light leading-relaxed"
-          style={{ fontSize: 16, color: "#9A9A9A", maxWidth: 480, marginBottom: "2rem" }}
+          style={{ fontSize: 22, color: "#9A9A9A", maxWidth: 720, marginBottom: "2.75rem" }}
         >
           O produto digital que materializa nossa cultura. Cada módulo, produto e ritual — tudo começa aqui.
         </p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: "2.5rem" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: "3.5rem" }}>
           <a
             href="https://newemanifesto.lovable.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-2.5 transition-all hover:bg-[#9DCA79] hover:text-[#0A0A0A]"
+            className="font-mono-newe text-[11px] tracking-[0.3em] uppercase px-7 py-3.5 transition-all hover:bg-[#9DCA79] hover:text-[#0A0A0A]"
             style={{ border: "1px solid #9DCA79", color: "#9DCA79", borderRadius: 2 }}
           >
             Nosso Jeito de Ser ↗
           </a>
           <a
             href="#modulos"
-            className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-2.5 transition-all hover:border-[#C0C0C0] hover:text-white"
+            className="font-mono-newe text-[11px] tracking-[0.3em] uppercase px-7 py-3.5 transition-all hover:border-[#C0C0C0] hover:text-white"
             style={{ border: "1px solid #2E2E2E", color: "#6B6B6B", borderRadius: 2 }}
           >
             Explorar módulos ↓
@@ -94,12 +94,12 @@ function NexusHome() {
           style={{
             height: 1,
             background:
-              "linear-gradient(90deg,#9DCA79 0,#9DCA79 60px,#C0C0C0 60px,#C0C0C0 200px,transparent 200px)",
-            marginBottom: "2.5rem",
+              "linear-gradient(90deg,#9DCA79 0,#9DCA79 80px,#C0C0C0 80px,#C0C0C0 260px,transparent 260px)",
+            marginBottom: "3rem",
           }}
         />
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "2.5rem" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "3.5rem" }}>
           {[
             { v: "5", l: "Módulos" },
             { v: "11", l: "Produtos digitais" },
@@ -107,8 +107,8 @@ function NexusHome() {
             { v: "7", l: "Fases da jornada EE" },
           ].map(({ v, l }) => (
             <div key={l}>
-              <p className="font-display font-extralight" style={{ fontSize: 28, color: "#FFFFFF", lineHeight: 1 }}>{v}</p>
-              <p className="font-mono-newe text-[9px] tracking-[0.25em] uppercase mt-1" style={{ color: "#6B6B6B" }}>{l}</p>
+              <p className="font-display font-extralight" style={{ fontSize: 44, color: "#FFFFFF", lineHeight: 1 }}>{v}</p>
+              <p className="font-mono-newe text-[11px] tracking-[0.25em] uppercase mt-2" style={{ color: "#6B6B6B" }}>{l}</p>
             </div>
           ))}
         </div>
