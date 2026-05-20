@@ -82,11 +82,11 @@ const MODULES: ModuleEntry[] = [
     products: [
       {
         name: "Nosso Jeito de Ser",
-        tagline: "Plataforma de Marca",
-        url: "https://newebrandingac.lovable.app",
+        tagline: "Manifesto e cultura Hyndra · Newe",
+        url: "https://newemanifesto.lovable.app",
         logoType: "text",
         logoText: "Nosso Jeito de Ser",
-        logoSub: "Plataforma de Marca · Newe",
+        logoSub: "MANIFESTO · HYNDRA GROUP",
         logoBg: "#0A0A0A",
         logoTextColor: "#FFFFFF",
       },
@@ -206,9 +206,20 @@ const MODULES: ModuleEntry[] = [
     tag: "Módulo · 06",
     title: "Workspace",
     desc: "Ferramentas, processos e fluxos do dia a dia.",
-    count: "0 produtos",
+    count: "1 produto",
     icon: Briefcase,
-    products: [],
+    products: [
+      {
+        name: "Plataforma de Marca",
+        tagline: "Brand book · Toolkit · Artefatos estratégicos",
+        url: "https://newebrandingac.lovable.app",
+        logoType: "text",
+        logoText: "NEWE",
+        logoSub: "PLATAFORMA DE MARCA",
+        logoBg: "#0A0A0A",
+        logoTextColor: "#FFFFFF",
+      },
+    ],
   },
 ];
 
