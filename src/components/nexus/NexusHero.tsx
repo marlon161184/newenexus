@@ -197,58 +197,113 @@ export function NexusHero() {
         className="fixed top-0 left-0 pointer-events-none opacity-0 transition-opacity duration-150"
         style={{ zIndex: 9999, transform: "translate(-100px,-100px)" }}
       >
-        <svg width="18" height="24" viewBox="0 0 18 24" fill="none">
+        <svg
+          width="34"
+          height="44"
+          viewBox="0 0 34 44"
+          fill="none"
+          style={{
+            transform: "translate(-6px, -4px) rotate(-22deg)",
+            filter: "drop-shadow(0 0 10px rgba(157,202,121,0.55))",
+          }}
+        >
+          {/* leaf body */}
           <path
-            d="M9 1C9 1 1 7 1 14C1 19 5 23 9 23C13 23 17 19 17 14C17 7 9 1 9 1Z"
+            d="M17 2 C7 6 2 14 2 24 C2 33 9 40 17 40 C25 40 32 33 32 24 C32 14 27 6 17 2 Z"
             fill="#9DCA79"
-            stroke="#9DCA79"
-            strokeWidth="1"
           />
-          <path d="M9 6V20" stroke="#0A0A0A" strokeWidth="0.6" opacity="0.4" />
+          {/* leaf tip curl */}
+          <path
+            d="M17 2 C19 6 21 10 22 14"
+            stroke="#0A0A0A"
+            strokeOpacity="0.25"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            fill="none"
+          />
+          {/* main vein */}
+          <path
+            d="M17 3 L17 40"
+            stroke="#0A0A0A"
+            strokeOpacity="0.35"
+            strokeWidth="0.9"
+            strokeLinecap="round"
+          />
+          {/* side veins */}
+          <path d="M17 12 L9 16" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
+          <path d="M17 12 L25 16" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
+          <path d="M17 20 L7 24" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
+          <path d="M17 20 L27 24" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
+          <path d="M17 28 L9 32" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
+          <path d="M17 28 L25 32" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
+          {/* stem */}
+          <path d="M17 40 L17 44" stroke="#5C7A47" strokeWidth="1.4" strokeLinecap="round" />
         </svg>
       </div>
 
       {/* HEADER */}
-      <div className="relative" style={{ padding: "2.5rem 2.5rem 0" }}>
-        <div className="flex items-center gap-2">
-          <span style={{ width: 24, height: 1, backgroundColor: "#9DCA79" }} />
+      <div
+        className="relative flex flex-col items-center text-center"
+        style={{ padding: "5rem 2.5rem 2rem" }}
+      >
+        <div className="flex items-center gap-3">
+          <span style={{ width: 36, height: 1, backgroundColor: "#9DCA79" }} />
           <p
             className="font-mono-newe uppercase"
-            style={{ fontSize: 9, letterSpacing: "0.3em", color: "#6B6B6B" }}
+            style={{ fontSize: 11, letterSpacing: "0.45em", color: "#9DCA79" }}
           >
-            Newe Nexus · Ecossistema de Cultura
+            Ecossistema de Cultura · Hyndra Group
           </p>
+          <span style={{ width: 36, height: 1, backgroundColor: "#9DCA79" }} />
         </div>
         <h1
           className="font-display"
           style={{
             fontWeight: 200,
-            fontSize: 32,
-            letterSpacing: "-0.02em",
-            marginTop: "1rem",
-            lineHeight: 1.1,
+            fontSize: "clamp(96px, 14vw, 200px)",
+            letterSpacing: "-0.04em",
+            marginTop: "1.5rem",
+            lineHeight: 0.9,
+            color: "#FFFFFF",
+            textShadow: "0 0 60px rgba(157,202,121,0.18)",
           }}
         >
-          <span style={{ color: "#FFFFFF" }}>Nosso Jeito</span>
-          <span style={{ color: "#C0C0C0", display: "block" }}>de Ser</span>
+          NEXUS
         </h1>
-        <hr
+        <p
+          className="font-display"
           style={{
-            height: 1,
-            border: "none",
-            width: "100%",
-            margin: "1.5rem 0 0",
-            background:
-              "linear-gradient(90deg, #9DCA79 0px, #9DCA79 60px, #C0C0C0 60px, #C0C0C0 200px, transparent 200px)",
+            fontStyle: "italic",
+            fontWeight: 200,
+            fontSize: "clamp(20px, 2.4vw, 30px)",
+            color: "#C0C0C0",
+            marginTop: "0.75rem",
+            letterSpacing: "-0.01em",
           }}
-        />
+        >
+          Nosso Jeito de Ser
+        </p>
+        <p
+          className="font-body"
+          style={{
+            fontWeight: 300,
+            fontSize: 15,
+            color: "#9A9A9A",
+            maxWidth: 560,
+            marginTop: "1.5rem",
+            lineHeight: 1.55,
+          }}
+        >
+          O sistema operacional cultural do grupo. Cultura, conhecimento e pessoas
+          conectados em uma única jornada.
+        </p>
       </div>
 
       {/* TIMELINE */}
-      <div className="relative" style={{ padding: "2.5rem 2.5rem 0" }}>
+      <div className="relative" style={{ padding: "3rem 4rem 0" }}>
         <p
-          className="font-mono-newe uppercase mb-8"
-          style={{ fontSize: 9, letterSpacing: "0.22em", color: "#6B6B6B" }}
+          className="font-mono-newe uppercase mb-10 text-center"
+          style={{ fontSize: 11, letterSpacing: "0.35em", color: "#6B6B6B" }}
         >
           Employee Experience Journey
         </p>
@@ -284,7 +339,7 @@ export function NexusHero() {
       {/* DIVIDER */}
       <div
         style={{
-          margin: "2rem 2.5rem 0",
+          margin: "3.5rem 2.5rem 0",
           height: 1,
           background:
             "linear-gradient(90deg, transparent, #2E2E2E 20%, #2E2E2E 80%, transparent)",
@@ -294,10 +349,10 @@ export function NexusHero() {
       {/* MODULE GRID */}
       <div
         style={{
-          padding: "1.5rem 2.5rem 2rem",
+          padding: "2.5rem 4rem 4rem",
           display: "grid",
           gridTemplateColumns: "repeat(5, 1fr)",
-          gap: 8,
+          gap: 16,
         }}
       >
         {MODULES.map((m) => (
