@@ -288,8 +288,8 @@ function NexusHome() {
 
 function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
   const common = {
-    width: 22,
-    height: 22,
+    width: 28,
+    height: 28,
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
