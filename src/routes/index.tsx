@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { NexusLogo } from "@/components/nexus/NexusLogo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,13 +59,9 @@ function NexusHome() {
           </p>
         </div>
 
-        <h1
-          className="font-display font-extralight leading-[0.95] tracking-[-0.03em]"
-          style={{ fontSize: "clamp(40px,6vw,68px)", color: "#FFFFFF", marginBottom: "1.25rem" }}
-        >
-          Nosso Jeito
-          <br />
-          <span style={{ color: "#C0C0C0" }}>de Ser.</span>
+        <h1 style={{ marginBottom: "1.5rem", maxWidth: 420 }}>
+          <span className="sr-only">Nexus · Nosso Jeito de Ser</span>
+          <NexusLogo variant="negative" size="lg" withDescriptor />
         </h1>
 
         <p
