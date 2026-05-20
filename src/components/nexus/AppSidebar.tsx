@@ -12,11 +12,10 @@ const MAIN: NavItem[] = [
 
 const MODULES: NavItem[] = [
   { label: "Cultura", to: "/cultura", shape: "circle" },
-  { label: "Conhecimento", to: "/conhecimento", shape: "circle-small" },
   { label: "Pessoas", to: "/pessoas", shape: "triangle" },
-  { label: "Governança", to: "/governanca", shape: "square" },
-  { label: "Workspace", to: "/workspace", shape: "diamond" },
+  { label: "Conhecimento", to: "/conhecimento", shape: "circle-small" },
   { label: "Comunidade", to: "/comunidade", shape: "circle-dashed" },
+  { label: "Governança", to: "/governanca", shape: "square" },
 ];
 
 const PERSONAL: NavItem[] = [
@@ -154,18 +153,31 @@ export function AppSidebar() {
     >
       {/* Logo / brand */}
       <div className="px-5 pt-7 pb-5">
-        <p
-          className="font-display font-extralight text-[20px] tracking-[0.04em]"
-          style={{ color: "#F7F6F4" }}
-        >
-          newe
-        </p>
-        <p
-          className="mt-1 font-mono-newe text-[8.5px] tracking-[0.35em] uppercase"
-          style={{ color: "#6B6B6B" }}
-        >
-          Nexus · Hyndra Group
-        </p>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ display: "block", width: 2, height: 36, backgroundColor: "#9DCA79", flexShrink: 0 }} />
+          <div>
+            <p
+              className="font-display font-extralight"
+              style={{ fontSize: 18, color: "#F7F6F4", letterSpacing: "-0.02em", lineHeight: 1 }}
+            >
+              NEXUS
+            </p>
+            <p
+              className="font-mono-newe"
+              style={{ fontSize: 7, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9DCA79", marginTop: 3 }}
+            >
+              Nosso Jeito de Ser
+            </p>
+            <div
+              style={{
+                height: 1,
+                marginTop: 5,
+                background:
+                  "linear-gradient(90deg,#9DCA79 0,#9DCA79 16px,#2E2E2E 16px,#2E2E2E 50px,transparent 50px)",
+              }}
+            />
+          </div>
+        </div>
       </div>
 
       {/* User block */}
@@ -229,6 +241,20 @@ export function AppSidebar() {
         >
           Hyndra | Newe
         </p>
+        <a
+          href="https://newemanifesto.lovable.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 flex items-center gap-2 group"
+        >
+          <span style={{ display: "block", width: 2, height: 18, backgroundColor: "#9DCA79", flexShrink: 0 }} />
+          <p
+            className="font-mono-newe text-[8px] tracking-[0.22em] uppercase transition-colors group-hover:text-white"
+            style={{ color: "#6B6B6B" }}
+          >
+            Nosso Jeito de Ser ↗
+          </p>
+        </a>
       </div>
     </aside>
   );
