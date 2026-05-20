@@ -455,13 +455,13 @@ function ProductPanel({ module: mod, onClose }: { module: ModuleEntry; onClose: 
 
 function CompanyCard({ name, type, badge }: { name: string; type: string; badge: string }) {
   return (
-    <div className="p-6 bg-[#FAFAFA] flex flex-col gap-4" style={{ border: "1px solid #D8D8D8", borderRadius: 2 }}>
+    <div className="p-8 bg-[#FAFAFA] flex flex-col gap-4" style={{ border: "1px solid #D8D8D8", borderRadius: 2 }}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A]">{type}</p>
-          <p className="mt-2 font-display font-light text-[20px] text-[#0A0A0A] leading-tight">{name}</p>
+          <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#9A9A9A]">{type}</p>
+          <p className="mt-3 font-display font-light text-[28px] text-[#0A0A0A] leading-tight tracking-[-0.01em]">{name}</p>
         </div>
-        <span className="font-mono-newe text-[8px] tracking-[0.3em] uppercase px-2 py-1 shrink-0" style={{ border: "1px solid #D8D8D8", color: "#6B6B6B", borderRadius: 2 }}>{badge}</span>
+        <span className="font-mono-newe text-[10px] tracking-[0.3em] uppercase px-2.5 py-1 shrink-0" style={{ border: "1px solid #D8D8D8", color: "#6B6B6B", borderRadius: 2 }}>{badge}</span>
       </div>
     </div>
   );
