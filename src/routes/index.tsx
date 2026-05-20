@@ -257,66 +257,6 @@ function RecentIcon({ kind }: { kind: "doc" | "video" | "link" | "sheet" }) {
 
 /* ---------- dados ---------- */
 
-type ModuleEntry = {
-  slug: string;
-  tag: string;
-  title: string;
-  desc: string;
-  count: string;
-  shape: "circle" | "circle-small" | "triangle" | "square" | "diamond" | "circle-dashed";
-};
-
-const MODULES: ModuleEntry[] = [
-  {
-    slug: "cultura",
-    tag: "Módulo · 01",
-    title: "Cultura",
-    desc: "Valores, rituais e a história que nos une como grupo.",
-    count: "12 artigos",
-    shape: "circle",
-  },
-  {
-    slug: "conhecimento",
-    tag: "Módulo · 02",
-    title: "Conhecimento",
-    desc: "Base de conhecimento, documentos e aprendizados do grupo.",
-    count: "84 documentos",
-    shape: "circle-small",
-  },
-  {
-    slug: "pessoas",
-    tag: "Módulo · 03",
-    title: "Pessoas",
-    desc: "Desenvolvimento, remuneração e sua jornada no grupo.",
-    count: "9 trilhas",
-    shape: "triangle",
-  },
-  {
-    slug: "governanca",
-    tag: "Módulo · 04",
-    title: "Governança",
-    desc: "Políticas, compliance e como as coisas funcionam.",
-    count: "21 políticas",
-    shape: "square",
-  },
-  {
-    slug: "workspace",
-    tag: "Módulo · 05",
-    title: "Workspace",
-    desc: "Ferramentas, processos e fluxos do dia a dia.",
-    count: "16 ferramentas",
-    shape: "diamond",
-  },
-  {
-    slug: "comunidade",
-    tag: "Módulo · 06",
-    title: "Comunidade",
-    desc: "Pessoas, reconhecimento e o que acontece no grupo.",
-    count: "47 pessoas",
-    shape: "circle-dashed",
-  },
-];
-
 const RECENT: { title: string; crumb: string; time: string; kind: "doc" | "video" | "link" | "sheet" }[] = [
   {
     title: "Manifesto Hyndra · versão editorial 2025",
