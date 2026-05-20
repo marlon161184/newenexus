@@ -10,6 +10,7 @@ import habitarEstruturaLogo from "@/assets/products/habitar-estrutura.jpg";
 import decidirIntencaoLogo from "@/assets/products/decidir-intencao.jpg";
 import allAboardLogo from "@/assets/products/all-aboard.jpg";
 import plataformaMarcaLogo from "@/assets/products/plataforma-marca.jpg";
+import hynstaneweLogo from "@/assets/products/hynstanewe.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -582,9 +583,10 @@ const MODULES: ModuleEntry[] = [
         name: "HYNstaNewe",
         tagline: "Rede social interna do grupo",
         url: "#",
+        logoImg: hynstaneweLogo,
         logoText: "HYNstaNewe",
         logoSub: "REDE INTERNA · EM BREVE",
-        logoBg: "#0A0A0A",
+        logoBg: "#F7F6F4",
         logoTextColor: "#FFFFFF",
       },
       {
