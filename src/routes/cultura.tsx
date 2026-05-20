@@ -50,8 +50,8 @@ function Hero() {
 
       {/* Headline */}
       <h1
-        className="font-display font-extralight leading-[1.0] tracking-[-0.025em]"
-        style={{ fontSize: "clamp(36px, 6vw, 56px)", color: "#0A0A0A", marginBottom: "1rem" }}
+        className="font-display font-extralight leading-[0.95] tracking-[-0.025em]"
+        style={{ fontSize: "clamp(36px,5vw,52px)", color: "#0A0A0A" }}
       >
         Nosso Jeito
         <br />
@@ -59,9 +59,9 @@ function Hero() {
       </h1>
 
       {/* Subtítulo editorial */}
-      <div className="mt-6 pl-6 max-w-2xl" style={{ borderLeft: "2px solid #9DCA79" }}>
+      <div className="mt-8 pl-6 max-w-2xl" style={{ borderLeft: "2px solid #9DCA79" }}>
         <p className="font-display font-light italic" style={{ fontSize: 19, color: "#1C1C1C", lineHeight: 1.55 }}>
-          Não é um regulamento. É a destilação de quem somos — como pensamos, como decidimos, como construímos, como nos relacionamos.
+          Aqui você entende quem somos — e por que você faz parte disso.
         </p>
       </div>
 
@@ -86,7 +86,7 @@ function Hero() {
               <p className="font-mono-newe" style={{ fontSize: 7, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9DCA79", marginTop: 3 }}>
                 Nosso Jeito de Ser
               </p>
-              <div style={{ height: 1, marginTop: 6, background: "linear-gradient(90deg, #9DCA79 0px, #9DCA79 20px, #C0C0C0 20px, #C0C0C0 60px, transparent 60px)" }} />
+              <div style={{ height: 1, marginTop: 5, background: "linear-gradient(90deg,#9DCA79 0,#9DCA79 20px,#2E2E2E 20px,#2E2E2E 60px,transparent 60px)" }} />
             </div>
           </div>
 
@@ -95,7 +95,7 @@ function Hero() {
               O produto digital desta cultura
             </p>
             <p className="font-body font-light" style={{ fontSize: 13, color: "#9A9A9A", lineHeight: 1.7, maxWidth: 420 }}>
-              O Nexus é o sistema operacional que dá forma ao Nosso Jeito de Ser. Cada módulo, produto e ritual desta cultura vive aqui — acessível, navegável, vivo.
+              O Nexus é o sistema operacional que dá forma ao Nosso Jeito de Ser. Cada módulo e produto desta cultura vive lá — acessível, navegável, vivo.
             </p>
           </div>
 
