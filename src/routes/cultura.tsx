@@ -248,14 +248,15 @@ function Values() {
         {VALUES.map((v) => (
           <article
             key={v.n}
-            className="group relative bg-[#FAFAFA] p-8 transition-colors hover:bg-[#F7F6F4]"
+            className="group relative bg-[#FAFAFA] p-8 transition-all hover:bg-[#F7F6F4] hover:border-t-[#9DCA79]"
+            style={{ borderTop: "2px solid transparent" }}
           >
             <span
               aria-hidden
               className="absolute left-0 bottom-0 h-px w-0 group-hover:w-full transition-all duration-500"
-              style={{ backgroundColor: "#C0C0C0" }}
+              style={{ backgroundColor: "#9DCA79" }}
             />
-            <p className="font-display font-extralight text-[32px] text-[#D8D8D8] leading-none">
+            <p className="font-display font-extralight text-[32px] text-[#D8D8D8] leading-none group-hover:text-[#9DCA79] transition-colors">
               {v.n}
             </p>
             <h3 className="mt-4 font-display font-light text-[20px] text-[#0A0A0A]">
