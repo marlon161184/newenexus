@@ -214,56 +214,6 @@ function CompanyCard({
 
 /* ---------- ícones / formas ---------- */
 
-function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
-  const common = {
-    width: 28,
-    height: 28,
-    viewBox: "0 0 32 32",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1,
-  } as const;
-  switch (shape) {
-    case "circle":
-      return (
-        <svg {...common}>
-          <circle cx="16" cy="16" r="13" />
-          <circle cx="16" cy="16" r="6" />
-        </svg>
-      );
-    case "circle-small":
-      return (
-        <svg {...common}>
-          <circle cx="16" cy="16" r="8" />
-        </svg>
-      );
-    case "triangle":
-      return (
-        <svg {...common}>
-          <path d="M16 4l13 24H3z" />
-        </svg>
-      );
-    case "square":
-      return (
-        <svg {...common}>
-          <rect x="4" y="4" width="24" height="24" />
-        </svg>
-      );
-    case "diamond":
-      return (
-        <svg {...common}>
-          <path d="M16 3l13 13-13 13L3 16z" />
-        </svg>
-      );
-    case "circle-dashed":
-      return (
-        <svg {...common} strokeDasharray="3 3">
-          <circle cx="16" cy="16" r="13" />
-        </svg>
-      );
-  }
-}
-
 function RecentIcon({ kind }: { kind: "doc" | "video" | "link" | "sheet" }) {
   const common = {
     width: 16,
