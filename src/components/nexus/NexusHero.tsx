@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "@tanstack/react-router";
+import { NexusLogo } from "@/components/nexus/NexusLogo";
 import {
   Flame,
   Users,
@@ -256,20 +257,17 @@ export function NexusHero() {
           </p>
           <span style={{ width: 36, height: 1, backgroundColor: "#9DCA79" }} />
         </div>
-        <h1
-          className="font-display"
+        <h1 className="sr-only">Nexus · Nosso Jeito de Ser</h1>
+        <div
+          aria-hidden
           style={{
-            fontWeight: 200,
-            fontSize: "clamp(96px, 14vw, 200px)",
-            letterSpacing: "-0.04em",
             marginTop: "1.5rem",
-            lineHeight: 0.9,
-            color: "#FFFFFF",
-            textShadow: "0 0 60px rgba(157,202,121,0.18)",
+            width: "min(960px, 88vw)",
+            filter: "drop-shadow(0 0 60px rgba(157,202,121,0.18))",
           }}
         >
-          NEXUS
-        </h1>
+          <NexusLogo variant="negative" size="lg" withDescriptor={false} markOnly />
+        </div>
         <p
           className="font-display"
           style={{
