@@ -573,6 +573,23 @@ function Aside() {
           ))}
         </dl>
       </div>
+
+      <div className="pt-6 border-t border-[#D8D8D8]">
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] mb-3">
+          Produto digital
+        </p>
+        <a href="/" className="flex items-center gap-2 group">
+          <span style={{ display: "block", width: 2, height: 24, backgroundColor: "#9DCA79", flexShrink: 0 }} />
+          <div>
+            <p className="font-display font-extralight text-[14px] text-[#0A0A0A] group-hover:underline decoration-[#C0C0C0] underline-offset-4">
+              NEXUS
+            </p>
+            <p className="font-mono-newe text-[8px] tracking-[0.25em] uppercase text-[#9A9A9A]">
+              Sistema operacional da cultura
+            </p>
+          </div>
+        </a>
+      </div>
     </aside>
   );
 }
