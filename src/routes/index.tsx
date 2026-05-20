@@ -235,9 +235,9 @@ function NexusHome() {
       </section>
 
       {/* ── BLOCO CULTURA ── */}
-      <section className="px-8 md:px-12 pb-16">
+      <section className="px-8 md:px-16 lg:px-24 pb-24">
         <div
-          className="p-8 md:p-12"
+          className="p-10 md:p-16"
           style={{
             backgroundColor: "#0A0A0A",
             borderRadius: 2,
@@ -246,20 +246,20 @@ function NexusHome() {
             backgroundSize: "56px 56px",
           }}
         >
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
             A cultura por trás do produto
           </p>
-          <p className="font-display font-extralight italic mt-5" style={{ fontSize: 22, color: "#F7F6F4", lineHeight: 1.5, maxWidth: 580 }}>
+          <p className="font-display font-extralight italic mt-6" style={{ fontSize: 36, color: "#F7F6F4", lineHeight: 1.35, maxWidth: 960, letterSpacing: "-0.01em" }}>
             "A Newe não acredita em fórmulas. Acredita em projeto — com método, estética e responsabilidade."
           </p>
-          <p className="font-body font-light mt-3" style={{ fontSize: 12, color: "#6B6B6B" }}>
+          <p className="font-body font-light mt-4" style={{ fontSize: 14, color: "#6B6B6B" }}>
             Nosso Jeito de Ser · Hyndra Group
           </p>
           <a
             href="https://newemanifesto.lovable.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-2.5 transition-all hover:bg-[#FAFAFA] hover:text-[#0A0A0A]"
+            className="mt-10 inline-flex items-center gap-2 font-mono-newe text-[11px] tracking-[0.3em] uppercase px-7 py-3.5 transition-all hover:bg-[#FAFAFA] hover:text-[#0A0A0A]"
             style={{ border: "1px solid #C0C0C0", color: "#F7F6F4", borderRadius: 2 }}
           >
             Ler o Nosso Jeito de Ser ↗
@@ -268,14 +268,14 @@ function NexusHome() {
       </section>
 
       {/* ── EMPRESAS DO GRUPO ── */}
-      <section className="px-8 md:px-12 pb-20">
-        <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+      <section className="px-8 md:px-16 lg:px-24 pb-24">
+        <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B]">
           Empresas do grupo
         </p>
-        <h2 className="mt-2 mb-8 font-display font-light text-[24px] text-[#0A0A0A]">
+        <h2 className="mt-3 mb-12 font-display font-light text-[40px] md:text-[48px] text-[#0A0A0A] tracking-[-0.02em]">
           O ecossistema Hyndra
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {COMPANIES.map((c) => (
             <CompanyCard key={c.name} {...c} />
           ))}
