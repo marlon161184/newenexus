@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { NexusLogo } from "@/components/nexus/NexusLogo";
+import nossoJeitoLogo from "@/assets/products/nosso-jeito.jpg";
+import academiaLideresLogo from "@/assets/products/academia-lideres.jpg";
+import academiaVendasLogo from "@/assets/products/academia-vendas.jpg";
+import par2026Logo from "@/assets/products/par-2026.jpg";
+import hubHyndraLogo from "@/assets/products/hub-hyndra.jpg";
+import habitarEstruturaLogo from "@/assets/products/habitar-estrutura.jpg";
+import decidirIntencaoLogo from "@/assets/products/decidir-intencao.jpg";
+import allAboardLogo from "@/assets/products/all-aboard.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,6 +28,7 @@ type Product = {
   name: string;
   tagline: string;
   url: string;
+  logoImg?: string;
   logoText?: string;
   logoSub?: string;
   logoBg?: string;
