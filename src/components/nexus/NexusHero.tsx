@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "@tanstack/react-router";
 import { NexusLogo } from "@/components/nexus/NexusLogo";
 import {
   Flame,
@@ -7,13 +6,7 @@ import {
   GraduationCap,
   Network,
   ShieldCheck,
-  ArrowLeft,
-  Compass,
-  Heart,
-  Target,
-  BookOpen,
   Briefcase,
-  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -57,76 +50,172 @@ const PHASES: Phase[] = [
 
 const PING_DELAYS = ["0s", "0.5s", "1s", "1.5s", "2s", "2.5s", "3s"];
 
-type ModuleProduct = {
+type Product = {
   name: string;
-  phase: string;
-  icon: LucideIcon;
+  tagline: string;
+  url: string;
+  logoType: "text" | "image";
+  logoText?: string;
+  logoSub?: string;
+  logoBg?: string;
+  logoTextColor?: string;
 };
 
 type ModuleEntry = {
-  key: string;
-  name: string;
+  slug: string;
+  tag: string;
+  title: string;
+  desc: string;
+  count: string;
   icon: LucideIcon;
-  route: string;
-  products: ModuleProduct[];
+  products: Product[];
 };
 
 const MODULES: ModuleEntry[] = [
   {
-    key: "cultura",
-    name: "Cultura",
+    slug: "cultura",
+    tag: "Módulo · 01",
+    title: "Cultura",
+    desc: "Valores, rituais e a história que nos une como grupo.",
+    count: "1 produto",
     icon: Flame,
-    route: "/cultura",
     products: [
-      { name: "Nosso Jeito de Ser", phase: "Integração", icon: Heart },
-      { name: "Plataforma de Marca", phase: "Integração", icon: Sparkles },
+      {
+        name: "Nosso Jeito de Ser",
+        tagline: "Plataforma de Marca",
+        url: "https://newebrandingac.lovable.app",
+        logoType: "text",
+        logoText: "Nosso Jeito de Ser",
+        logoSub: "Plataforma de Marca · Newe",
+        logoBg: "#0A0A0A",
+        logoTextColor: "#FFFFFF",
+      },
     ],
   },
   {
-    key: "pessoas",
-    name: "Pessoas",
+    slug: "pessoas",
+    tag: "Módulo · 02",
+    title: "Pessoas",
+    desc: "Desenvolvimento, remuneração e sua jornada no grupo.",
+    count: "3 produtos",
     icon: Users,
-    route: "/pessoas",
     products: [
-      { name: "All Aboard", phase: "Integração", icon: Compass },
-      { name: "PAR", phase: "Performance", icon: Target },
-      { name: "Benefícios", phase: "Integração", icon: Heart },
+      {
+        name: "All Aboard",
+        tagline: "Plataforma de Embarque",
+        url: "https://newe-welcome-journey.lovable.app",
+        logoType: "text",
+        logoText: "all aboard",
+        logoSub: "PLATAFORMA DE EMBARQUE",
+        logoBg: "#1C1C1C",
+        logoTextColor: "#FFFFFF",
+      },
+      {
+        name: "PAR 2026",
+        tagline: "Programa de Participação Anual nos Resultados",
+        url: "https://par-nexus.lovable.app",
+        logoType: "text",
+        logoText: "PAR 2026",
+        logoSub: "Participação Anual nos Resultados",
+        logoBg: "#1A1A1A",
+        logoTextColor: "#FFFFFF",
+      },
+      {
+        name: "Decidir com Intenção",
+        tagline: "Ferramenta de decisão estratégica",
+        url: "https://choice-compass-suite.lovable.app",
+        logoType: "text",
+        logoText: "Decidir com intenção.",
+        logoBg: "#0A0A0A",
+        logoTextColor: "#FFFFFF",
+      },
     ],
   },
   {
-    key: "conhecimento",
-    name: "Conhecimento",
+    slug: "conhecimento",
+    tag: "Módulo · 03",
+    title: "Conhecimento",
+    desc: "Base de conhecimento, documentos e aprendizados.",
+    count: "2 produtos",
     icon: GraduationCap,
-    route: "/conhecimento",
     products: [
-      { name: "Academia Newe by Hyndra", phase: "Desenvolvimento", icon: BookOpen },
-      { name: "Academia de Vendas", phase: "Desenvolvimento", icon: BookOpen },
-      { name: "Jornada da Máquina de Vendas", phase: "Integração", icon: Briefcase },
+      {
+        name: "Academia de Líderes Newe",
+        tagline: "Formação em quem constrói o urbanismo · by Hyndra",
+        url: "https://kindred-prompter.lovable.app",
+        logoType: "text",
+        logoText: "academia de líderes",
+        logoSub: "newe · by hyndra",
+        logoBg: "#FFFFFF",
+        logoTextColor: "#0A0A0A",
+      },
+      {
+        name: "Academia de Vendas Newe",
+        tagline: "Formação em venda consultiva · by Hyndra",
+        url: "https://elevate-newe-forge.lovable.app",
+        logoType: "text",
+        logoText: "academia de vendas",
+        logoSub: "newe · by hyndra",
+        logoBg: "#FFFFFF",
+        logoTextColor: "#0A0A0A",
+      },
     ],
   },
   {
-    key: "comunidade",
-    name: "Comunidade",
+    slug: "comunidade",
+    tag: "Módulo · 04",
+    title: "Comunidade",
+    desc: "Pessoas, reconhecimento e o que acontece no grupo.",
+    count: "1 produto",
     icon: Network,
-    route: "/pessoas",
     products: [
-      { name: "HYNstaNewe", phase: "Engajamento", icon: Network },
-      { name: "Org & Design", phase: "Engajamento", icon: Briefcase },
+      {
+        name: "Habitar a Estrutura",
+        tagline: "Quem somos, em camadas",
+        url: "https://hyndra-animated-core.lovable.app",
+        logoType: "text",
+        logoText: "Habitar a estrutura",
+        logoSub: "— quem somos, em camadas",
+        logoBg: "#111111",
+        logoTextColor: "#FFFFFF",
+      },
     ],
   },
   {
-    key: "governanca",
-    name: "Governança",
+    slug: "governanca",
+    tag: "Módulo · 05",
+    title: "Governança",
+    desc: "Políticas, compliance e como as coisas funcionam.",
+    count: "1 produto",
     icon: ShieldCheck,
-    route: "/conhecimento",
-    products: [{ name: "Hub Hyndra", phase: "Engajamento", icon: ShieldCheck }],
+    products: [
+      {
+        name: "HUB Hyndra",
+        tagline: "Políticas e procedimentos do grupo",
+        url: "https://hyndra-hub-core.lovable.app",
+        logoType: "text",
+        logoText: "HUB",
+        logoSub: "Hyndra",
+        logoBg: "#F7F6F4",
+        logoTextColor: "#0A0A0A",
+      },
+    ],
+  },
+  {
+    slug: "workspace",
+    tag: "Módulo · 06",
+    title: "Workspace",
+    desc: "Ferramentas, processos e fluxos do dia a dia.",
+    count: "0 produtos",
+    icon: Briefcase,
+    products: [],
   },
 ];
 
 type Star = { left: string; top: string; size: number; opacity: number; duration: string };
 
 export function NexusHero() {
-  const [activeModule, setActiveModule] = useState<string | null>(null);
+  const [openModule, setOpenModule] = useState<string | null>(null);
   const [stars, setStars] = useState<Star[]>([]);
   const [hoveredPhase, setHoveredPhase] = useState<string | null>(null);
   const cursorRef = useRef<HTMLDivElement | null>(null);
@@ -159,7 +248,12 @@ export function NexusHero() {
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  const activeModuleData = MODULES.find((m) => m.key === activeModule) ?? null;
+  const handleModuleClick = (slug: string) =>
+    setOpenModule(openModule === slug ? null : slug);
+  const row1 = MODULES.slice(0, 3);
+  const row2 = MODULES.slice(3, 6);
+  const openInRow1 = row1.find((m) => m.slug === openModule);
+  const openInRow2 = row2.find((m) => m.slug === openModule);
 
   return (
     <section
@@ -345,86 +439,51 @@ export function NexusHero() {
       />
 
       {/* MODULE GRID */}
-      <div
-        style={{
-          padding: "2.5rem 4rem 4rem",
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: 16,
-        }}
-      >
-        {MODULES.map((m) => (
-          <ModuleButton key={m.key} mod={m} onClick={() => setActiveModule(m.key)} />
-        ))}
-      </div>
-
-      {/* MODULE OVERLAY */}
-      {activeModuleData && (
+      <div style={{ padding: "2.5rem 4rem 4rem" }}>
         <div
-          className="absolute inset-0 overflow-y-auto"
           style={{
-            backgroundColor: "#0A0A0A",
-            borderRadius: 2,
-            padding: "2.5rem",
-            backgroundImage:
-              "linear-gradient(rgba(192,192,192,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.03) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
-            animation: "newe-fade-up 0.3s ease forwards",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 0,
+            border: "1px solid rgba(192,192,192,0.12)",
           }}
         >
-          <button
-            onClick={() => setActiveModule(null)}
-            className="flex items-center gap-2 group"
-          >
-            <ArrowLeft size={13} className="text-[#6B6B6B] group-hover:text-[#9DCA79] transition-colors" />
-            <span
-              className="font-mono-newe uppercase text-[#6B6B6B] group-hover:text-[#9DCA79] transition-colors"
-              style={{ fontSize: 9, letterSpacing: "0.2em" }}
-            >
-              Voltar ao Nexus
-            </span>
-          </button>
-
-          <div className="mt-8 flex items-center gap-2">
-            <span style={{ width: 20, height: 1, backgroundColor: "#9DCA79" }} />
-            <p
-              className="font-mono-newe uppercase"
-              style={{ fontSize: 9, letterSpacing: "0.3em", color: "#6B6B6B" }}
-            >
-              Módulo · {activeModuleData.name}
-            </p>
-          </div>
-          <h2
-            className="font-display"
-            style={{ fontWeight: 200, fontSize: 36, color: "#FFFFFF", marginTop: "1rem" }}
-          >
-            {activeModuleData.name}
-          </h2>
-          <hr
-            style={{
-              height: 1,
-              border: "none",
-              width: "100%",
-              margin: "1.5rem 0 2rem",
-              background:
-                "linear-gradient(90deg, #9DCA79 0px, #9DCA79 60px, #C0C0C0 60px, #C0C0C0 200px, transparent 200px)",
-            }}
-          />
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
-              gap: 1,
-              backgroundColor: "#1C1C1C",
-            }}
-          >
-            {activeModuleData.products.map((p) => (
-              <ProductCard key={p.name} product={p} route={activeModuleData.route} />
-            ))}
-          </div>
+          {row1.map((m) => (
+            <ModuleButton
+              key={m.slug}
+              mod={m}
+              isOpen={openModule === m.slug}
+              onClick={() => handleModuleClick(m.slug)}
+            />
+          ))}
         </div>
-      )}
+        {openInRow1 && (
+          <ProductPanel module={openInRow1} onClose={() => setOpenModule(null)} />
+        )}
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 0,
+            border: "1px solid rgba(192,192,192,0.12)",
+            borderTop: "none",
+            marginTop: openInRow1 ? 0 : 0,
+          }}
+        >
+          {row2.map((m) => (
+            <ModuleButton
+              key={m.slug}
+              mod={m}
+              isOpen={openModule === m.slug}
+              onClick={() => handleModuleClick(m.slug)}
+            />
+          ))}
+        </div>
+        {openInRow2 && (
+          <ProductPanel module={openInRow2} onClose={() => setOpenModule(null)} />
+        )}
+      </div>
     </section>
   );
 }
@@ -516,88 +575,287 @@ function PhaseNode({
   );
 }
 
-function ModuleButton({ mod, onClick }: { mod: ModuleEntry; onClick: () => void }) {
+function ModuleButton({
+  mod,
+  isOpen,
+  onClick,
+}: {
+  mod: ModuleEntry;
+  isOpen: boolean;
+  onClick: () => void;
+}) {
   const [hover, setHover] = useState(false);
   const Icon = mod.icon;
+  const active = isOpen || hover;
   return (
     <button
       onClick={onClick}
+      aria-expanded={isOpen}
+      aria-label={`Explorar módulo ${mod.title}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="flex flex-col items-center transition-all"
+      className="relative flex flex-col items-start text-left transition-all"
       style={{
-        background: hover ? "rgba(157,202,121,0.05)" : "transparent",
-        border: "1px solid rgba(192,192,192,0.12)",
-        borderTop: hover ? "2px solid #9DCA79" : "2px solid rgba(192,192,192,0.12)",
+        background: isOpen
+          ? "rgba(157,202,121,0.08)"
+          : hover
+            ? "rgba(157,202,121,0.05)"
+            : "transparent",
+        borderRight: "1px solid rgba(192,192,192,0.12)",
+        borderBottom: isOpen
+          ? "2px solid #9DCA79"
+          : "1px solid rgba(192,192,192,0.12)",
         padding: "2rem 1rem 1.75rem",
         gap: 16,
         transition: "all 0.25s",
       }}
     >
-      <Icon size={44} color={hover ? "#9DCA79" : "#C0C0C0"} strokeWidth={1.2} />
+      {isOpen && (
+        <span
+          aria-hidden
+          className="absolute left-0 top-0 bottom-0"
+          style={{ width: 2, backgroundColor: "#9DCA79" }}
+        />
+      )}
+      <Icon size={44} color={active ? "#9DCA79" : "#C0C0C0"} strokeWidth={1.2} />
+      <span
+        className="font-mono-newe uppercase"
+        style={{
+          fontSize: 9,
+          letterSpacing: "0.35em",
+          color: "#9A9A9A",
+        }}
+      >
+        {mod.tag}
+      </span>
       <span
         className="font-mono-newe uppercase"
         style={{
           fontSize: 12,
           letterSpacing: "0.2em",
-          color: hover ? "#FFFFFF" : "#C0C0C0",
+          color: active ? "#FFFFFF" : "#C0C0C0",
         }}
       >
-        {mod.name}
+        {mod.title}
       </span>
       <span
         className="font-body"
-        style={{ fontSize: 11, fontWeight: 300, color: "#6B6B6B" }}
+        style={{ fontSize: 12, fontWeight: 300, color: "#6B6B6B", lineHeight: 1.5 }}
       >
-        {mod.products.length} produtos
+        {mod.desc}
       </span>
+      <div className="mt-2 flex w-full items-center justify-between">
+        <span
+          className="font-mono-newe uppercase"
+          style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9A9A9A" }}
+        >
+          {mod.count}
+        </span>
+        <span
+          className="font-mono-newe uppercase"
+          style={{
+            fontSize: 9,
+            letterSpacing: "0.3em",
+            color: active ? "#9DCA79" : "#C0C0C0",
+            transform: isOpen ? "rotate(90deg)" : "none",
+            transition: "transform 0.3s, color 0.2s",
+          }}
+        >
+          →
+        </span>
+      </div>
     </button>
   );
 }
 
-function ProductCard({ product, route }: { product: ModuleProduct; route: string }) {
-  const [hover, setHover] = useState(false);
-  const Icon = product.icon;
+function ProductPanel({
+  module,
+  onClose,
+}: {
+  module: ModuleEntry;
+  onClose: () => void;
+}) {
+  if (!module.products.length) {
+    return (
+      <div
+        className="flex items-center justify-between"
+        style={{
+          padding: "1.5rem 2rem",
+          backgroundColor: "rgba(247,246,244,0.04)",
+          borderLeft: "2px solid #9DCA79",
+          borderRight: "1px solid rgba(192,192,192,0.12)",
+          borderBottom: "1px solid rgba(192,192,192,0.12)",
+          animation: "newe-fade-up 0.3s ease forwards",
+        }}
+      >
+        <p
+          className="font-mono-newe uppercase"
+          style={{ fontSize: 10, letterSpacing: "0.3em", color: "#9A9A9A" }}
+        >
+          Em construção · Em breve
+        </p>
+        <button
+          onClick={onClose}
+          className="font-mono-newe uppercase transition-colors hover:text-white"
+          style={{ fontSize: 9, letterSpacing: "0.3em", color: "#6B6B6B" }}
+        >
+          Fechar ×
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <Link
-      to={route}
+    <div
+      style={{
+        backgroundColor: "#0A0A0A",
+        borderLeft: "1px solid rgba(192,192,192,0.12)",
+        borderRight: "1px solid rgba(192,192,192,0.12)",
+        borderBottom: "1px solid rgba(192,192,192,0.12)",
+        backgroundImage:
+          "linear-gradient(rgba(192,192,192,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.025) 1px, transparent 1px)",
+        backgroundSize: "56px 56px",
+        animation: "newe-fade-up 0.3s ease forwards",
+      }}
+    >
+      <div className="flex items-center justify-between" style={{ padding: "1.25rem 1.75rem 0.75rem" }}>
+        <div className="flex items-center gap-3">
+          <span
+            aria-hidden
+            style={{ display: "block", width: 20, height: 1, backgroundColor: "#9DCA79" }}
+          />
+          <p
+            className="font-mono-newe uppercase"
+            style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}
+          >
+            {module.title} · {module.products.length} produto
+            {module.products.length > 1 ? "s" : ""}
+          </p>
+        </div>
+        <button
+          onClick={onClose}
+          aria-label="Fechar painel"
+          className="font-mono-newe uppercase transition-colors hover:text-white"
+          style={{ fontSize: 9, letterSpacing: "0.3em", color: "#6B6B6B" }}
+        >
+          Fechar ×
+        </button>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: 8,
+          padding: "0.75rem 1.25rem 1.5rem",
+        }}
+      >
+        {module.products.map((p) => (
+          <ProductExternalCard key={p.url} product={p} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProductExternalCard({ product }: { product: Product }) {
+  const [hover, setHover] = useState(false);
+  const isLight = product.logoTextColor === "#0A0A0A";
+  return (
+    <a
+      href={product.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Abrir ${product.name}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="relative block transition-colors"
+      className="group relative flex flex-col overflow-hidden transition-colors"
       style={{
-        backgroundColor: hover ? "#1C1C1C" : "#0A0A0A",
-        padding: "1.25rem 1.25rem 1.25rem 1.5rem",
+        backgroundColor: "#111110",
+        border: hover ? "1px solid #9DCA79" : "1px solid #2E2E2E",
+        borderRadius: 2,
       }}
     >
       <span
-        className="absolute"
+        aria-hidden
         style={{
+          position: "absolute",
           left: 0,
           top: 0,
           bottom: 0,
           width: 2,
-          backgroundColor: hover ? "#9DCA79" : "transparent",
-          transition: "background-color 0.2s",
+          backgroundColor: "#9DCA79",
+          opacity: hover ? 1 : 0,
+          transition: "opacity 0.2s",
         }}
       />
-      <Icon
-        size={15}
-        color={hover ? "#9DCA79" : "#6B6B6B"}
-        style={{ marginBottom: "0.65rem" }}
-      />
-      <p
-        className="font-display"
-        style={{ fontSize: 14, fontWeight: 400, color: "#FFFFFF" }}
+      <div
+        className="flex items-center justify-center px-4"
+        style={{
+          backgroundColor: product.logoBg ?? "#1C1C1C",
+          height: 110,
+          borderBottom: "1px solid #2E2E2E",
+        }}
       >
-        {product.name}
-      </p>
-      <p
-        className="font-mono-newe uppercase mt-2"
-        style={{ fontSize: 9, letterSpacing: "0.1em" }}
-      >
-        <span style={{ color: "#6B6B6B" }}>Fase EE · </span>
-        <span style={{ color: "#9DCA79" }}>{product.phase}</span>
-      </p>
-    </Link>
+        <div className="text-center">
+          <p
+            className="font-display leading-tight"
+            style={{
+              fontSize: (product.logoText ?? "").length > 15 ? 15 : 20,
+              fontWeight: 200,
+              color: product.logoTextColor ?? "#FFFFFF",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {product.logoText}
+          </p>
+          {product.logoSub && (
+            <p
+              className="font-mono-newe uppercase"
+              style={{
+                marginTop: 6,
+                fontSize: 7,
+                letterSpacing: "0.22em",
+                color: isLight ? "#6B6B6B" : "rgba(255,255,255,0.45)",
+              }}
+            >
+              {product.logoSub}
+            </p>
+          )}
+        </div>
+      </div>
+      <div style={{ padding: "0.9rem 1.1rem 1rem" }}>
+        <p
+          className="font-body"
+          style={{ fontSize: 13, fontWeight: 300, color: "#E8E2D9", lineHeight: 1.4 }}
+        >
+          {product.name}
+        </p>
+        <p
+          className="font-mono-newe uppercase"
+          style={{
+            marginTop: 6,
+            fontSize: 8.5,
+            letterSpacing: "0.25em",
+            color: "#6B6B6B",
+          }}
+        >
+          {product.tagline}
+        </p>
+        <span
+          className="font-mono-newe uppercase"
+          style={{
+            display: "inline-block",
+            marginTop: 12,
+            fontSize: 8,
+            letterSpacing: "0.3em",
+            color: hover ? "#FFFFFF" : "#9DCA79",
+            transition: "color 0.2s",
+          }}
+        >
+          Acessar →
+        </span>
+      </div>
+    </a>
   );
 }
