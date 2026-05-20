@@ -582,10 +582,10 @@ const MODULES: ModuleEntry[] = [
       {
         name: "HYNstaNewe",
         tagline: "Rede social interna do grupo",
-        url: "#",
+        url: "https://hynstanewe.lovable.app/",
         logoImg: hynstaneweLogo,
         logoText: "HYNstaNewe",
-        logoSub: "REDE INTERNA · EM BREVE",
+        logoSub: "REDE INTERNA",
         logoBg: "#F7F6F4",
         logoTextColor: "#FFFFFF",
       },
