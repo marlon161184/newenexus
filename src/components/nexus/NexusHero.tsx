@@ -215,7 +215,7 @@ const MODULES: ModuleEntry[] = [
 type Star = { left: string; top: string; size: number; opacity: number; duration: string };
 
 export function NexusHero() {
-  const [activeModule, setActiveModule] = useState<string | null>(null);
+  const [openModule, setOpenModule] = useState<string | null>(null);
   const [stars, setStars] = useState<Star[]>([]);
   const [hoveredPhase, setHoveredPhase] = useState<string | null>(null);
   const cursorRef = useRef<HTMLDivElement | null>(null);
@@ -248,7 +248,12 @@ export function NexusHero() {
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  const activeModuleData = MODULES.find((m) => m.key === activeModule) ?? null;
+  const handleModuleClick = (slug: string) =>
+    setOpenModule(openModule === slug ? null : slug);
+  const row1 = MODULES.slice(0, 3);
+  const row2 = MODULES.slice(3, 6);
+  const openInRow1 = row1.find((m) => m.slug === openModule);
+  const openInRow2 = row2.find((m) => m.slug === openModule);
 
   return (
     <section
