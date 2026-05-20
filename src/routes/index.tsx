@@ -298,130 +298,164 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
   }
 }
 
-function ModuleCard({
-  tag, title, desc, count, shape, isOpen, onClick,
-}: ModuleEntry & { isOpen: boolean; onClick: () => void }) {
+function ModuleBlock({
+  module: m,
+  isOpen,
+  onToggle,
+}: { module: ModuleEntry; isOpen: boolean; onToggle: () => void }) {
   return (
-    <button
-      onClick={onClick}
-      aria-expanded={isOpen}
-      className="group relative bg-[#FAFAFA] p-10 flex flex-col gap-5 transition-colors hover:bg-[#F7F6F4] w-full text-left"
-      style={{ borderBottom: isOpen ? "2px solid #9DCA79" : "2px solid transparent" }}
+    <div
+      className="group relative"
+      style={{
+        backgroundColor: isOpen ? "#0F0F0E" : "#111110",
+        border: "1px solid #1C1C1C",
+        borderLeft: isOpen ? "3px solid #9DCA79" : "3px solid #2E2E2E",
+        borderRadius: 2,
+        transition: "all 0.25s ease",
+      }}
     >
-      {isOpen && (
-        <span aria-hidden className="absolute left-0 top-0 bottom-0 w-[2px]" style={{ backgroundColor: "#9DCA79" }} />
-      )}
-      <span aria-hidden className="absolute left-0 bottom-0 h-px w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor: "#C0C0C0" }} />
-      <div style={{ color: isOpen ? "#9DCA79" : "#6B6B6B" }}>
-        <ModuleShape shape={shape} />
-      </div>
-      <p className="font-mono-newe text-[10px] tracking-[0.35em] uppercase text-[#9A9A9A]">{tag}</p>
-      <h3 className="font-display font-light text-[30px] text-[#0A0A0A] leading-tight tracking-[-0.01em]">{title}</h3>
-      <p className="font-body font-extralight text-[16px] text-[#6B6B6B] leading-relaxed">{desc}</p>
-      <div className="mt-3 flex items-center justify-between">
-        <span className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#9A9A9A]">{count}</span>
-        <span
-          className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A] transition-transform duration-300"
-          style={{ transform: isOpen ? "rotate(90deg)" : "none" }}
+      <button
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="w-full flex items-center gap-4 sm:gap-6 p-5 sm:p-7 md:p-8 text-left hover:bg-[#161614] transition-colors"
+      >
+        <div
+          className="shrink-0 flex items-center justify-center"
+          style={{
+            width: 56,
+            height: 56,
+            border: `1px solid ${isOpen ? "#9DCA79" : "#2E2E2E"}`,
+            borderRadius: 2,
+            color: isOpen ? "#9DCA79" : "#9A9A9A",
+            backgroundColor: isOpen ? "rgba(157,202,121,0.08)" : "transparent",
+            transition: "all 0.25s ease",
+          }}
         >
-          →
-        </span>
-      </div>
-    </button>
+          <ModuleShape shape={m.shape} />
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="font-mono-newe text-[9px] sm:text-[10px] tracking-[0.35em] uppercase mb-2" style={{ color: "#9DCA79" }}>
+            {m.tag}
+          </p>
+          <h3
+            className="font-display font-light text-[22px] sm:text-[28px] md:text-[36px] leading-tight tracking-[-0.01em]"
+            style={{ color: "#F7F6F4" }}
+          >
+            {m.title}
+          </h3>
+          <p className="hidden sm:block font-body font-extralight text-[14px] md:text-[16px] mt-2 leading-relaxed" style={{ color: "#7A7268" }}>
+            {m.desc}
+          </p>
+        </div>
+        <div className="shrink-0 flex flex-col items-end gap-2">
+          <span
+            className="font-mono-newe text-[9px] sm:text-[10px] tracking-[0.3em] uppercase"
+            style={{ color: "#6B6B6B" }}
+          >
+            {m.count}
+          </span>
+          <span
+            className="inline-flex items-center justify-center font-mono-newe text-[14px] transition-all"
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 2,
+              border: `1px solid ${isOpen ? "#9DCA79" : "#2E2E2E"}`,
+              color: isOpen ? "#0A0A0A" : "#9DCA79",
+              backgroundColor: isOpen ? "#9DCA79" : "transparent",
+              transform: isOpen ? "rotate(90deg)" : "none",
+            }}
+          >
+            →
+          </span>
+        </div>
+      </button>
+
+      {isOpen && (
+        <div
+          className="px-5 sm:px-7 md:px-8 pb-6 sm:pb-8 pt-2"
+          style={{ borderTop: "1px solid #1C1C1C" }}
+        >
+          {m.products.length === 0 ? (
+            <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase py-6" style={{ color: "#6B6B6B" }}>
+              Em construção · Em breve
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-4">
+              {m.products.map((p) => (
+                <ProductTile key={p.url} product={p} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 
-function ProductPanel({ module: mod, onClose }: { module: ModuleEntry; onClose: () => void }) {
-  if (!mod.products.length) {
-    return (
-      <div className="px-8 py-8 flex items-center justify-between" style={{ backgroundColor: "#F7F6F4", borderTop: "1px solid #EBEBEB" }}>
-        <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#9A9A9A]">Em construção · Em breve</p>
-        <button onClick={onClose} className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] hover:text-[#0A0A0A] transition-colors">Fechar ×</button>
-      </div>
-    );
-  }
+function ProductTile({ product: p }: { product: Product }) {
+  const isPlaceholder = p.url === "#";
   return (
-    <div
+    <a
+      href={p.url}
+      target={isPlaceholder ? undefined : "_blank"}
+      rel={isPlaceholder ? undefined : "noopener noreferrer"}
+      onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
+      className="group relative flex flex-col overflow-hidden transition-all hover:-translate-y-0.5"
       style={{
         backgroundColor: "#0A0A0A",
-        borderTop: "1px solid #1C1C1C",
-        backgroundImage:
-          "linear-gradient(to right,rgba(192,192,192,0.025) 1px,transparent 1px),linear-gradient(to bottom,rgba(192,192,192,0.025) 1px,transparent 1px)",
-        backgroundSize: "56px 56px",
+        border: "1px solid #2E2E2E",
+        borderRadius: 2,
+        opacity: isPlaceholder ? 0.6 : 1,
+        cursor: isPlaceholder ? "default" : "pointer",
       }}
     >
-      <div className="px-8 pt-6 pb-4 flex items-center justify-between">
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
-            {mod.title} · {mod.products.length} produto{mod.products.length > 1 ? "s" : ""}
-          </p>
-        </div>
-        <button onClick={onClose} className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] hover:text-white transition-colors">Fechar ×</button>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] px-6 pb-6" style={{ background: "rgba(255,255,255,0.04)" }}>
-        {mod.products.map((p) => (
-          <a
-            key={p.url}
-            href={p.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col overflow-hidden transition-colors"
-            style={{ backgroundColor: "#111110", border: "1px solid #2E2E2E", borderRadius: 2, margin: 4 }}
+      <span
+        aria-hidden
+        className="opacity-0 group-hover:opacity-100 transition-opacity"
+        style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, backgroundColor: "#9DCA79" }}
+      />
+      <div
+        className="flex items-center justify-center px-4 relative"
+        style={{ backgroundColor: p.logoBg ?? "#1C1C1C", height: 96, borderBottom: "1px solid #2E2E2E" }}
+      >
+        <div className="text-center px-2">
+          <p
+            className="font-display font-extralight leading-tight"
+            style={{ fontSize: p.logoText && p.logoText.length > 16 ? 14 : 18, color: p.logoTextColor ?? "#FFFFFF", letterSpacing: "-0.02em" }}
           >
-            <div
-              className="flex items-center justify-center px-6 relative"
-              style={{ backgroundColor: p.logoBg ?? "#1C1C1C", height: 96, borderBottom: "1px solid #2E2E2E" }}
+            {p.logoText}
+          </p>
+          {p.logoSub && (
+            <p
+              className="font-mono-newe mt-1"
+              style={{ fontSize: 7, letterSpacing: "0.2em", textTransform: "uppercase", color: p.logoTextColor === "#0A0A0A" ? "#6B6B6B" : "rgba(255,255,255,0.4)" }}
             >
-              <span
-                className="opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, backgroundColor: "#9DCA79" }}
-              />
-              <div className="text-center px-2">
-                <p
-                  className="font-display font-extralight leading-tight"
-                  style={{ fontSize: p.logoText && p.logoText.length > 16 ? 13 : 17, color: p.logoTextColor ?? "#FFFFFF", letterSpacing: "-0.02em" }}
-                >
-                  {p.logoText}
-                </p>
-                {p.logoSub && (
-                  <p
-                    className="font-mono-newe mt-1"
-                    style={{
-                      fontSize: 7,
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      color: p.logoTextColor === "#0A0A0A" ? "#6B6B6B" : "rgba(255,255,255,0.35)",
-                    }}
-                  >
-                    {p.logoSub}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="px-5 py-4">
-              <p className="font-body font-light text-[13px]" style={{ color: "#E8E2D9" }}>{p.name}</p>
-              <p className="mt-1 font-mono-newe text-[8px] tracking-[0.22em] uppercase" style={{ color: "#6B6B6B" }}>{p.tagline}</p>
-              <p className="mt-3 font-mono-newe text-[8px] tracking-[0.2em] uppercase transition-colors group-hover:text-white" style={{ color: "#9DCA79" }}>Acessar →</p>
-            </div>
-          </a>
-        ))}
+              {p.logoSub}
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+      <div className="px-5 py-4 flex-1 flex flex-col">
+        <p className="font-body font-light text-[14px]" style={{ color: "#F7F6F4" }}>{p.name}</p>
+        <p className="mt-1 font-mono-newe text-[8px] tracking-[0.22em] uppercase" style={{ color: "#6B6B6B" }}>{p.tagline}</p>
+        <p className="mt-3 font-mono-newe text-[9px] tracking-[0.3em] uppercase transition-colors" style={{ color: "#9DCA79" }}>
+          {isPlaceholder ? "Em breve" : "Acessar →"}
+        </p>
+      </div>
+    </a>
   );
 }
 
 function CompanyCard({ name, type, badge }: { name: string; type: string; badge: string }) {
   return (
-    <div className="p-8 bg-[#FAFAFA] flex flex-col gap-4" style={{ border: "1px solid #D8D8D8", borderRadius: 2 }}>
+    <div className="p-7 md:p-8 flex flex-col gap-4" style={{ backgroundColor: "#111110", border: "1px solid #1C1C1C", borderLeft: "3px solid #9DCA79", borderRadius: 2 }}>
       <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#9A9A9A]">{type}</p>
-          <p className="mt-3 font-display font-light text-[28px] text-[#0A0A0A] leading-tight tracking-[-0.01em]">{name}</p>
+        <div className="min-w-0">
+          <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>{type}</p>
+          <p className="mt-3 font-display font-extralight text-[24px] md:text-[30px] leading-tight tracking-[-0.01em]" style={{ color: "#F7F6F4" }}>{name}</p>
         </div>
-        <span className="font-mono-newe text-[10px] tracking-[0.3em] uppercase px-2.5 py-1 shrink-0" style={{ border: "1px solid #D8D8D8", color: "#6B6B6B", borderRadius: 2 }}>{badge}</span>
+        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-2.5 py-1 shrink-0" style={{ border: "1px solid #2E2E2E", color: "#9DCA79", borderRadius: 2 }}>{badge}</span>
       </div>
     </div>
   );
