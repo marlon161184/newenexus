@@ -135,49 +135,6 @@ function NexusHome() {
 
 /* ---------- subcomponentes ---------- */
 
-function ModuleCard({
-  slug,
-  tag,
-  title,
-  desc,
-  count,
-  shape,
-}: ModuleEntry) {
-  return (
-    <a
-      href={`#${slug}`}
-      aria-label={`Explorar módulo ${title}`}
-      className="group relative bg-[#FAFAFA] p-8 flex flex-col gap-4 transition-colors hover:bg-[#F7F6F4]"
-    >
-      <span
-        aria-hidden
-        className="absolute left-0 bottom-0 h-px w-0 group-hover:w-full transition-all duration-500"
-        style={{ backgroundColor: "#C0C0C0" }}
-      />
-      <div className="text-[#6B6B6B]">
-        <ModuleShape shape={shape} />
-      </div>
-      <p className="font-mono-newe text-[8.5px] tracking-[0.35em] uppercase text-[#9A9A9A]">
-        {tag}
-      </p>
-      <h3 className="font-display font-light text-[22px] text-[#0A0A0A] leading-tight">
-        {title}
-      </h3>
-      <p className="font-body font-extralight text-[13px] text-[#6B6B6B] leading-relaxed">
-        {desc}
-      </p>
-      <div className="mt-2 flex items-center justify-between">
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#9A9A9A]">
-          {count}
-        </span>
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#0A0A0A] transition-transform duration-300 group-hover:translate-x-1">
-          Explorar →
-        </span>
-      </div>
-    </a>
-  );
-}
-
 function StatCard({
   label,
   value,
