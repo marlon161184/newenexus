@@ -107,7 +107,7 @@ function NexusHome() {
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "1rem" }}>
           <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
           <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
-            Módulos · 5 territórios · 9 produtos
+            Módulos · 5 territórios · 10 produtos
           </p>
         </div>
         <h2 className="font-display font-extralight text-[32px] sm:text-[44px] md:text-[56px] mb-10 md:mb-14 leading-[1.05] tracking-[-0.02em]" style={{ color: "#F7F6F4" }}>
@@ -607,6 +607,14 @@ const MODULES: ModuleEntry[] = [
     count: "1 produto",
     shape: "square",
     products: [
+      {
+        name: "Plataforma de Marca",
+        tagline: "Brand Book · Toolkit · Artefatos",
+        url: "https://newebrandingac.lovable.app",
+        logoImg: plataformaMarcaLogo,
+        logoBg: "#0A0A0A",
+        logoTextColor: "#FFFFFF",
+      },
       {
         name: "HUB Hyndra",
         tagline: "Políticas e procedimentos do grupo",
