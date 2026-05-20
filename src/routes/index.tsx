@@ -40,11 +40,11 @@ function NexusHome() {
   const [openModule, setOpenModule] = useState<string | null>(null);
 
   return (
-    <div className="max-w-[1280px]">
+    <div className="w-full">
 
       {/* ── HERO ── */}
       <section
-        className="-mx-0 px-8 md:px-12 pt-14 pb-12"
+        className="-mx-0 px-8 md:px-16 lg:px-24 pt-20 pb-20"
         style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
@@ -52,38 +52,38 @@ function NexusHome() {
           backgroundSize: "56px 56px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1.25rem" }}>
-          <span style={{ display: "block", width: 20, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "1.75rem" }}>
+          <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
             Newe Nexus · Sistema Operacional da Cultura
           </p>
         </div>
 
-        <h1 style={{ marginBottom: "1.5rem", maxWidth: 420 }}>
+        <h1 style={{ marginBottom: "2rem", maxWidth: 640 }}>
           <span className="sr-only">Nexus · Nosso Jeito de Ser</span>
           <NexusLogo variant="negative" size="lg" withDescriptor />
         </h1>
 
         <p
           className="font-body font-light leading-relaxed"
-          style={{ fontSize: 16, color: "#9A9A9A", maxWidth: 480, marginBottom: "2rem" }}
+          style={{ fontSize: 22, color: "#9A9A9A", maxWidth: 720, marginBottom: "2.75rem" }}
         >
           O produto digital que materializa nossa cultura. Cada módulo, produto e ritual — tudo começa aqui.
         </p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: "2.5rem" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: "3.5rem" }}>
           <a
             href="https://newemanifesto.lovable.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-2.5 transition-all hover:bg-[#9DCA79] hover:text-[#0A0A0A]"
+            className="font-mono-newe text-[11px] tracking-[0.3em] uppercase px-7 py-3.5 transition-all hover:bg-[#9DCA79] hover:text-[#0A0A0A]"
             style={{ border: "1px solid #9DCA79", color: "#9DCA79", borderRadius: 2 }}
           >
             Nosso Jeito de Ser ↗
           </a>
           <a
             href="#modulos"
-            className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-2.5 transition-all hover:border-[#C0C0C0] hover:text-white"
+            className="font-mono-newe text-[11px] tracking-[0.3em] uppercase px-7 py-3.5 transition-all hover:border-[#C0C0C0] hover:text-white"
             style={{ border: "1px solid #2E2E2E", color: "#6B6B6B", borderRadius: 2 }}
           >
             Explorar módulos ↓
@@ -94,12 +94,12 @@ function NexusHome() {
           style={{
             height: 1,
             background:
-              "linear-gradient(90deg,#9DCA79 0,#9DCA79 60px,#C0C0C0 60px,#C0C0C0 200px,transparent 200px)",
-            marginBottom: "2.5rem",
+              "linear-gradient(90deg,#9DCA79 0,#9DCA79 80px,#C0C0C0 80px,#C0C0C0 260px,transparent 260px)",
+            marginBottom: "3rem",
           }}
         />
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "2.5rem" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "3.5rem" }}>
           {[
             { v: "5", l: "Módulos" },
             { v: "11", l: "Produtos digitais" },
@@ -107,18 +107,18 @@ function NexusHome() {
             { v: "7", l: "Fases da jornada EE" },
           ].map(({ v, l }) => (
             <div key={l}>
-              <p className="font-display font-extralight" style={{ fontSize: 28, color: "#FFFFFF", lineHeight: 1 }}>{v}</p>
-              <p className="font-mono-newe text-[9px] tracking-[0.25em] uppercase mt-1" style={{ color: "#6B6B6B" }}>{l}</p>
+              <p className="font-display font-extralight" style={{ fontSize: 44, color: "#FFFFFF", lineHeight: 1 }}>{v}</p>
+              <p className="font-mono-newe text-[11px] tracking-[0.25em] uppercase mt-2" style={{ color: "#6B6B6B" }}>{l}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── LINHA DO TEMPO EE ── */}
-      <section className="px-8 md:px-12 pt-12 pb-14 border-b border-[#D8D8D8]">
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "2rem" }}>
-          <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+      <section className="px-8 md:px-16 lg:px-24 pt-16 pb-20 border-b border-[#D8D8D8]">
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2.5rem" }}>
+          <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B]">
             Employee Experience Journey
           </p>
         </div>
@@ -151,11 +151,11 @@ function NexusHome() {
                     borderRadius: 2,
                   }}
                 >
-                  <p className="font-mono-newe text-[8px] tracking-[0.15em] uppercase mb-1.5" style={{ color: "#9DCA79" }}>
+                  <p className="font-mono-newe text-[10px] tracking-[0.15em] uppercase mb-1.5" style={{ color: "#9DCA79" }}>
                     {label}
                   </p>
                   {products.map((p) => (
-                    <p key={p} className="font-body font-light text-[11px]" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>
+                    <p key={p} className="font-body font-light text-[13px]" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>
                       · {p}
                     </p>
                   ))}
@@ -164,8 +164,8 @@ function NexusHome() {
                 <div
                   className="group-hover:scale-[1.8] group-hover:bg-[#9DCA79] group-hover:border-[#9DCA79] transition-all duration-200"
                   style={{
-                    width: 10,
-                    height: 10,
+                    width: 12,
+                    height: 12,
                     borderRadius: "50%",
                     border: "1px solid #C0C0C0",
                     backgroundColor: "#F7F6F4",
@@ -174,8 +174,8 @@ function NexusHome() {
                 />
 
                 <p
-                  className="font-mono-newe text-center group-hover:text-[#9DCA79] transition-colors mt-2"
-                  style={{ fontSize: 8, letterSpacing: "0.06em", textTransform: "uppercase", color: "#9A9A9A", maxWidth: 64, lineHeight: 1.4 }}
+                  className="font-mono-newe text-center group-hover:text-[#9DCA79] transition-colors mt-3"
+                  style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "#9A9A9A", maxWidth: 96, lineHeight: 1.4 }}
                 >
                   {label}
                 </p>
@@ -186,14 +186,14 @@ function NexusHome() {
       </section>
 
       {/* ── MÓDULOS ── */}
-      <section id="modulos" className="px-8 md:px-12 py-12 pb-16">
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "0.75rem" }}>
-          <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+      <section id="modulos" className="px-8 md:px-16 lg:px-24 py-20 pb-24">
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "1rem" }}>
+          <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B]">
             Módulos · Nosso Jeito de Ser em ação
           </p>
         </div>
-        <h2 className="font-display font-light text-[26px] text-[#0A0A0A] mb-8">
+        <h2 className="font-display font-light text-[40px] md:text-[48px] text-[#0A0A0A] mb-12 leading-tight tracking-[-0.02em]">
           Cultura que se materializa em produtos.
         </h2>
 
@@ -235,9 +235,9 @@ function NexusHome() {
       </section>
 
       {/* ── BLOCO CULTURA ── */}
-      <section className="px-8 md:px-12 pb-16">
+      <section className="px-8 md:px-16 lg:px-24 pb-24">
         <div
-          className="p-8 md:p-12"
+          className="p-10 md:p-16"
           style={{
             backgroundColor: "#0A0A0A",
             borderRadius: 2,
@@ -246,20 +246,20 @@ function NexusHome() {
             backgroundSize: "56px 56px",
           }}
         >
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
             A cultura por trás do produto
           </p>
-          <p className="font-display font-extralight italic mt-5" style={{ fontSize: 22, color: "#F7F6F4", lineHeight: 1.5, maxWidth: 580 }}>
+          <p className="font-display font-extralight italic mt-6" style={{ fontSize: 36, color: "#F7F6F4", lineHeight: 1.35, maxWidth: 960, letterSpacing: "-0.01em" }}>
             "A Newe não acredita em fórmulas. Acredita em projeto — com método, estética e responsabilidade."
           </p>
-          <p className="font-body font-light mt-3" style={{ fontSize: 12, color: "#6B6B6B" }}>
+          <p className="font-body font-light mt-4" style={{ fontSize: 14, color: "#6B6B6B" }}>
             Nosso Jeito de Ser · Hyndra Group
           </p>
           <a
             href="https://newemanifesto.lovable.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-2.5 transition-all hover:bg-[#FAFAFA] hover:text-[#0A0A0A]"
+            className="mt-10 inline-flex items-center gap-2 font-mono-newe text-[11px] tracking-[0.3em] uppercase px-7 py-3.5 transition-all hover:bg-[#FAFAFA] hover:text-[#0A0A0A]"
             style={{ border: "1px solid #C0C0C0", color: "#F7F6F4", borderRadius: 2 }}
           >
             Ler o Nosso Jeito de Ser ↗
@@ -268,14 +268,14 @@ function NexusHome() {
       </section>
 
       {/* ── EMPRESAS DO GRUPO ── */}
-      <section className="px-8 md:px-12 pb-20">
-        <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+      <section className="px-8 md:px-16 lg:px-24 pb-24">
+        <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B]">
           Empresas do grupo
         </p>
-        <h2 className="mt-2 mb-8 font-display font-light text-[24px] text-[#0A0A0A]">
+        <h2 className="mt-3 mb-12 font-display font-light text-[40px] md:text-[48px] text-[#0A0A0A] tracking-[-0.02em]">
           O ecossistema Hyndra
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {COMPANIES.map((c) => (
             <CompanyCard key={c.name} {...c} />
           ))}
@@ -288,8 +288,8 @@ function NexusHome() {
 
 function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
   const common = {
-    width: 22,
-    height: 22,
+    width: 28,
+    height: 28,
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
@@ -345,7 +345,7 @@ function ModuleCard({
     <button
       onClick={onClick}
       aria-expanded={isOpen}
-      className="group relative bg-[#FAFAFA] p-8 flex flex-col gap-4 transition-colors hover:bg-[#F7F6F4] w-full text-left"
+      className="group relative bg-[#FAFAFA] p-10 flex flex-col gap-5 transition-colors hover:bg-[#F7F6F4] w-full text-left"
       style={{ borderBottom: isOpen ? "2px solid #9DCA79" : "2px solid transparent" }}
     >
       {isOpen && (
@@ -355,13 +355,13 @@ function ModuleCard({
       <div style={{ color: isOpen ? "#9DCA79" : "#6B6B6B" }}>
         <ModuleShape shape={shape} />
       </div>
-      <p className="font-mono-newe text-[8.5px] tracking-[0.35em] uppercase text-[#9A9A9A]">{tag}</p>
-      <h3 className="font-display font-light text-[22px] text-[#0A0A0A] leading-tight">{title}</h3>
-      <p className="font-body font-extralight text-[13px] text-[#6B6B6B] leading-relaxed">{desc}</p>
-      <div className="mt-2 flex items-center justify-between">
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#9A9A9A]">{count}</span>
+      <p className="font-mono-newe text-[10px] tracking-[0.35em] uppercase text-[#9A9A9A]">{tag}</p>
+      <h3 className="font-display font-light text-[30px] text-[#0A0A0A] leading-tight tracking-[-0.01em]">{title}</h3>
+      <p className="font-body font-extralight text-[16px] text-[#6B6B6B] leading-relaxed">{desc}</p>
+      <div className="mt-3 flex items-center justify-between">
+        <span className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#9A9A9A]">{count}</span>
         <span
-          className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#0A0A0A] transition-transform duration-300"
+          className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A] transition-transform duration-300"
           style={{ transform: isOpen ? "rotate(90deg)" : "none" }}
         >
           →
@@ -455,13 +455,13 @@ function ProductPanel({ module: mod, onClose }: { module: ModuleEntry; onClose: 
 
 function CompanyCard({ name, type, badge }: { name: string; type: string; badge: string }) {
   return (
-    <div className="p-6 bg-[#FAFAFA] flex flex-col gap-4" style={{ border: "1px solid #D8D8D8", borderRadius: 2 }}>
+    <div className="p-8 bg-[#FAFAFA] flex flex-col gap-4" style={{ border: "1px solid #D8D8D8", borderRadius: 2 }}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A]">{type}</p>
-          <p className="mt-2 font-display font-light text-[20px] text-[#0A0A0A] leading-tight">{name}</p>
+          <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#9A9A9A]">{type}</p>
+          <p className="mt-3 font-display font-light text-[28px] text-[#0A0A0A] leading-tight tracking-[-0.01em]">{name}</p>
         </div>
-        <span className="font-mono-newe text-[8px] tracking-[0.3em] uppercase px-2 py-1 shrink-0" style={{ border: "1px solid #D8D8D8", color: "#6B6B6B", borderRadius: 2 }}>{badge}</span>
+        <span className="font-mono-newe text-[10px] tracking-[0.3em] uppercase px-2.5 py-1 shrink-0" style={{ border: "1px solid #D8D8D8", color: "#6B6B6B", borderRadius: 2 }}>{badge}</span>
       </div>
     </div>
   );
