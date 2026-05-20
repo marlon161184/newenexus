@@ -115,10 +115,10 @@ function NexusHome() {
       </section>
 
       {/* ── LINHA DO TEMPO EE ── */}
-      <section className="px-8 md:px-12 pt-12 pb-14 border-b border-[#D8D8D8]">
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "2rem" }}>
-          <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+      <section className="px-8 md:px-16 lg:px-24 pt-16 pb-20 border-b border-[#D8D8D8]">
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2.5rem" }}>
+          <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B]">
             Employee Experience Journey
           </p>
         </div>
@@ -151,11 +151,11 @@ function NexusHome() {
                     borderRadius: 2,
                   }}
                 >
-                  <p className="font-mono-newe text-[8px] tracking-[0.15em] uppercase mb-1.5" style={{ color: "#9DCA79" }}>
+                  <p className="font-mono-newe text-[10px] tracking-[0.15em] uppercase mb-1.5" style={{ color: "#9DCA79" }}>
                     {label}
                   </p>
                   {products.map((p) => (
-                    <p key={p} className="font-body font-light text-[11px]" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>
+                    <p key={p} className="font-body font-light text-[13px]" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>
                       · {p}
                     </p>
                   ))}
@@ -164,8 +164,8 @@ function NexusHome() {
                 <div
                   className="group-hover:scale-[1.8] group-hover:bg-[#9DCA79] group-hover:border-[#9DCA79] transition-all duration-200"
                   style={{
-                    width: 10,
-                    height: 10,
+                    width: 12,
+                    height: 12,
                     borderRadius: "50%",
                     border: "1px solid #C0C0C0",
                     backgroundColor: "#F7F6F4",
@@ -174,8 +174,8 @@ function NexusHome() {
                 />
 
                 <p
-                  className="font-mono-newe text-center group-hover:text-[#9DCA79] transition-colors mt-2"
-                  style={{ fontSize: 8, letterSpacing: "0.06em", textTransform: "uppercase", color: "#9A9A9A", maxWidth: 64, lineHeight: 1.4 }}
+                  className="font-mono-newe text-center group-hover:text-[#9DCA79] transition-colors mt-3"
+                  style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "#9A9A9A", maxWidth: 96, lineHeight: 1.4 }}
                 >
                   {label}
                 </p>
@@ -186,14 +186,14 @@ function NexusHome() {
       </section>
 
       {/* ── MÓDULOS ── */}
-      <section id="modulos" className="px-8 md:px-12 py-12 pb-16">
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "0.75rem" }}>
-          <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+      <section id="modulos" className="px-8 md:px-16 lg:px-24 py-20 pb-24">
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "1rem" }}>
+          <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[11px] tracking-[0.3em] uppercase text-[#6B6B6B]">
             Módulos · Nosso Jeito de Ser em ação
           </p>
         </div>
-        <h2 className="font-display font-light text-[26px] text-[#0A0A0A] mb-8">
+        <h2 className="font-display font-light text-[40px] md:text-[48px] text-[#0A0A0A] mb-12 leading-tight tracking-[-0.02em]">
           Cultura que se materializa em produtos.
         </h2>
 
