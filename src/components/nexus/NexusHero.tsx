@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "@tanstack/react-router";
 import { NexusLogo } from "@/components/nexus/NexusLogo";
 import {
   Flame,
@@ -7,13 +6,7 @@ import {
   GraduationCap,
   Network,
   ShieldCheck,
-  ArrowLeft,
-  Compass,
-  Heart,
-  Target,
-  BookOpen,
   Briefcase,
-  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -57,69 +50,165 @@ const PHASES: Phase[] = [
 
 const PING_DELAYS = ["0s", "0.5s", "1s", "1.5s", "2s", "2.5s", "3s"];
 
-type ModuleProduct = {
+type Product = {
   name: string;
-  phase: string;
-  icon: LucideIcon;
+  tagline: string;
+  url: string;
+  logoType: "text" | "image";
+  logoText?: string;
+  logoSub?: string;
+  logoBg?: string;
+  logoTextColor?: string;
 };
 
 type ModuleEntry = {
-  key: string;
-  name: string;
+  slug: string;
+  tag: string;
+  title: string;
+  desc: string;
+  count: string;
   icon: LucideIcon;
-  route: string;
-  products: ModuleProduct[];
+  products: Product[];
 };
 
 const MODULES: ModuleEntry[] = [
   {
-    key: "cultura",
-    name: "Cultura",
+    slug: "cultura",
+    tag: "Módulo · 01",
+    title: "Cultura",
+    desc: "Valores, rituais e a história que nos une como grupo.",
+    count: "1 produto",
     icon: Flame,
-    route: "/cultura",
     products: [
-      { name: "Nosso Jeito de Ser", phase: "Integração", icon: Heart },
-      { name: "Plataforma de Marca", phase: "Integração", icon: Sparkles },
+      {
+        name: "Nosso Jeito de Ser",
+        tagline: "Plataforma de Marca",
+        url: "https://newebrandingac.lovable.app",
+        logoType: "text",
+        logoText: "Nosso Jeito de Ser",
+        logoSub: "Plataforma de Marca · Newe",
+        logoBg: "#0A0A0A",
+        logoTextColor: "#FFFFFF",
+      },
     ],
   },
   {
-    key: "pessoas",
-    name: "Pessoas",
+    slug: "pessoas",
+    tag: "Módulo · 02",
+    title: "Pessoas",
+    desc: "Desenvolvimento, remuneração e sua jornada no grupo.",
+    count: "3 produtos",
     icon: Users,
-    route: "/pessoas",
     products: [
-      { name: "All Aboard", phase: "Integração", icon: Compass },
-      { name: "PAR", phase: "Performance", icon: Target },
-      { name: "Benefícios", phase: "Integração", icon: Heart },
+      {
+        name: "All Aboard",
+        tagline: "Plataforma de Embarque",
+        url: "https://newe-welcome-journey.lovable.app",
+        logoType: "text",
+        logoText: "all aboard",
+        logoSub: "PLATAFORMA DE EMBARQUE",
+        logoBg: "#1C1C1C",
+        logoTextColor: "#FFFFFF",
+      },
+      {
+        name: "PAR 2026",
+        tagline: "Programa de Participação Anual nos Resultados",
+        url: "https://par-nexus.lovable.app",
+        logoType: "text",
+        logoText: "PAR 2026",
+        logoSub: "Participação Anual nos Resultados",
+        logoBg: "#1A1A1A",
+        logoTextColor: "#FFFFFF",
+      },
+      {
+        name: "Decidir com Intenção",
+        tagline: "Ferramenta de decisão estratégica",
+        url: "https://choice-compass-suite.lovable.app",
+        logoType: "text",
+        logoText: "Decidir com intenção.",
+        logoBg: "#0A0A0A",
+        logoTextColor: "#FFFFFF",
+      },
     ],
   },
   {
-    key: "conhecimento",
-    name: "Conhecimento",
+    slug: "conhecimento",
+    tag: "Módulo · 03",
+    title: "Conhecimento",
+    desc: "Base de conhecimento, documentos e aprendizados.",
+    count: "2 produtos",
     icon: GraduationCap,
-    route: "/conhecimento",
     products: [
-      { name: "Academia Newe by Hyndra", phase: "Desenvolvimento", icon: BookOpen },
-      { name: "Academia de Vendas", phase: "Desenvolvimento", icon: BookOpen },
-      { name: "Jornada da Máquina de Vendas", phase: "Integração", icon: Briefcase },
+      {
+        name: "Academia de Líderes Newe",
+        tagline: "Formação em quem constrói o urbanismo · by Hyndra",
+        url: "https://kindred-prompter.lovable.app",
+        logoType: "text",
+        logoText: "academia de líderes",
+        logoSub: "newe · by hyndra",
+        logoBg: "#FFFFFF",
+        logoTextColor: "#0A0A0A",
+      },
+      {
+        name: "Academia de Vendas Newe",
+        tagline: "Formação em venda consultiva · by Hyndra",
+        url: "https://elevate-newe-forge.lovable.app",
+        logoType: "text",
+        logoText: "academia de vendas",
+        logoSub: "newe · by hyndra",
+        logoBg: "#FFFFFF",
+        logoTextColor: "#0A0A0A",
+      },
     ],
   },
   {
-    key: "comunidade",
-    name: "Comunidade",
+    slug: "comunidade",
+    tag: "Módulo · 04",
+    title: "Comunidade",
+    desc: "Pessoas, reconhecimento e o que acontece no grupo.",
+    count: "1 produto",
     icon: Network,
-    route: "/pessoas",
     products: [
-      { name: "HYNstaNewe", phase: "Engajamento", icon: Network },
-      { name: "Org & Design", phase: "Engajamento", icon: Briefcase },
+      {
+        name: "Habitar a Estrutura",
+        tagline: "Quem somos, em camadas",
+        url: "https://hyndra-animated-core.lovable.app",
+        logoType: "text",
+        logoText: "Habitar a estrutura",
+        logoSub: "— quem somos, em camadas",
+        logoBg: "#111111",
+        logoTextColor: "#FFFFFF",
+      },
     ],
   },
   {
-    key: "governanca",
-    name: "Governança",
+    slug: "governanca",
+    tag: "Módulo · 05",
+    title: "Governança",
+    desc: "Políticas, compliance e como as coisas funcionam.",
+    count: "1 produto",
     icon: ShieldCheck,
-    route: "/conhecimento",
-    products: [{ name: "Hub Hyndra", phase: "Engajamento", icon: ShieldCheck }],
+    products: [
+      {
+        name: "HUB Hyndra",
+        tagline: "Políticas e procedimentos do grupo",
+        url: "https://hyndra-hub-core.lovable.app",
+        logoType: "text",
+        logoText: "HUB",
+        logoSub: "Hyndra",
+        logoBg: "#F7F6F4",
+        logoTextColor: "#0A0A0A",
+      },
+    ],
+  },
+  {
+    slug: "workspace",
+    tag: "Módulo · 06",
+    title: "Workspace",
+    desc: "Ferramentas, processos e fluxos do dia a dia.",
+    count: "0 produtos",
+    icon: Briefcase,
+    products: [],
   },
 ];
 
