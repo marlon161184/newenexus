@@ -36,25 +36,6 @@ function NexusHome() {
         </div>
       </section>
 
-      {/* GRID DE MÓDULOS */}
-      <section className="pb-16">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
-              Ecossistema
-            </p>
-            <h2 className="mt-2 font-display font-light text-[28px] text-[#0A0A0A]">
-              Explore os módulos do Nexus
-            </h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
-          {MODULES.map((m) => (
-            <ModuleCard key={m.slug} {...m} />
-          ))}
-        </div>
-      </section>
-
       {/* RECENTES + DESTAQUE CULTURA */}
       <section className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 pb-16">
         <div style={{ border: "1px solid #D8D8D8", borderRadius: 2, backgroundColor: "#FAFAFA" }}>
