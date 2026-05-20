@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { NexusLogo } from "@/components/nexus/NexusLogo";
+import nossoJeitoLogo from "@/assets/products/nosso-jeito.jpg";
+import academiaLideresLogo from "@/assets/products/academia-lideres.jpg";
+import academiaVendasLogo from "@/assets/products/academia-vendas.jpg";
+import par2026Logo from "@/assets/products/par-2026.jpg";
+import hubHyndraLogo from "@/assets/products/hub-hyndra.jpg";
+import habitarEstruturaLogo from "@/assets/products/habitar-estrutura.jpg";
+import decidirIntencaoLogo from "@/assets/products/decidir-intencao.jpg";
+import allAboardLogo from "@/assets/products/all-aboard.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,6 +28,7 @@ type Product = {
   name: string;
   tagline: string;
   url: string;
+  logoImg?: string;
   logoText?: string;
   logoSub?: string;
   logoBg?: string;
@@ -116,57 +125,6 @@ function NexusHome() {
         </div>
       </section>
 
-      {/* ── LINHA DO TEMPO EE ── */}
-      <section
-        className="px-5 sm:px-8 md:px-16 lg:px-24 pt-16 pb-20"
-        style={{ backgroundColor: "#0A0A0A", borderTop: "1px solid #1C1C1C" }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2.5rem" }}>
-          <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
-          <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
-            Employee Experience Journey
-          </p>
-        </div>
-
-        {/* desktop timeline */}
-        <div className="hidden md:block" style={{ position: "relative" }}>
-          <div style={{ position: "absolute", top: 5, left: 0, right: 0, height: 1, backgroundColor: "#2E2E2E" }}>
-            <div style={{ width: 60, height: 1, backgroundColor: "#9DCA79" }} />
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {EE_PHASES.map(({ label, products }) => (
-              <div key={label} className="group" style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1, position: "relative" }}>
-                <div className="opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200"
-                  style={{ position: "absolute", bottom: "calc(100% + 12px)", left: "50%", transform: "translateX(-50%)", backgroundColor: "#111110", border: "1px solid rgba(157,202,121,0.3)", borderTop: "2px solid #9DCA79", padding: "0.6rem 0.85rem", minWidth: 140, zIndex: 50, borderRadius: 2 }}>
-                  <p className="font-mono-newe text-[10px] tracking-[0.15em] uppercase mb-1.5" style={{ color: "#9DCA79" }}>{label}</p>
-                  {products.map((p) => (
-                    <p key={p} className="font-body font-light text-[12px]" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>· {p}</p>
-                  ))}
-                </div>
-                <div className="group-hover:scale-[1.8] group-hover:bg-[#9DCA79] group-hover:border-[#9DCA79] transition-all duration-200"
-                  style={{ width: 12, height: 12, borderRadius: "50%", border: "1px solid #6B6B6B", backgroundColor: "#0A0A0A", zIndex: 2 }} />
-                <p className="font-mono-newe text-center group-hover:text-[#9DCA79] transition-colors mt-3"
-                  style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B6B6B", maxWidth: 96, lineHeight: 1.4 }}>
-                  {label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* mobile vertical timeline */}
-        <div className="md:hidden flex flex-col gap-4">
-          {EE_PHASES.map(({ label, products }) => (
-            <div key={label} className="flex gap-3" style={{ borderLeft: "1px solid #2E2E2E", paddingLeft: 14, paddingBottom: 8 }}>
-              <div className="flex-1">
-                <p className="font-mono-newe text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: "#9DCA79" }}>{label}</p>
-                <p className="font-body font-light text-[12px]" style={{ color: "#9A9A9A" }}>{products.join(" · ")}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── BLOCO CULTURA ── */}
       <section className="px-5 sm:px-8 md:px-16 lg:px-24 pb-20 md:pb-24" style={{ backgroundColor: "#0A0A0A" }}>
         <div
@@ -196,21 +154,8 @@ function NexusHome() {
         </div>
       </section>
 
-      {/* ── EMPRESAS DO GRUPO ── */}
-      <section className="px-5 sm:px-8 md:px-16 lg:px-24 pb-20 md:pb-24" style={{ backgroundColor: "#0A0A0A" }}>
-        <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
-          Empresas do grupo
-        </p>
-        <h2 className="mt-3 mb-10 md:mb-12 font-display font-extralight text-[28px] sm:text-[36px] md:text-[44px] tracking-[-0.02em]" style={{ color: "#F7F6F4" }}>
-          O ecossistema Hyndra
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          {COMPANIES.map((c) => (
-            <CompanyCard key={c.name} {...c} />
-          ))}
-        </div>
-      </section>
-
+      {/* ── FOOTER ── */}
+      <ProductsFooter />
     </div>
   );
 }
@@ -417,8 +362,17 @@ function ProductTile({ product: p }: { product: Product }) {
       />
       <div
         className="flex items-center justify-center px-4 relative"
-        style={{ backgroundColor: p.logoBg ?? "#1C1C1C", height: 96, borderBottom: "1px solid #2E2E2E" }}
+        style={{ backgroundColor: p.logoBg ?? "#1C1C1C", height: 140, borderBottom: "1px solid #2E2E2E", overflow: "hidden" }}
       >
+        {p.logoImg ? (
+          <img
+            src={p.logoImg}
+            alt={p.name}
+            className="w-full h-full object-contain"
+            style={{ padding: 12 }}
+            loading="lazy"
+          />
+        ) : (
         <div className="text-center px-2">
           <p
             className="font-display font-extralight leading-tight"
@@ -435,6 +389,7 @@ function ProductTile({ product: p }: { product: Product }) {
             </p>
           )}
         </div>
+        )}
       </div>
       <div className="px-5 py-4 flex-1 flex flex-col">
         <p className="font-body font-light text-[14px]" style={{ color: "#F7F6F4" }}>{p.name}</p>
@@ -447,29 +402,82 @@ function ProductTile({ product: p }: { product: Product }) {
   );
 }
 
-function CompanyCard({ name, type, badge }: { name: string; type: string; badge: string }) {
+function ProductsFooter() {
+  const all = MODULES.flatMap((m) => m.products);
   return (
-    <div className="p-7 md:p-8 flex flex-col gap-4" style={{ backgroundColor: "#111110", border: "1px solid #1C1C1C", borderLeft: "3px solid #9DCA79", borderRadius: 2 }}>
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>{type}</p>
-          <p className="mt-3 font-display font-extralight text-[24px] md:text-[30px] leading-tight tracking-[-0.01em]" style={{ color: "#F7F6F4" }}>{name}</p>
-        </div>
-        <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-2.5 py-1 shrink-0" style={{ border: "1px solid #2E2E2E", color: "#9DCA79", borderRadius: 2 }}>{badge}</span>
+    <footer
+      className="px-5 sm:px-8 md:px-16 lg:px-24 pt-12 pb-10"
+      style={{ backgroundColor: "#0A0A0A", borderTop: "1px solid #1C1C1C" }}
+    >
+      <div className="flex items-center gap-3 mb-6">
+        <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
+        <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+          Produtos · ecossistema Nexus
+        </p>
       </div>
-    </div>
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3">
+        {all.map((p) => {
+          const isPlaceholder = p.url === "#";
+          return (
+            <a
+              key={p.name}
+              href={p.url}
+              target={isPlaceholder ? undefined : "_blank"}
+              rel={isPlaceholder ? undefined : "noopener noreferrer"}
+              onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
+              title={p.name}
+              className="group relative flex items-center justify-center transition-all hover:-translate-y-0.5"
+              style={{
+                backgroundColor: p.logoBg ?? "#111110",
+                border: "1px solid #2E2E2E",
+                borderRadius: 2,
+                height: 64,
+                opacity: isPlaceholder ? 0.45 : 0.85,
+                cursor: isPlaceholder ? "default" : "pointer",
+              }}
+            >
+              <span
+                aria-hidden
+                className="opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, backgroundColor: "#9DCA79" }}
+              />
+              {p.logoImg ? (
+                <img
+                  src={p.logoImg}
+                  alt={p.name}
+                  className="w-full h-full object-contain"
+                  style={{ padding: 6 }}
+                  loading="lazy"
+                />
+              ) : (
+                <span
+                  className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-center px-1"
+                  style={{ color: p.logoTextColor ?? "#F7F6F4" }}
+                >
+                  {p.logoText}
+                </span>
+              )}
+            </a>
+          );
+        })}
+      </div>
+      <div className="mt-10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ borderTop: "1px solid #1C1C1C" }}>
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#6B6B6B" }}>
+          Nexus · Sistema Operacional da Cultura · Hyndra Group
+        </p>
+        <a
+          href="https://newemanifesto.lovable.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono-newe text-[9px] tracking-[0.3em] uppercase hover:opacity-80"
+          style={{ color: "#9DCA79" }}
+        >
+          Nosso Jeito de Ser ↗
+        </a>
+      </div>
+    </footer>
   );
 }
-
-const EE_PHASES = [
-  { label: "Atração", products: ["Employer Brand", "Vitrine Cultural"] },
-  { label: "Seleção", products: ["Assessment Cultural", "Painel de Talentos"] },
-  { label: "Integração", products: ["All Aboard", "Nosso Jeito de Ser", "Benefícios"] },
-  { label: "Desenvolvimento", products: ["Academia de Líderes", "Academia de Vendas"] },
-  { label: "Engajamento", products: ["HYNstaNewe", "Hub Hyndra"] },
-  { label: "Performance", products: ["PAR 2026"] },
-  { label: "Transição", products: ["Offboarding", "Alumni Newe"] },
-];
 
 const MODULES: ModuleEntry[] = [
   {
@@ -484,6 +492,7 @@ const MODULES: ModuleEntry[] = [
         name: "Nosso Jeito de Ser",
         tagline: "Manifesto · Hyndra Group",
         url: "https://newemanifesto.lovable.app",
+        logoImg: nossoJeitoLogo,
         logoText: "Nosso Jeito de Ser",
         logoSub: "MANIFESTO · HYNDRA GROUP",
         logoBg: "#0A0A0A",
@@ -503,6 +512,7 @@ const MODULES: ModuleEntry[] = [
         name: "All Aboard",
         tagline: "Plataforma de Embarque",
         url: "https://newe-welcome-journey.lovable.app",
+        logoImg: allAboardLogo,
         logoText: "all aboard",
         logoSub: "PLATAFORMA DE EMBARQUE",
         logoBg: "#1C1C1C",
@@ -512,6 +522,7 @@ const MODULES: ModuleEntry[] = [
         name: "PAR 2026",
         tagline: "Participação Anual nos Resultados",
         url: "https://par-nexus.lovable.app",
+        logoImg: par2026Logo,
         logoText: "PAR 2026",
         logoSub: "Programa de Participação Anual",
         logoBg: "#111111",
@@ -521,6 +532,7 @@ const MODULES: ModuleEntry[] = [
         name: "Decidir com Intenção",
         tagline: "Ferramenta de decisão estratégica",
         url: "https://choice-compass-suite.lovable.app",
+        logoImg: decidirIntencaoLogo,
         logoText: "Decidir com intenção.",
         logoBg: "#0A0A0A",
         logoTextColor: "#FFFFFF",
@@ -539,6 +551,7 @@ const MODULES: ModuleEntry[] = [
         name: "Academia de Líderes Newe",
         tagline: "Formação em liderança · by Hyndra",
         url: "https://kindred-prompter.lovable.app",
+        logoImg: academiaLideresLogo,
         logoText: "academia de líderes",
         logoSub: "NEWE · BY HYNDRA",
         logoBg: "#FAFAFA",
@@ -548,6 +561,7 @@ const MODULES: ModuleEntry[] = [
         name: "Academia de Vendas Newe",
         tagline: "Formação em venda consultiva · by Hyndra",
         url: "https://elevate-newe-forge.lovable.app",
+        logoImg: academiaVendasLogo,
         logoText: "academia de vendas",
         logoSub: "NEWE · BY HYNDRA",
         logoBg: "#FAFAFA",
@@ -576,6 +590,7 @@ const MODULES: ModuleEntry[] = [
         name: "Habitar a Estrutura",
         tagline: "Quem somos, em camadas",
         url: "https://hyndra-animated-core.lovable.app",
+        logoImg: habitarEstruturaLogo,
         logoText: "Habitar a estrutura",
         logoSub: "— quem somos, em camadas.",
         logoBg: "#111111",
@@ -595,6 +610,7 @@ const MODULES: ModuleEntry[] = [
         name: "HUB Hyndra",
         tagline: "Políticas e procedimentos do grupo",
         url: "https://hyndra-hub-core.lovable.app",
+        logoImg: hubHyndraLogo,
         logoText: "HUB Hyndra",
         logoSub: "POLÍTICAS & PROCEDIMENTOS",
         logoBg: "#F7F6F4",
@@ -602,9 +618,4 @@ const MODULES: ModuleEntry[] = [
       },
     ],
   },
-];
-
-const COMPANIES = [
-  { name: "Hyndra Participações", type: "Holding · Corporativo", badge: "Ativo" },
-  { name: "Newe Urbanismo Integrativo", type: "Real estate · Mercado", badge: "Sua empresa" },
 ];
