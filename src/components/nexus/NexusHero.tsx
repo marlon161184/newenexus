@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from "react";
-import { NexusLogo } from "@/components/nexus/NexusLogo";
+import { useState } from "react";
 import {
   Flame,
   Users,
@@ -9,46 +8,6 @@ import {
   Briefcase,
   type LucideIcon,
 } from "lucide-react";
-
-type Phase = {
-  key: string;
-  label: string;
-  products: string[];
-};
-
-const PHASES: Phase[] = [
-  { key: "atracao", label: "Atração", products: ["Employer Brand Newe", "Vitrine Cultural"] },
-  { key: "selecao", label: "Seleção", products: ["Assessment Cultural", "Painel de Talentos"] },
-  {
-    key: "integracao",
-    label: "Integração",
-    products: [
-      "All Aboard",
-      "Nosso Jeito de Ser",
-      "Plataforma de Marca",
-      "Jornada da Máquina de Vendas",
-      "Benefícios",
-    ],
-  },
-  {
-    key: "desenvolvimento",
-    label: "Desenvolvimento",
-    products: ["Academia Newe by Hyndra", "Academia de Vendas"],
-  },
-  {
-    key: "engajamento",
-    label: "Engajamento",
-    products: ["HYNstaNewe", "Hub Hyndra", "Org & Design"],
-  },
-  { key: "performance", label: "Performance", products: ["PAR"] },
-  {
-    key: "transicao",
-    label: "Transição",
-    products: ["Offboarding Humanizado", "Alumni Newe"],
-  },
-];
-
-const PING_DELAYS = ["0s", "0.5s", "1s", "1.5s", "2s", "2.5s", "3s"];
 
 type Product = {
   name: string;
@@ -223,41 +182,18 @@ const MODULES: ModuleEntry[] = [
   },
 ];
 
-type Star = { left: string; top: string; size: number; opacity: number; duration: string };
+const EE_PHASES: { label: string; products: string[] }[] = [
+  { label: "Atração", products: ["Employer Brand", "Vitrine Cultural"] },
+  { label: "Seleção", products: ["Assessment Cultural", "Painel de Talentos"] },
+  { label: "Integração", products: ["All Aboard", "Nosso Jeito de Ser", "Benefícios"] },
+  { label: "Desenvolvimento", products: ["Academia de Líderes", "Academia de Vendas"] },
+  { label: "Engajamento", products: ["HYNstaNewe", "Hub Hyndra", "Org & Design"] },
+  { label: "Performance", products: ["PAR 2026"] },
+  { label: "Transição", products: ["Offboarding", "Alumni Newe"] },
+];
 
 export function NexusHero() {
   const [openModule, setOpenModule] = useState<string | null>(null);
-  const [stars, setStars] = useState<Star[]>([]);
-  const [hoveredPhase, setHoveredPhase] = useState<string | null>(null);
-  const cursorRef = useRef<HTMLDivElement | null>(null);
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const arr: Star[] = Array.from({ length: 70 }).map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      size: 0.3 + Math.random() * 1.5,
-      opacity: 0.2 + Math.random() * 0.8,
-      duration: `${2 + Math.random() * 4}s`,
-    }));
-    setStars(arr);
-  }, []);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (!cursorRef.current || !wrapperRef.current) return;
-      const rect = wrapperRef.current.getBoundingClientRect();
-      const inside =
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom;
-      cursorRef.current.style.opacity = inside ? "1" : "0";
-      cursorRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
 
   const handleModuleClick = (slug: string) =>
     setOpenModule(openModule === slug ? null : slug);
@@ -267,190 +203,214 @@ export function NexusHero() {
   const openInRow2 = row2.find((m) => m.slug === openModule);
 
   return (
-    <section
-      ref={wrapperRef}
-      className="relative overflow-hidden"
-      style={{
-        backgroundColor: "#0A0A0A",
-        borderRadius: 2,
-        backgroundImage:
-          "linear-gradient(rgba(192,192,192,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.03) 1px, transparent 1px)",
-        backgroundSize: "56px 56px",
-      }}
-    >
-      {/* Stars */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars.map((s, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              left: s.left,
-              top: s.top,
-              width: s.size,
-              height: s.size,
-              backgroundColor: "rgba(192,192,192,0.5)",
-              opacity: s.opacity,
-              animation: `newe-pulse ${s.duration} ease-in-out infinite`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Custom cursor */}
-      <div
-        ref={cursorRef}
-        className="fixed top-0 left-0 pointer-events-none opacity-0 transition-opacity duration-150"
-        style={{ zIndex: 9999, transform: "translate(-100px,-100px)" }}
+    <>
+      {/* HERO ESCURA — full bleed */}
+      <section
+        className="-mx-6 md:-mx-12 px-8 md:px-14 py-14 mb-16"
+        style={{
+          backgroundColor: "#0A0A0A",
+          backgroundImage:
+            "linear-gradient(to right, rgba(192,192,192,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(192,192,192,0.025) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
       >
-        <svg
-          width="34"
-          height="44"
-          viewBox="0 0 34 44"
-          fill="none"
-          style={{
-            transform: "translate(-6px, -4px) rotate(-22deg)",
-            filter: "drop-shadow(0 0 10px rgba(157,202,121,0.55))",
-          }}
-        >
-          {/* leaf body */}
-          <path
-            d="M17 2 C7 6 2 14 2 24 C2 33 9 40 17 40 C25 40 32 33 32 24 C32 14 27 6 17 2 Z"
-            fill="#9DCA79"
-          />
-          {/* leaf tip curl */}
-          <path
-            d="M17 2 C19 6 21 10 22 14"
-            stroke="#0A0A0A"
-            strokeOpacity="0.25"
-            strokeWidth="0.8"
-            strokeLinecap="round"
-            fill="none"
-          />
-          {/* main vein */}
-          <path
-            d="M17 3 L17 40"
-            stroke="#0A0A0A"
-            strokeOpacity="0.35"
-            strokeWidth="0.9"
-            strokeLinecap="round"
-          />
-          {/* side veins */}
-          <path d="M17 12 L9 16" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
-          <path d="M17 12 L25 16" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
-          <path d="M17 20 L7 24" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
-          <path d="M17 20 L27 24" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
-          <path d="M17 28 L9 32" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
-          <path d="M17 28 L25 32" stroke="#0A0A0A" strokeOpacity="0.22" strokeWidth="0.7" strokeLinecap="round" />
-          {/* stem */}
-          <path d="M17 40 L17 44" stroke="#5C7A47" strokeWidth="1.4" strokeLinecap="round" />
-        </svg>
-      </div>
-
-      {/* HEADER */}
-      <div
-        className="relative flex flex-col items-center text-center"
-        style={{ padding: "5rem 2.5rem 2rem" }}
-      >
-        <div className="flex items-center gap-3">
-          <span style={{ width: 36, height: 1, backgroundColor: "#9DCA79" }} />
-          <p
-            className="font-mono-newe uppercase"
-            style={{ fontSize: 11, letterSpacing: "0.45em", color: "#9DCA79" }}
-          >
-            Ecossistema de Cultura · Hyndra Group
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1.25rem" }}>
+          <span style={{ display: "block", width: 20, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+            Newe Nexus · Sistema Operacional da Cultura
           </p>
-          <span style={{ width: 36, height: 1, backgroundColor: "#9DCA79" }} />
         </div>
-        <h1 className="sr-only">Nexus · Nosso Jeito de Ser</h1>
-        <div
-          aria-hidden
-          style={{
-            marginTop: "1.5rem",
-            width: "min(960px, 88vw)",
-            filter: "drop-shadow(0 0 60px rgba(157,202,121,0.18))",
-          }}
-        >
-          <NexusLogo variant="negative" size="lg" withDescriptor={false} markOnly />
-        </div>
-        <p
-          className="font-display"
-          style={{
-            fontStyle: "italic",
-            fontWeight: 200,
-            fontSize: "clamp(20px, 2.4vw, 30px)",
-            color: "#C0C0C0",
-            marginTop: "0.75rem",
-            letterSpacing: "-0.01em",
-          }}
-        >
-          Nosso Jeito de Ser
-        </p>
-        <p
-          className="font-body"
-          style={{
-            fontWeight: 300,
-            fontSize: 15,
-            color: "#9A9A9A",
-            maxWidth: 560,
-            marginTop: "1.5rem",
-            lineHeight: 1.55,
-          }}
-        >
-          O sistema operacional cultural do grupo. Cultura, conhecimento e pessoas
-          conectados em uma única jornada.
-        </p>
-      </div>
 
-      {/* TIMELINE */}
-      <div className="relative" style={{ padding: "3rem 4rem 0" }}>
-        <p
-          className="font-mono-newe uppercase mb-10 text-center"
-          style={{ fontSize: 11, letterSpacing: "0.35em", color: "#6B6B6B" }}
+        <h1
+          className="font-display font-extralight leading-[1.0] tracking-[-0.03em]"
+          style={{ fontSize: "clamp(40px, 7vw, 72px)", color: "#FFFFFF", marginBottom: "1.5rem" }}
         >
-          Employee Experience Journey
+          Nosso Jeito
+          <br />
+          <span style={{ color: "#C0C0C0" }}>de Ser.</span>
+        </h1>
+
+        <p
+          className="font-body font-light leading-relaxed"
+          style={{ fontSize: 17, color: "#9A9A9A", maxWidth: 520, marginBottom: "2.5rem" }}
+        >
+          O Nexus é o produto digital que materializa nossa cultura.
+          Cada módulo, cada produto, cada ritual — tudo começa aqui.
         </p>
-        <div className="relative" style={{ height: 1, backgroundColor: "#2E2E2E" }}>
-          <span
-            className="absolute"
-            style={{
-              left: 0,
-              top: 0,
-              width: 60,
-              height: 1,
-              backgroundColor: "#9DCA79",
-              boxShadow: "0 0 8px rgba(157,202,121,0.35)",
-            }}
-          />
-          <div
-            className="absolute left-0 right-0 flex justify-between"
-            style={{ top: "-5px" }}
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: "3rem" }}>
+          <a
+            href="/cultura"
+            className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-3 transition-colors hover:bg-[#9DCA79] hover:text-[#0A0A0A]"
+            style={{ border: "1px solid #9DCA79", color: "#9DCA79", borderRadius: 2 }}
           >
-            {PHASES.map((phase, i) => (
-              <PhaseNode
-                key={phase.key}
-                phase={phase}
-                delay={PING_DELAYS[i]}
-                hovered={hoveredPhase === phase.key}
-                onHover={(v) => setHoveredPhase(v ? phase.key : null)}
-              />
+            Nosso Jeito de Ser →
+          </a>
+          <a
+            href="#modulos"
+            className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-5 py-3 transition-colors hover:border-[#C0C0C0] hover:text-white"
+            style={{ border: "1px solid #2E2E2E", color: "#6B6B6B", borderRadius: 2 }}
+          >
+            Explorar módulos ↓
+          </a>
+        </div>
+
+        <div
+          style={{
+            height: 1,
+            background:
+              "linear-gradient(90deg, #9DCA79 0px, #9DCA79 60px, #C0C0C0 60px, #C0C0C0 200px, transparent 200px)",
+            marginBottom: "2.5rem",
+          }}
+        />
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "2.5rem" }}>
+          {[
+            { value: "5", label: "Módulos" },
+            { value: "11", label: "Produtos digitais" },
+            { value: "6", label: "Valores fundadores" },
+            { value: "7", label: "Fases da jornada" },
+          ].map(({ value, label }) => (
+            <div key={label}>
+              <p className="font-display font-extralight" style={{ fontSize: 28, color: "#FFFFFF", lineHeight: 1 }}>
+                {value}
+              </p>
+              <p className="font-mono-newe text-[9px] tracking-[0.25em] uppercase mt-1" style={{ color: "#6B6B6B" }}>
+                {label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* EE JOURNEY — fundo claro */}
+      <section className="pb-14 mb-16 border-b border-[#D8D8D8]" id="jornada">
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1.5rem" }}>
+          <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+            Employee Experience Journey
+          </p>
+        </div>
+
+        <div style={{ position: "relative", paddingTop: "2.5rem" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: "2.5rem",
+              left: 0,
+              right: 0,
+              height: 1,
+              backgroundColor: "#D8D8D8",
+            }}
+          >
+            <div style={{ width: 60, height: 1, backgroundColor: "#9DCA79" }} />
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "space-between", position: "relative" }}>
+            {EE_PHASES.map(({ label, products }) => (
+              <div
+                key={label}
+                className="group"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  flex: 1,
+                  position: "relative",
+                  cursor: "default",
+                }}
+              >
+                <div
+                  className="group-hover:opacity-100"
+                  style={{
+                    position: "absolute",
+                    bottom: "calc(100% + 1rem)",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    backgroundColor: "#1C1C1C",
+                    border: "1px solid rgba(157,202,121,0.3)",
+                    borderTop: "2px solid #9DCA79",
+                    padding: "0.6rem 0.9rem",
+                    minWidth: 140,
+                    opacity: 0,
+                    transition: "opacity 0.2s",
+                    zIndex: 50,
+                    pointerEvents: "none",
+                    borderRadius: 2,
+                  }}
+                >
+                  <p className="font-mono-newe text-[8px] tracking-[0.15em] uppercase mb-2" style={{ color: "#9DCA79" }}>
+                    {label}
+                  </p>
+                  {products.map((p) => (
+                    <p
+                      key={p}
+                      className="font-body font-light text-[11px]"
+                      style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}
+                    >
+                      · {p}
+                    </p>
+                  ))}
+                </div>
+
+                <div
+                  className="group-hover:scale-150 group-hover:bg-[#9DCA79] group-hover:border-[#9DCA79]"
+                  style={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: "50%",
+                    border: "1px solid #C0C0C0",
+                    backgroundColor: "#FAFAFA",
+                    transition: "all 0.2s",
+                    zIndex: 2,
+                    marginTop: -4,
+                  }}
+                />
+
+                <p
+                  className="font-mono-newe text-center group-hover:text-[#9DCA79] transition-colors"
+                  style={{
+                    fontSize: 8,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "#9A9A9A",
+                    maxWidth: 62,
+                    marginTop: 8,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {label}
+                </p>
+              </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* DIVIDER */}
-      <div
+      {/* MÓDULOS — fundo escuro */}
+      <section
+        id="modulos"
+        className="-mx-6 md:-mx-12 px-8 md:px-14 py-14 mb-16"
         style={{
-          margin: "3.5rem 2.5rem 0",
-          height: 1,
-          background:
-            "linear-gradient(90deg, transparent, #2E2E2E 20%, #2E2E2E 80%, transparent)",
+          backgroundColor: "#0A0A0A",
+          backgroundImage:
+            "linear-gradient(rgba(192,192,192,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.03) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
         }}
-      />
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1rem" }}>
+          <span style={{ display: "block", width: 20, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
+            Módulos do Nexus · Nosso Jeito de Ser em ação
+          </p>
+        </div>
+        <h2
+          className="font-display font-extralight leading-[1.05] tracking-[-0.02em]"
+          style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#FFFFFF", marginBottom: "2.5rem" }}
+        >
+          Cultura que se materializa em produtos.
+        </h2>
 
-      {/* MODULE GRID */}
-      <div style={{ padding: "2.5rem 4rem 4rem" }}>
         <div
           style={{
             display: "grid",
@@ -479,7 +439,6 @@ export function NexusHero() {
             gap: 0,
             border: "1px solid rgba(192,192,192,0.12)",
             borderTop: "none",
-            marginTop: openInRow1 ? 0 : 0,
           }}
         >
           {row2.map((m) => (
@@ -494,95 +453,8 @@ export function NexusHero() {
         {openInRow2 && (
           <ProductPanel module={openInRow2} onClose={() => setOpenModule(null)} />
         )}
-      </div>
-    </section>
-  );
-}
-
-function PhaseNode({
-  phase,
-  delay,
-  hovered,
-  onHover,
-}: {
-  phase: Phase;
-  delay: string;
-  hovered: boolean;
-  onHover: (v: boolean) => void;
-}) {
-  return (
-    <div
-      className="relative flex flex-col items-center"
-      style={{ width: 62 }}
-      onMouseEnter={() => onHover(true)}
-      onMouseLeave={() => onHover(false)}
-    >
-      <div className="relative" style={{ width: 10, height: 10 }}>
-        <span
-          className="absolute inset-0 rounded-full transition-all duration-200"
-          style={{
-            border: hovered ? "1px solid #9DCA79" : "1px solid #6B6B6B",
-            backgroundColor: hovered ? "#9DCA79" : "#0A0A0A",
-            transform: hovered ? "scale(1.8)" : "scale(1)",
-            boxShadow: hovered ? "0 0 10px rgba(157,202,121,0.45)" : "none",
-          }}
-        />
-        <span
-          className="absolute inset-0 rounded-full newe-ping"
-          style={{
-            border: "1px solid #9DCA79",
-            opacity: 0,
-            animationDelay: delay,
-          }}
-        />
-      </div>
-      <span
-        className="font-mono-newe uppercase mt-3 text-center transition-colors"
-        style={{
-          fontSize: 8,
-          letterSpacing: "0.06em",
-          color: hovered ? "#9DCA79" : "#6B6B6B",
-          maxWidth: 62,
-        }}
-      >
-        {phase.label}
-      </span>
-      {hovered && (
-        <div
-          className="absolute"
-          style={{
-            bottom: "calc(100% + 2rem)",
-            left: "50%",
-            transform: "translateX(-50%)",
-            backgroundColor: "#1C1C1C",
-            border: "1px solid rgba(157,202,121,0.3)",
-            borderTop: "2px solid #9DCA79",
-            padding: "0.85rem 1rem",
-            minWidth: 180,
-            zIndex: 20,
-          }}
-        >
-          <p
-            className="font-mono-newe uppercase mb-2"
-            style={{ fontSize: 8, letterSpacing: "0.18em", color: "#9DCA79" }}
-          >
-            {phase.label}
-          </p>
-          <ul className="space-y-1">
-            {phase.products.map((p) => (
-              <li
-                key={p}
-                className="font-body whitespace-nowrap"
-                style={{ fontSize: 11, fontWeight: 300, color: "rgba(255,255,255,0.65)" }}
-              >
-                <span style={{ color: "#9DCA79", marginRight: 6 }}>·</span>
-                {p}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+      </section>
+    </>
   );
 }
 
@@ -631,21 +503,13 @@ function ModuleButton({
       <Icon size={44} color={active ? "#9DCA79" : "#C0C0C0"} strokeWidth={1.2} />
       <span
         className="font-mono-newe uppercase"
-        style={{
-          fontSize: 9,
-          letterSpacing: "0.35em",
-          color: "#9A9A9A",
-        }}
+        style={{ fontSize: 9, letterSpacing: "0.35em", color: "#9A9A9A" }}
       >
         {mod.tag}
       </span>
       <span
         className="font-mono-newe uppercase"
-        style={{
-          fontSize: 12,
-          letterSpacing: "0.2em",
-          color: active ? "#FFFFFF" : "#C0C0C0",
-        }}
+        style={{ fontSize: 12, letterSpacing: "0.2em", color: active ? "#FFFFFF" : "#C0C0C0" }}
       >
         {mod.title}
       </span>
@@ -844,12 +708,7 @@ function ProductExternalCard({ product }: { product: Product }) {
         </p>
         <p
           className="font-mono-newe uppercase"
-          style={{
-            marginTop: 6,
-            fontSize: 8.5,
-            letterSpacing: "0.25em",
-            color: "#6B6B6B",
-          }}
+          style={{ marginTop: 6, fontSize: 8.5, letterSpacing: "0.25em", color: "#6B6B6B" }}
         >
           {product.tagline}
         </p>

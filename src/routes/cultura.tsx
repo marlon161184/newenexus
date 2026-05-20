@@ -40,37 +40,76 @@ function CulturaPage() {
 function Hero() {
   return (
     <header className="pb-12 border-b border-[#D8D8D8]">
-      <div className="flex items-start gap-6">
-        <div className="text-[#6B6B6B] shrink-0">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="1">
-            <circle cx="36" cy="36" r="30" />
-            <circle cx="36" cy="36" r="20" />
-            <circle cx="36" cy="36" r="10" />
-          </svg>
-        </div>
-        <div className="min-w-0">
-          <p className="font-mono-newe text-[10px] tracking-[0.35em] uppercase text-[#6B6B6B]">
-            Módulo · Nosso Jeito de Ser
-          </p>
-          <h1 className="mt-3 font-display font-light text-[40px] text-[#0A0A0A] leading-[1.05]">
-            Cultura
-          </h1>
-          <p className="mt-3 font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#9A9A9A]">
-            Círculo · Irradiação · Pertencimento
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="mt-10 pl-6 max-w-2xl"
-        style={{ borderLeft: "2px solid #C0C0C0" }}
-      >
-        <p className="font-display font-light italic text-[20px] text-[#1C1C1C] leading-snug">
-          Aqui você entende quem somos — e por que você faz parte disso.
+      {/* Eyebrow */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1.25rem" }}>
+        <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase" style={{ color: "#6B6B6B" }}>
+          Módulo · Cultura
         </p>
       </div>
 
-      <dl className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
+      {/* Headline */}
+      <h1
+        className="font-display font-extralight leading-[1.0] tracking-[-0.025em]"
+        style={{ fontSize: "clamp(36px, 6vw, 56px)", color: "#0A0A0A", marginBottom: "1rem" }}
+      >
+        Nosso Jeito
+        <br />
+        <span style={{ color: "#6B6B6B" }}>de Ser.</span>
+      </h1>
+
+      {/* Subtítulo editorial */}
+      <div className="mt-6 pl-6 max-w-2xl" style={{ borderLeft: "2px solid #9DCA79" }}>
+        <p className="font-display font-light italic" style={{ fontSize: 19, color: "#1C1C1C", lineHeight: 1.55 }}>
+          Não é um regulamento. É a destilação de quem somos — como pensamos, como decidimos, como construímos, como nos relacionamos.
+        </p>
+      </div>
+
+      {/* Bloco NEXUS */}
+      <div
+        className="mt-10 p-6 md:p-8"
+        style={{
+          backgroundColor: "#0A0A0A",
+          borderRadius: 2,
+          backgroundImage:
+            "linear-gradient(to right, rgba(192,192,192,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(192,192,192,0.025) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+            <span style={{ display: "block", width: 2, height: 40, backgroundColor: "#9DCA79" }} />
+            <div>
+              <p className="font-display font-extralight" style={{ fontSize: 22, color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1 }}>
+                NEXUS
+              </p>
+              <p className="font-mono-newe" style={{ fontSize: 7, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9DCA79", marginTop: 3 }}>
+                Nosso Jeito de Ser
+              </p>
+              <div style={{ height: 1, marginTop: 6, background: "linear-gradient(90deg, #9DCA79 0px, #9DCA79 20px, #C0C0C0 20px, #C0C0C0 60px, transparent 60px)" }} />
+            </div>
+          </div>
+
+          <div style={{ flex: 1, minWidth: 200 }}>
+            <p className="font-mono-newe text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: "#9DCA79" }}>
+              O produto digital desta cultura
+            </p>
+            <p className="font-body font-light" style={{ fontSize: 13, color: "#9A9A9A", lineHeight: 1.7, maxWidth: 420 }}>
+              O Nexus é o sistema operacional que dá forma ao Nosso Jeito de Ser. Cada módulo, produto e ritual desta cultura vive aqui — acessível, navegável, vivo.
+            </p>
+          </div>
+
+          <a
+            href="/"
+            className="font-mono-newe text-[9px] tracking-[0.3em] uppercase px-4 py-2.5 self-center transition-colors hover:bg-[#9DCA79] hover:text-[#0A0A0A]"
+            style={{ border: "1px solid #9DCA79", color: "#9DCA79", borderRadius: 2, whiteSpace: "nowrap", flexShrink: 0 }}
+          >
+            Acessar o Nexus →
+          </a>
+        </div>
+      </div>
+
+      <dl className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
         {[
           ["Artigos", "12"],
           ["Valores", "06"],
@@ -133,7 +172,7 @@ function Tabs() {
 
 function Manifesto() {
   return (
-    <section id="manifesto" className="mt-16 bg-[#FAFAFA] p-8 md:p-12" style={{ borderLeft: "2px solid #C0C0C0", borderRadius: 2 }}>
+    <section id="manifesto" className="mt-16 bg-[#FAFAFA] p-8 md:p-12" style={{ borderLeft: "2px solid #9DCA79", borderRadius: 2 }}>
       <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">
         Manifesto · Hyndra Group
       </p>
@@ -209,14 +248,15 @@ function Values() {
         {VALUES.map((v) => (
           <article
             key={v.n}
-            className="group relative bg-[#FAFAFA] p-8 transition-colors hover:bg-[#F7F6F4]"
+            className="group relative bg-[#FAFAFA] p-8 transition-all hover:bg-[#F7F6F4] hover:border-t-[#9DCA79]"
+            style={{ borderTop: "2px solid transparent" }}
           >
             <span
               aria-hidden
               className="absolute left-0 bottom-0 h-px w-0 group-hover:w-full transition-all duration-500"
-              style={{ backgroundColor: "#C0C0C0" }}
+              style={{ backgroundColor: "#9DCA79" }}
             />
-            <p className="font-display font-extralight text-[32px] text-[#D8D8D8] leading-none">
+            <p className="font-display font-extralight text-[32px] text-[#D8D8D8] leading-none group-hover:text-[#9DCA79] transition-colors">
               {v.n}
             </p>
             <h3 className="mt-4 font-display font-light text-[20px] text-[#0A0A0A]">
@@ -334,7 +374,7 @@ const TIMELINE = [
   {
     year: "2025",
     title: "O Nexus entra em operação",
-    desc: "A cultura ganha um produto digital. O sistema operacional cultural do grupo.",
+    desc: "A cultura ganha um produto digital — o Nexus. O sistema operacional cultural do grupo, onde Nosso Jeito de Ser vive e se atualiza.",
     state: "current" as const,
   },
   {
@@ -367,17 +407,17 @@ function History() {
               className="absolute -left-[26px] top-1 w-3.5 h-3.5 rounded-full"
               style={{
                 backgroundColor:
-                  t.state === "future" ? "transparent" : t.state === "current" ? "#0A0A0A" : "#C0C0C0",
+                  t.state === "future" ? "transparent" : t.state === "current" ? "#9DCA79" : "#C0C0C0",
                 border:
                   t.state === "future"
                     ? "1px solid #D8D8D8"
                     : t.state === "current"
-                    ? "2px solid #0A0A0A"
+                    ? "2px solid #9DCA79"
                     : "1px solid #C0C0C0",
               }}
             >
               {t.state === "current" && (
-                <span className="block w-full h-full rounded-full newe-pulse" style={{ backgroundColor: "#0A0A0A" }} />
+                <span className="block w-full h-full rounded-full newe-pulse" style={{ backgroundColor: "#9DCA79" }} />
               )}
             </span>
             <p className="font-display font-extralight text-[28px] text-[#0A0A0A] leading-none">
@@ -532,6 +572,23 @@ function Aside() {
             </div>
           ))}
         </dl>
+      </div>
+
+      <div className="pt-6 border-t border-[#D8D8D8]">
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B] mb-3">
+          Produto digital
+        </p>
+        <a href="/" className="flex items-center gap-2 group">
+          <span style={{ display: "block", width: 2, height: 24, backgroundColor: "#9DCA79", flexShrink: 0 }} />
+          <div>
+            <p className="font-display font-extralight text-[14px] text-[#0A0A0A] group-hover:underline decoration-[#C0C0C0] underline-offset-4">
+              NEXUS
+            </p>
+            <p className="font-mono-newe text-[8px] tracking-[0.25em] uppercase text-[#9A9A9A]">
+              Sistema operacional da cultura
+            </p>
+          </div>
+        </a>
       </div>
     </aside>
   );
