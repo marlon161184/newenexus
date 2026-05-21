@@ -33,7 +33,7 @@ export function Topbar() {
       }}
     >
       <Link to="/" aria-label="Nexus · Início" className="shrink-0">
-        <NexusLogo variant="negative" size="sm" withDescriptor />
+        <NexusLogo variant="negative" size="sm" withDescriptor={false} />
       </Link>
       <span aria-hidden className="h-7 w-px shrink-0" style={{ backgroundColor: "#2E2E2E" }} />
       <nav aria-label="Breadcrumb" className="min-w-0 flex-1">

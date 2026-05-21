@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { NexusLogo } from "@/components/nexus/NexusLogo";
 import nossoJeitoLogo from "@/assets/products/nosso-jeito.jpg";
@@ -55,7 +55,7 @@ function NexusHome() {
 
       {/* ── HERO ── */}
       <section
-        className="px-5 sm:px-8 md:px-16 lg:px-24 pt-12 sm:pt-16 md:pt-20 pb-12 md:pb-16"
+        className="relative overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 pt-16 sm:pt-24 md:pt-32 pb-20 md:pb-28"
         style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
@@ -63,7 +63,9 @@ function NexusHome() {
           backgroundSize: "auto, 56px 56px, 56px 56px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2rem" }}>
+        <Starfield />
+
+        <div className="relative z-10" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2rem" }}>
           <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
           <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
             Sistema Operacional da Cultura
@@ -71,32 +73,19 @@ function NexusHome() {
         </div>
 
         {/* NEXUS gigante */}
-        <h1 className="mb-3" style={{ maxWidth: "100%" }}>
+        <h1 className="relative z-10 mb-6" style={{ maxWidth: "100%" }}>
           <span className="sr-only">Nexus</span>
-          <div className="w-full max-w-[260px] sm:max-w-[420px] md:max-w-[600px] lg:max-w-[760px]">
+          <div className="w-full max-w-[420px] sm:max-w-[640px] md:max-w-[900px] lg:max-w-[1200px]">
             <NexusLogo variant="negative" size="lg" withDescriptor={false} />
           </div>
         </h1>
 
-        {/* Descritor pequeno */}
         <p
-          className="font-mono-newe text-[9px] sm:text-[10px] tracking-[0.4em] uppercase mb-8 sm:mb-10"
-          style={{ color: "#9DCA79" }}
-        >
-          Nosso Jeito de Ser
-        </p>
-
-        <p
-          className="font-body font-extralight leading-relaxed text-[18px] sm:text-[22px] md:text-[26px]"
-          style={{ color: "#9A9A9A", maxWidth: 760, marginBottom: "2.5rem" }}
+          className="relative z-10 font-body font-extralight leading-relaxed text-[18px] sm:text-[22px] md:text-[26px]"
+          style={{ color: "#9A9A9A", maxWidth: 760 }}
         >
           O produto digital que materializa nossa cultura. Cada módulo, produto e ritual — tudo começa aqui.
         </p>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-          <GreenSideButton href="#modulos" label="Explorar módulos" />
-          <GreenOutlineButton href="https://newemanifesto.lovable.app" label="Nosso Jeito de Ser ↗" external />
-        </div>
       </section>
 
       {/* ── MÓDULOS — accordion vertical ── */}
@@ -165,6 +154,80 @@ function NexusHome() {
 }
 
 /* ── Botões verdes com barra lateral ── */
+function Starfield() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Generate stable star layers once
+  const layers = useRef(
+    [
+      { count: 80, size: 1, opacity: 0.6, speed: 0.15 },
+      { count: 50, size: 1.5, opacity: 0.8, speed: 0.3 },
+      { count: 25, size: 2.2, opacity: 1, speed: 0.5 },
+    ].map((l) => {
+      const shadows = Array.from({ length: l.count }, () => {
+        const x = Math.random() * 100;
+        const y = Math.random() * 200;
+        return `${x}vw ${y}vh 0 rgba(255,255,255,${l.opacity * (0.4 + Math.random() * 0.6)})`;
+      }).join(",");
+      return { ...l, shadows };
+    }),
+  ).current;
+
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const el = ref.current;
+        if (el) {
+          const children = el.children;
+          for (let i = 0; i < children.length; i++) {
+            const child = children[i] as HTMLDivElement;
+            const speed = layers[i].speed;
+            child.style.transform = `translate3d(0, ${-y * speed}px, 0)`;
+          }
+        }
+        raf = 0;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [layers]);
+
+  return (
+    <div
+      ref={ref}
+      aria-hidden
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      style={{ zIndex: 0 }}
+    >
+      {layers.map((l, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: 1,
+            height: 1,
+            borderRadius: "50%",
+            backgroundColor: "transparent",
+            boxShadow: l.shadows,
+            willChange: "transform",
+            animation: `nexusTwinkle${i} ${4 + i}s ease-in-out infinite alternate`,
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes nexusTwinkle0 { from { opacity: 0.5 } to { opacity: 1 } }
+        @keyframes nexusTwinkle1 { from { opacity: 0.7 } to { opacity: 1 } }
+        @keyframes nexusTwinkle2 { from { opacity: 0.6 } to { opacity: 1 } }
+      `}</style>
+    </div>
+  );
+}
+
 function GreenSideButton({ href, label, external = false }: { href: string; label: string; external?: boolean }) {
   return (
     <a
