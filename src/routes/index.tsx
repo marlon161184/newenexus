@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { NexusLogo } from "@/components/nexus/NexusLogo";
 import nossoJeitoLogo from "@/assets/products/nosso-jeito.jpg";
@@ -55,7 +55,7 @@ function NexusHome() {
 
       {/* ── HERO ── */}
       <section
-        className="px-5 sm:px-8 md:px-16 lg:px-24 pt-12 sm:pt-16 md:pt-20 pb-12 md:pb-16"
+        className="relative overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 pt-16 sm:pt-24 md:pt-32 pb-20 md:pb-28"
         style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
@@ -63,7 +63,9 @@ function NexusHome() {
           backgroundSize: "auto, 56px 56px, 56px 56px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2rem" }}>
+        <Starfield />
+
+        <div className="relative z-10" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2rem" }}>
           <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
           <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
             Sistema Operacional da Cultura
@@ -71,32 +73,19 @@ function NexusHome() {
         </div>
 
         {/* NEXUS gigante */}
-        <h1 className="mb-3" style={{ maxWidth: "100%" }}>
+        <h1 className="relative z-10 mb-6" style={{ maxWidth: "100%" }}>
           <span className="sr-only">Nexus</span>
-          <div className="w-full max-w-[260px] sm:max-w-[420px] md:max-w-[600px] lg:max-w-[760px]">
+          <div className="w-full max-w-[420px] sm:max-w-[640px] md:max-w-[900px] lg:max-w-[1200px]">
             <NexusLogo variant="negative" size="lg" withDescriptor={false} />
           </div>
         </h1>
 
-        {/* Descritor pequeno */}
         <p
-          className="font-mono-newe text-[9px] sm:text-[10px] tracking-[0.4em] uppercase mb-8 sm:mb-10"
-          style={{ color: "#9DCA79" }}
-        >
-          Nosso Jeito de Ser
-        </p>
-
-        <p
-          className="font-body font-extralight leading-relaxed text-[18px] sm:text-[22px] md:text-[26px]"
-          style={{ color: "#9A9A9A", maxWidth: 760, marginBottom: "2.5rem" }}
+          className="relative z-10 font-body font-extralight leading-relaxed text-[18px] sm:text-[22px] md:text-[26px]"
+          style={{ color: "#9A9A9A", maxWidth: 760 }}
         >
           O produto digital que materializa nossa cultura. Cada módulo, produto e ritual — tudo começa aqui.
         </p>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-          <GreenSideButton href="#modulos" label="Explorar módulos" />
-          <GreenOutlineButton href="https://newemanifesto.lovable.app" label="Nosso Jeito de Ser ↗" external />
-        </div>
       </section>
 
       {/* ── MÓDULOS — accordion vertical ── */}
