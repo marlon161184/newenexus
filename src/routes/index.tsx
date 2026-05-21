@@ -156,6 +156,8 @@ function NexusHome() {
         </div>
       </section>
 
+      <BrandSection />
+
       {/* ── FOOTER ── */}
       <ProductsFooter />
     </div>
