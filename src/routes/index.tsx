@@ -156,6 +156,8 @@ function NexusHome() {
         </div>
       </section>
 
+      <BrandSection />
+
       {/* ── FOOTER ── */}
       <ProductsFooter />
     </div>
@@ -630,3 +632,138 @@ const MODULES: ModuleEntry[] = [
     ],
   },
 ];
+
+function BrandSection() {
+  return (
+    <section className="px-5 sm:px-8 md:px-16 lg:px-24 pb-20 border-t border-[#D8D8D8] pt-16" style={{ backgroundColor: "#F7F6F4" }}>
+      {/* Eyebrow */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "0.75rem" }}>
+        <span style={{ display: "block", width: 16, height: 1, backgroundColor: "#9DCA79" }} />
+        <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase text-[#6B6B6B]">
+          Sistema de marca · Nexus
+        </p>
+      </div>
+      <h2 className="font-display font-light text-[26px] text-[#0A0A0A] mb-10">
+        Gramática visual.
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D8D8D8]" style={{ border: "1px solid #D8D8D8" }}>
+        {/* BLOCO 1 — Logo versões */}
+        <div className="bg-[#FAFAFA] p-8 flex flex-col gap-6">
+          <p className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A]">
+            Logotipo · Versões
+          </p>
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-center py-8 px-6" style={{ backgroundColor: "#0A0A0A", borderRadius: 2 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ display: "block", width: 2, height: 40, backgroundColor: "#9DCA79", flexShrink: 0 }} />
+                <div>
+                  <p className="font-display font-extralight" style={{ fontSize: 22, color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1 }}>NEXUS</p>
+                  <p className="font-mono-newe" style={{ fontSize: 7, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9DCA79", marginTop: 3 }}>Nosso Jeito de Ser</p>
+                  <div style={{ height: 1, marginTop: 5, background: "linear-gradient(90deg,#9DCA79 0,#9DCA79 20px,#C0C0C0 20px,#C0C0C0 60px,transparent 60px)" }} />
+                </div>
+              </div>
+            </div>
+            <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#9A9A9A]">Negativo · Fundo escuro</p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-center py-8 px-6" style={{ backgroundColor: "#F7F6F4", border: "1px solid #EBEBEB", borderRadius: 2 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ display: "block", width: 2, height: 40, backgroundColor: "#9DCA79", flexShrink: 0 }} />
+                <div>
+                  <p className="font-display font-extralight" style={{ fontSize: 22, color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1 }}>NEXUS</p>
+                  <p className="font-mono-newe" style={{ fontSize: 7, letterSpacing: "0.25em", textTransform: "uppercase", color: "#3B6D11", marginTop: 3 }}>Nosso Jeito de Ser</p>
+                  <div style={{ height: 1, marginTop: 5, background: "linear-gradient(90deg,#9DCA79 0,#9DCA79 20px,#D8D8D8 20px,#D8D8D8 60px,transparent 60px)" }} />
+                </div>
+              </div>
+            </div>
+            <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#9A9A9A]">Positivo · Fundo claro</p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-4 py-6 px-6" style={{ backgroundColor: "#0A0A0A", borderRadius: 2 }}>
+              <div className="flex items-center justify-center" style={{ width: 36, height: 36, backgroundColor: "#1C1C1C", borderRadius: 2, position: "relative", flexShrink: 0 }}>
+                <span style={{ position: "absolute", left: 3, top: 3, bottom: 3, width: 2, backgroundColor: "#9DCA79", borderRadius: 1 }} />
+                <p className="font-display font-extralight" style={{ fontSize: 13, color: "#FFFFFF", letterSpacing: "-0.03em", paddingLeft: 6 }}>NX</p>
+              </div>
+              <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#6B6B6B]">Favicon · App icon</p>
+            </div>
+            <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#9A9A9A]">Ícone reduzido · 32×32px</p>
+          </div>
+        </div>
+
+        {/* BLOCO 2 — Paleta */}
+        <div className="bg-[#FAFAFA] p-8 flex flex-col gap-8">
+          <div>
+            <p className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A] mb-5">Paleta · Tokens</p>
+            <div className="flex flex-col gap-px">
+              {[
+                { hex: "#0A0A0A", name: "Preto", role: "Fundo principal" },
+                { hex: "#1C1C1C", name: "Grafite profundo", role: "Superfícies" },
+                { hex: "#2E2E2E", name: "Grafite", role: "Bordas" },
+                { hex: "#6B6B6B", name: "Prata escura", role: "Textos secundários" },
+                { hex: "#C0C0C0", name: "Prata clássica", role: "Detalhes" },
+                { hex: "#D8D8D8", name: "Prata clara", role: "Bordas claras" },
+                { hex: "#F7F6F4", name: "Branco quente", role: "Fundo da página" },
+                { hex: "#9DCA79", name: "Verde Newe", role: "Acento único" },
+              ].map(({ hex, name, role }) => (
+                <div key={hex} className="flex items-center gap-3 py-2 border-b border-[#EBEBEB] last:border-0">
+                  <span style={{ display: "block", width: 20, height: 20, backgroundColor: hex, borderRadius: 2, flexShrink: 0, border: hex === "#F7F6F4" ? "1px solid #D8D8D8" : "none" }} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p className="font-body font-light text-[12px] text-[#0A0A0A] truncate">{name}</p>
+                    <p className="font-mono-newe text-[8px] tracking-[0.1em] uppercase text-[#9A9A9A]">{role}</p>
+                  </div>
+                  <p className="font-mono-newe text-[8px] text-[#6B6B6B] shrink-0">{hex}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ borderLeft: "2px solid #9DCA79", paddingLeft: "1rem" }}>
+            <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#9DCA79] mb-1">Regra do verde</p>
+            <p className="font-body font-light text-[12px] text-[#6B6B6B] leading-relaxed">
+              Verde Newe aparece apenas em barras verticais de chegada, réguas horizontais e labels de destaque. Nunca como fundo de área ou preenchimento.
+            </p>
+          </div>
+        </div>
+
+        {/* BLOCO 3 — Tipografia e anatomia */}
+        <div className="bg-[#FAFAFA] p-8 flex flex-col gap-8">
+          <div>
+            <p className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A] mb-5">Tipografia · Sistema</p>
+            <div className="flex flex-col gap-6">
+              <div style={{ borderTop: "2px solid #9DCA79", paddingTop: "1rem" }}>
+                <p className="font-display font-extralight text-[28px] text-[#0A0A0A] leading-tight">Display</p>
+                <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#6B6B6B] mt-1">Plus Jakarta Sans · 200 · Títulos</p>
+              </div>
+              <div style={{ borderTop: "1px solid #EBEBEB", paddingTop: "1rem" }}>
+                <p className="font-body font-light text-[15px] text-[#2E2E2E] leading-relaxed">
+                  Corpo e descrições em Outfit. Peso 300 para texto corrido, 400 para ênfase.
+                </p>
+                <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#6B6B6B] mt-1">Outfit · 300–400 · Corpo</p>
+              </div>
+              <div style={{ borderTop: "1px solid #EBEBEB", paddingTop: "1rem" }}>
+                <p className="font-mono-newe text-[10px] tracking-[0.3em] uppercase text-[#6B6B6B]">LABELS E EYEBROWS</p>
+                <p className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-[#6B6B6B] mt-1">Space Mono · 400 · Labels</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="font-mono-newe text-[8.5px] tracking-[0.3em] uppercase text-[#9A9A9A] mb-5">Anatomia do símbolo</p>
+            <div className="flex flex-col gap-3 text-[11px] font-body font-light text-[#6B6B6B] leading-relaxed">
+              {([
+                ["Barra verde", "Gesto de chegada. 2–3px, Verde Newe. Sempre à esquerda."],
+                ["Wordmark", "NEXUS em Plus Jakarta Sans 200. Letter-spacing –0.02em."],
+                ["Descritor", "Nosso Jeito de Ser em Space Mono 7px. Verde Newe."],
+                ["Régua", "Verde 20px → Prata → Transparente. Sinal de encerramento."],
+              ] as const).map(([term, desc]) => (
+                <div key={term} style={{ borderBottom: "1px solid #EBEBEB", paddingBottom: "0.6rem" }}>
+                  <p className="font-mono-newe text-[8px] tracking-[0.15em] uppercase text-[#0A0A0A] mb-1">{term}</p>
+                  <p>{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
