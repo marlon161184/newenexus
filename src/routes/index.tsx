@@ -154,6 +154,80 @@ function NexusHome() {
 }
 
 /* ── Botões verdes com barra lateral ── */
+function Starfield() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Generate stable star layers once
+  const layers = useRef(
+    [
+      { count: 80, size: 1, opacity: 0.6, speed: 0.15 },
+      { count: 50, size: 1.5, opacity: 0.8, speed: 0.3 },
+      { count: 25, size: 2.2, opacity: 1, speed: 0.5 },
+    ].map((l) => {
+      const shadows = Array.from({ length: l.count }, () => {
+        const x = Math.random() * 100;
+        const y = Math.random() * 200;
+        return `${x}vw ${y}vh 0 rgba(255,255,255,${l.opacity * (0.4 + Math.random() * 0.6)})`;
+      }).join(",");
+      return { ...l, shadows };
+    }),
+  ).current;
+
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const el = ref.current;
+        if (el) {
+          const children = el.children;
+          for (let i = 0; i < children.length; i++) {
+            const child = children[i] as HTMLDivElement;
+            const speed = layers[i].speed;
+            child.style.transform = `translate3d(0, ${-y * speed}px, 0)`;
+          }
+        }
+        raf = 0;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [layers]);
+
+  return (
+    <div
+      ref={ref}
+      aria-hidden
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      style={{ zIndex: 0 }}
+    >
+      {layers.map((l, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: 1,
+            height: 1,
+            borderRadius: "50%",
+            backgroundColor: "transparent",
+            boxShadow: l.shadows,
+            willChange: "transform",
+            animation: `nexusTwinkle${i} ${4 + i}s ease-in-out infinite alternate`,
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes nexusTwinkle0 { from { opacity: 0.5 } to { opacity: 1 } }
+        @keyframes nexusTwinkle1 { from { opacity: 0.7 } to { opacity: 1 } }
+        @keyframes nexusTwinkle2 { from { opacity: 0.6 } to { opacity: 1 } }
+      `}</style>
+    </div>
+  );
+}
+
 function GreenSideButton({ href, label, external = false }: { href: string; label: string; external?: boolean }) {
   return (
     <a
