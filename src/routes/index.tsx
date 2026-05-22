@@ -78,16 +78,34 @@ function NexusHome() {
             <span className="sr-only">Nexus</span>
             <span
               aria-hidden
-              className="font-display block leading-[0.85]"
+              className="font-display inline-flex items-stretch leading-[0.85]"
               style={{
                 fontWeight: 200,
                 fontSize: "clamp(96px, 22vw, 360px)",
                 letterSpacing: "-0.04em",
                 color: "#F7F6F4",
                 textShadow: "0 0 80px rgba(157,202,121,0.15)",
+                position: "relative",
+                paddingLeft: "0.18em",
               }}
             >
-              NEXUS
+              <span
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: "0.04em",
+                  bottom: "0.16em",
+                  width: "0.06em",
+                  backgroundColor: "#9DCA79",
+                  boxShadow: "0 0 24px rgba(157,202,121,0.35)",
+                }}
+              />
+              <span>N</span>
+              <span>E</span>
+              <span style={{ color: "#9DCA79" }}>X</span>
+              <span>U</span>
+              <span>S</span>
             </span>
           </h1>
 
