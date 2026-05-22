@@ -1,132 +1,149 @@
 /**
- * NexusLogo — Sistema de logo do Newe Nexus
+ * NexusLogo — Logo definitivo do Nexus.
+ * Dois sinais verdes: a barra vertical colada ao N e a letra X.
+ * Letras N, E, U, S em branco (negative), preto (positive) ou prata (silver).
  */
 
 interface NexusLogoProps {
   variant?: "negative" | "positive" | "silver";
   size?: "sm" | "md" | "lg";
   withDescriptor?: boolean;
-  withHolding?: boolean;
-  iconOnly?: boolean;
   markOnly?: boolean;
+  iconOnly?: boolean;
   className?: string;
 }
 
 const VERDE = "#9DCA79";
-const VERDE_TEXT_DARK = "#3B6D11";
+const VERDE_DARK = "#3B6D11";
 
-const CONFIG = {
-  sm: { barWidth: 2, barHeight: 28, wordmarkSize: 16, wordmarkY: 20, descriptorSize: 6, descriptorY: 29, ruleY: 35, ruleWidth: 100, viewW: 140, viewH: 42 },
-  md: { barWidth: 2, barHeight: 40, wordmarkSize: 22, wordmarkY: 28, descriptorSize: 7.5, descriptorY: 39, ruleY: 47, ruleWidth: 130, viewW: 160, viewH: 56 },
-  lg: { barWidth: 3, barHeight: 56, wordmarkSize: 32, wordmarkY: 42, descriptorSize: 9, descriptorY: 56, ruleY: 66, ruleWidth: 172, viewW: 210, viewH: 78 },
-};
+const SIZE_PX = { sm: 18, md: 32, lg: 48 } as const;
 
 export function NexusLogo({
   variant = "negative",
   size = "md",
-  withDescriptor = true,
-  withHolding = false,
-  iconOnly = false,
+  withDescriptor,
   markOnly = false,
+  iconOnly = false,
   className,
 }: NexusLogoProps) {
-  const c = CONFIG[size];
+  const fontSize = SIZE_PX[size];
 
-  const wordmarkColor =
-    variant === "negative" ? "#FFFFFF"
-    : variant === "silver" ? "#C0C0C0"
-    : "#0A0A0A";
+  const letterColor =
+    variant === "negative" ? "#FFFFFF" : variant === "positive" ? "#0A0A0A" : "#C0C0C0";
+  const descriptorColor =
+    variant === "positive" ? VERDE_DARK : VERDE;
+  const ruleSecondary = variant === "positive" ? "#D8D8D8" : "#C0C0C0";
 
-  const descriptorColor = variant === "positive" ? VERDE_TEXT_DARK : VERDE;
-  const holdingColor = "#6B6B6B";
-  const ruleMainColor = variant === "positive" ? "#D8D8D8" : "#2E2E2E";
-
-  const showDescriptor = !iconOnly && !markOnly && (withDescriptor || withHolding);
-  const viewH = showDescriptor ? c.viewH : c.viewH - 18;
+  const showDescriptor =
+    !markOnly && !iconOnly && (withDescriptor ?? size !== "sm");
 
   if (iconOnly) {
-    const s = size === "sm" ? 28 : size === "lg" ? 48 : 36;
     return (
-      <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nexus" role="img" className={className}>
-        <rect x="0" y="0" width={s} height={s} fill="#1C1C1C" />
-        <rect x="3" y="3" width="2.5" height={s - 6} fill={VERDE} />
-        <text
-          x={s * 0.32}
-          y={s * 0.68}
-          fontFamily="'Plus Jakarta Sans', system-ui, sans-serif"
-          fontSize={s * 0.44}
-          fontWeight="200"
-          fill="#FFFFFF"
-          letterSpacing="-0.5"
-        >
-          NX
-        </text>
-      </svg>
+      <span
+        role="img"
+        aria-label="Nexus"
+        className={className}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: 36,
+          height: 36,
+          backgroundColor: "#1C1C1C",
+          borderRadius: 4,
+          position: "relative",
+          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+          fontWeight: 200,
+          fontSize: 18,
+          letterSpacing: "-0.03em",
+          lineHeight: 1,
+        }}
+      >
+        <span
+          aria-hidden
+          style={{
+            position: "absolute",
+            left: 4,
+            top: 4,
+            bottom: 4,
+            width: 2,
+            backgroundColor: VERDE,
+          }}
+        />
+        <span style={{ color: "#FFFFFF" }}>N</span>
+        <span style={{ color: VERDE }}>X</span>
+      </span>
     );
   }
 
+  const barWidth = 2;
+  const barHeight = Math.round(fontSize * 0.95);
+
   return (
-    <svg
-      width="100%"
-      viewBox={`0 0 ${c.viewW} ${viewH}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Nexus · Nosso Jeito de Ser"
+    <span
       role="img"
+      aria-label="Nexus · Nosso Jeito de Ser"
       className={className}
-      style={{ maxWidth: c.viewW }}
+      style={{ display: "inline-flex", flexDirection: "column", alignItems: "flex-start" }}
     >
-      <rect
-        x="0"
-        y={c.wordmarkY - c.wordmarkSize * 0.85}
-        width={c.barWidth}
-        height={c.barHeight}
-        fill={VERDE}
-      />
-      <text
-        x={c.barWidth + 8}
-        y={c.wordmarkY}
-        fontFamily="'Plus Jakarta Sans', system-ui, sans-serif"
-        fontSize={c.wordmarkSize}
-        fontWeight="200"
-        fill={wordmarkColor}
-        letterSpacing="-0.5"
+      <span
+        style={{
+          position: "relative",
+          display: "inline-block",
+          paddingLeft: barWidth + 6,
+          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+          fontWeight: 200,
+          fontSize,
+          letterSpacing: "-0.03em",
+          lineHeight: 1,
+          color: letterColor,
+        }}
       >
-        NEXUS
-      </text>
-      {showDescriptor && (
-        <text
-          x={c.barWidth + 8}
-          y={c.descriptorY}
-          fontFamily="'Space Mono', ui-monospace, monospace"
-          fontSize={c.descriptorSize}
-          fill={withHolding ? holdingColor : descriptorColor}
-          letterSpacing={withHolding ? "2" : "2.5"}
-        >
-          {withHolding ? "HYNDRA · NEWE" : "NOSSO JEITO DE SER"}
-        </text>
-      )}
+        <span
+          aria-hidden
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: barWidth,
+            height: barHeight,
+            backgroundColor: VERDE,
+          }}
+        />
+        <span>N</span>
+        <span>E</span>
+        <span style={{ color: VERDE }}>X</span>
+        <span>U</span>
+        <span>S</span>
+      </span>
+
       {showDescriptor && (
         <>
-          <line
-            x1={c.barWidth + 8}
-            y1={c.ruleY}
-            x2={c.ruleWidth}
-            y2={c.ruleY}
-            stroke={ruleMainColor}
-            strokeWidth="0.5"
-          />
-          <line
-            x1={c.barWidth + 8}
-            y1={c.ruleY}
-            x2={c.barWidth + 8 + 20}
-            y2={c.ruleY}
-            stroke={VERDE}
-            strokeWidth="0.5"
+          <span
+            style={{
+              marginTop: 6,
+              fontFamily: "'Space Mono', ui-monospace, monospace",
+              fontSize: 7.5,
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              color: descriptorColor,
+            }}
+          >
+            Nosso Jeito de Ser
+          </span>
+          <span
+            aria-hidden
+            style={{
+              marginTop: 4,
+              display: "block",
+              height: 1,
+              width: 200,
+              background: `linear-gradient(90deg, ${VERDE} 0, ${VERDE} 20px, ${ruleSecondary} 20px, ${ruleSecondary} 120px, transparent 120px)`,
+            }}
           />
         </>
       )}
-    </svg>
+    </span>
   );
 }
 

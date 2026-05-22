@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { NexusLogo } from "@/components/nexus/NexusLogo";
 
 type NavItem = {
   label: string;
@@ -153,31 +154,7 @@ export function AppSidebar() {
     >
       {/* Logo / brand */}
       <div className="px-5 pt-7 pb-5">
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ display: "block", width: 2, height: 36, backgroundColor: "#9DCA79", flexShrink: 0 }} />
-          <div>
-            <p
-              className="font-display font-extralight"
-              style={{ fontSize: 18, color: "#F7F6F4", letterSpacing: "-0.02em", lineHeight: 1 }}
-            >
-              NEXUS
-            </p>
-            <p
-              className="font-mono-newe"
-              style={{ fontSize: 7, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9DCA79", marginTop: 3 }}
-            >
-              Nosso Jeito de Ser
-            </p>
-            <div
-              style={{
-                height: 1,
-                marginTop: 5,
-                background:
-                  "linear-gradient(90deg,#9DCA79 0,#9DCA79 16px,#2E2E2E 16px,#2E2E2E 50px,transparent 50px)",
-              }}
-            />
-          </div>
-        </div>
+        <NexusLogo variant="negative" size="sm" withDescriptor={false} />
       </div>
 
       {/* User block */}

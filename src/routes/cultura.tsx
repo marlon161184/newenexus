@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ResourceButton } from "@/components/newe/ResourceButton";
+import { NexusLogo } from "@/components/nexus/NexusLogo";
 
 export const Route = createFileRoute("/cultura")({
   head: () => ({
@@ -77,17 +78,8 @@ function Hero() {
         }}
       >
         <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem", flexWrap: "wrap" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-            <span style={{ display: "block", width: 2, height: 40, backgroundColor: "#9DCA79" }} />
-            <div>
-              <p className="font-display font-extralight" style={{ fontSize: 22, color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1 }}>
-                NEXUS
-              </p>
-              <p className="font-mono-newe" style={{ fontSize: 7, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9DCA79", marginTop: 3 }}>
-                Nosso Jeito de Ser
-              </p>
-              <div style={{ height: 1, marginTop: 5, background: "linear-gradient(90deg,#9DCA79 0,#9DCA79 20px,#2E2E2E 20px,#2E2E2E 60px,transparent 60px)" }} />
-            </div>
+          <div style={{ flexShrink: 0 }}>
+            <NexusLogo variant="negative" size="md" />
           </div>
 
           <div style={{ flex: 1, minWidth: 200 }}>
