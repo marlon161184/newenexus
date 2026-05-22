@@ -113,7 +113,7 @@ function NexusHome() {
             Módulos · 5 territórios · 10 produtos
           </p>
         </div>
-        <h2 className="font-display font-extralight text-[32px] sm:text-[44px] md:text-[56px] mb-10 md:mb-14 leading-[1.05] tracking-[-0.02em]" style={{ color: "#F7F6F4" }}>
+        <h2 className="font-display font-extralight text-[22px] sm:text-[28px] md:text-[34px] mb-10 md:mb-14 leading-[1.1] tracking-[-0.01em]" style={{ color: "#F7F6F4" }}>
           Cultura que se materializa em produtos.
         </h2>
 
