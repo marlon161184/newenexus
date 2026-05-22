@@ -94,11 +94,11 @@ function NexusHome() {
                 style={{
                   position: "absolute",
                   left: 0,
-                  top: "0.04em",
-                  bottom: "0.16em",
-                  width: "0.06em",
+                  top: "0.13em",
+                  height: "0.72em",
+                  width: "0.025em",
                   backgroundColor: "#9DCA79",
-                  boxShadow: "0 0 24px rgba(157,202,121,0.35)",
+                  boxShadow: "0 0 18px rgba(157,202,121,0.45)",
                 }}
               />
               <span>N</span>
