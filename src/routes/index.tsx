@@ -530,7 +530,7 @@ function ModuleBlock({
         className="w-full flex items-center gap-4 sm:gap-6 p-5 sm:p-7 md:p-8 text-left hover:bg-[#161614] transition-colors"
       >
         <div
-          className="shrink-0 flex items-center justify-center"
+          className="shrink-0 flex items-center justify-center nexus-icon-glow"
           style={{
             width: 56,
             height: 56,
