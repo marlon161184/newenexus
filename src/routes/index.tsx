@@ -139,11 +139,11 @@ function ParallaxHero() {
       if (raf) return;
       raf = requestAnimationFrame(() => {
         if (gridRef.current)
-          gridRef.current.style.transform = `translate3d(${mx * 8}px, ${my * 8}px, 0)`;
+          gridRef.current.style.transform = `translate3d(${mx * 24}px, ${my * 18}px, 0)`;
         if (wordRef.current)
-          wordRef.current.style.transform = `translate3d(${mx * -14}px, ${my * -10}px, 0)`;
+          wordRef.current.style.transform = `translate3d(${mx * -40}px, ${my * -26}px, 0)`;
         if (notesRef.current)
-          notesRef.current.style.transform = `translate3d(${mx * 36}px, ${my * 24}px, 0)`;
+          notesRef.current.style.transform = `translate3d(${mx * 100}px, ${my * 70}px, 0)`;
         raf = 0;
       });
     };
@@ -156,9 +156,9 @@ function ParallaxHero() {
       ref={sectionRef}
       className="relative overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 pt-24 sm:pt-32 md:pt-40 pb-24 md:pb-36 min-h-[92vh] flex flex-col justify-center"
       style={{
-        backgroundColor: "#0A0A0A",
+        backgroundColor: "#15140F",
         backgroundImage:
-          "radial-gradient(ellipse at 50% 100%, rgba(157,202,121,0.10), transparent 65%),radial-gradient(ellipse at 20% 10%, rgba(80,120,200,0.06), transparent 60%)",
+          "radial-gradient(ellipse at 50% 100%, rgba(157,202,121,0.16), transparent 65%),radial-gradient(ellipse at 20% 10%, rgba(80,120,200,0.10), transparent 60%)",
       }}
     >
       <Starfield />
@@ -172,7 +172,7 @@ function ParallaxHero() {
           zIndex: 1,
           willChange: "transform",
           backgroundImage:
-            "linear-gradient(rgba(192,192,192,0.05) 1px, transparent 1px),linear-gradient(90deg, rgba(192,192,192,0.05) 1px, transparent 1px)",
+            "linear-gradient(rgba(192,192,192,0.09) 1px, transparent 1px),linear-gradient(90deg, rgba(192,192,192,0.09) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
           maskImage: "radial-gradient(ellipse at center, #000 40%, transparent 80%)",
           WebkitMaskImage: "radial-gradient(ellipse at center, #000 40%, transparent 80%)",
@@ -222,7 +222,7 @@ function ParallaxHero() {
               color: "#F7F6F4",
               textShadow: "0 0 80px rgba(157,202,121,0.15)",
               position: "relative",
-              paddingLeft: "0.05em",
+              paddingLeft: "0.02em",
             }}
           >
             <span
@@ -233,7 +233,7 @@ function ParallaxHero() {
                 left: 0,
                 top: "0.13em",
                 height: "0.72em",
-                width: "0.022em",
+                width: "0.018em",
                 backgroundColor: "#9DCA79",
               }}
             />
