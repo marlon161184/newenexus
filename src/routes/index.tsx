@@ -455,6 +455,7 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
     strokeWidth: 1,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
+    className: "nexus-icon-glow",
   };
   switch (shape) {
     case "circle":
@@ -496,6 +497,9 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
       );
   }
 }
+
+/* Glow contínuo compartilhado pelos ícones (sem faísca final) */
+function _NexusIconGlowStyle() { return null; }
 
 function ModuleBlock({
   module: m,
