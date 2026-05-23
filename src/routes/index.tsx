@@ -308,9 +308,16 @@ function ParallaxHero() {
         .nexus-icon-glow {
           animation: nexusIconGlow 4.5s ease-in-out infinite;
         }
+        .nexus-icon-stroke {
+          animation: nexusIconStroke 4.5s ease-in-out infinite;
+        }
         @keyframes nexusIconGlow {
-          0%, 100% { filter: drop-shadow(0 0 0 rgba(157,202,121,0)); opacity: 0.85; }
-          50%      { filter: drop-shadow(0 0 10px rgba(157,202,121,0.85)) drop-shadow(0 0 18px rgba(200,240,154,0.45)); opacity: 1; }
+          0%, 100% { box-shadow: 0 0 0 rgba(157,202,121,0); }
+          50%      { box-shadow: 0 0 18px rgba(157,202,121,0.55), 0 0 32px rgba(200,240,154,0.25); }
+        }
+        @keyframes nexusIconStroke {
+          0%, 100% { color: #9A9A9A; filter: drop-shadow(0 0 0 rgba(157,202,121,0)); }
+          50%      { color: #C8F09A; filter: drop-shadow(0 0 6px rgba(157,202,121,0.9)); }
         }
       `}</style>
     </section>
