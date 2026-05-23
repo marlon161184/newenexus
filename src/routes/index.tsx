@@ -462,7 +462,7 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
     strokeWidth: 1,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
-    className: "nexus-icon-glow",
+    className: "nexus-icon-stroke",
   };
   switch (shape) {
     case "circle":
