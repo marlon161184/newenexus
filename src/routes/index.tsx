@@ -222,7 +222,7 @@ function ParallaxHero() {
               color: "#F7F6F4",
               textShadow: "0 0 80px rgba(157,202,121,0.15)",
               position: "relative",
-              paddingLeft: "0.02em",
+              paddingLeft: "0",
             }}
           >
             <span
@@ -230,14 +230,14 @@ function ParallaxHero() {
               className="nexus-bar"
               style={{
                 position: "absolute",
-                left: 0,
-                top: "0.13em",
-                height: "0.72em",
-                width: "0.018em",
+                left: "0.07em",
+                top: "0.16em",
+                height: "0.68em",
+                width: "0.05em",
                 backgroundColor: "#9DCA79",
               }}
             />
-            <span className="nexus-letter" style={{ ["--i" as any]: 0, marginLeft: "-0.01em" }}>N</span>
+            <span className="nexus-letter" style={{ ["--i" as any]: 0 }}>N</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 1 }}>E</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 2, color: "#9DCA79" }}>X</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 3 }}>U</span>
