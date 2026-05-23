@@ -120,6 +120,226 @@ function NexusHome() {
   );
 }
 
+/* ── HERO PARALLAX ── */
+function ParallaxHero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const wordRef = useRef<HTMLDivElement>(null);
+  const notesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const sec = sectionRef.current;
+    if (!sec) return;
+    let raf = 0;
+    let mx = 0, my = 0;
+    const onMove = (e: MouseEvent) => {
+      const r = sec.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width - 0.5;
+      my = (e.clientY - r.top) / r.height - 0.5;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        if (gridRef.current)
+          gridRef.current.style.transform = `translate3d(${mx * 8}px, ${my * 8}px, 0)`;
+        if (wordRef.current)
+          wordRef.current.style.transform = `translate3d(${mx * -14}px, ${my * -10}px, 0)`;
+        if (notesRef.current)
+          notesRef.current.style.transform = `translate3d(${mx * 36}px, ${my * 24}px, 0)`;
+        raf = 0;
+      });
+    };
+    sec.addEventListener("mousemove", onMove);
+    return () => sec.removeEventListener("mousemove", onMove);
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 pt-24 sm:pt-32 md:pt-40 pb-24 md:pb-36 min-h-[92vh] flex flex-col justify-center"
+      style={{
+        backgroundColor: "#0A0A0A",
+        backgroundImage:
+          "radial-gradient(ellipse at 50% 100%, rgba(157,202,121,0.10), transparent 65%),radial-gradient(ellipse at 20% 10%, rgba(80,120,200,0.06), transparent 60%)",
+      }}
+    >
+      <Starfield />
+
+      {/* L1 — grade sutil */}
+      <div
+        ref={gridRef}
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          zIndex: 1,
+          willChange: "transform",
+          backgroundImage:
+            "linear-gradient(rgba(192,192,192,0.05) 1px, transparent 1px),linear-gradient(90deg, rgba(192,192,192,0.05) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+          maskImage: "radial-gradient(ellipse at center, #000 40%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, #000 40%, transparent 80%)",
+        }}
+      />
+
+      {/* L3 — anotações tipográficas + cruzes de medida (atrás do wordmark) */}
+      <div
+        ref={notesRef}
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ zIndex: 2, willChange: "transform" }}
+      >
+        <MeasureCross top="14%" left="6%" />
+        <MeasureCross top="18%" left="92%" />
+        <MeasureCross top="82%" left="8%" />
+        <MeasureCross top="86%" left="94%" />
+        <Annotation top="22%" left="6%">Plus Jakarta Sans · 200</Annotation>
+        <Annotation top="22%" left="78%">Space Mono · 0.3em</Annotation>
+        <Annotation top="76%" left="6%">Régua de chegada · Verde + Prata</Annotation>
+        <Annotation top="76%" left="74%">N · E · X · U · S</Annotation>
+      </div>
+
+      {/* L2 — wordmark NEXUS */}
+      <div
+        ref={wordRef}
+        className="relative z-10 flex flex-col items-center text-center w-full"
+        style={{ willChange: "transform" }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2.5rem" }}>
+          <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
+          <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.35em] uppercase" style={{ color: "#9DCA79" }}>
+            Sistema Operacional da Cultura
+          </p>
+          <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
+        </div>
+
+        <h1 className="relative">
+          <span className="sr-only">Nexus</span>
+          <span
+            aria-hidden
+            className="font-display inline-flex items-stretch leading-[0.85] nexus-wordmark"
+            style={{
+              fontWeight: 200,
+              fontSize: "clamp(96px, 22vw, 360px)",
+              letterSpacing: "-0.04em",
+              color: "#F7F6F4",
+              textShadow: "0 0 80px rgba(157,202,121,0.15)",
+              position: "relative",
+              paddingLeft: "0.05em",
+            }}
+          >
+            <span
+              aria-hidden
+              className="nexus-bar"
+              style={{
+                position: "absolute",
+                left: 0,
+                top: "0.13em",
+                height: "0.72em",
+                width: "0.022em",
+                backgroundColor: "#9DCA79",
+              }}
+            />
+            <span className="nexus-letter" style={{ ["--i" as any]: 0 }}>N</span>
+            <span className="nexus-letter" style={{ ["--i" as any]: 1 }}>E</span>
+            <span className="nexus-letter" style={{ ["--i" as any]: 2, color: "#9DCA79" }}>X</span>
+            <span className="nexus-letter" style={{ ["--i" as any]: 3 }}>U</span>
+            <span className="nexus-letter" style={{ ["--i" as any]: 4 }}>S</span>
+            <span className="nexus-spark" aria-hidden />
+          </span>
+        </h1>
+
+        <div className="mt-8 flex items-center gap-4">
+          <span style={{ display: "block", width: 48, height: 1, backgroundColor: "#2E2E2E" }} />
+          <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.45em] uppercase" style={{ color: "#6B6B6B" }}>
+            Nosso Jeito de Ser · Hyndra · Newe
+          </p>
+          <span style={{ display: "block", width: 48, height: 1, backgroundColor: "#2E2E2E" }} />
+        </div>
+      </div>
+
+      {/* L4 — vinheta radial */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          zIndex: 3,
+          background:
+            "radial-gradient(ellipse at center, transparent 45%, rgba(10,10,10,0.55) 80%, rgba(10,10,10,0.9) 100%)",
+        }}
+      />
+
+      <style>{`
+        .nexus-bar {
+          box-shadow: 0 0 18px rgba(157,202,121,0.55);
+          animation: nexusBarGlow 5s ease-in-out infinite;
+        }
+        @keyframes nexusBarGlow {
+          0%   { box-shadow: 0 0 12px rgba(157,202,121,0.35); background-color: #7AAE58; }
+          14%  { box-shadow: 0 0 34px rgba(157,202,121,0.95); background-color: #C8F09A; }
+          28%  { box-shadow: 0 0 14px rgba(157,202,121,0.4);  background-color: #9DCA79; }
+          100% { box-shadow: 0 0 12px rgba(157,202,121,0.35); background-color: #9DCA79; }
+        }
+        .nexus-letter {
+          display: inline-block;
+          animation: nexusLetterGlow 5s ease-in-out infinite;
+          animation-delay: calc(0.35s + var(--i) * 0.35s);
+        }
+        @keyframes nexusLetterGlow {
+          0%, 60%, 100% { text-shadow: 0 0 80px rgba(157,202,121,0.15); filter: brightness(1); }
+          8%  { text-shadow: 0 0 60px rgba(157,202,121,0.95), 0 0 16px rgba(200,240,154,0.7); filter: brightness(1.18); }
+          18% { text-shadow: 0 0 80px rgba(157,202,121,0.15); filter: brightness(1); }
+        }
+        .nexus-spark {
+          position: absolute;
+          right: -0.08em;
+          top: 0.18em;
+          width: 0.08em;
+          height: 0.08em;
+          border-radius: 50%;
+          background: #FFFFFF;
+          opacity: 0;
+          animation: nexusSpark 5s ease-out infinite;
+          animation-delay: 2.55s;
+        }
+        @keyframes nexusSpark {
+          0%   { opacity: 0; transform: scale(0.4); box-shadow: 0 0 0 rgba(255,255,255,0); }
+          3%   { opacity: 1; transform: scale(1);   box-shadow: 0 0 28px 6px rgba(200,240,154,0.9), 0 0 60px 10px rgba(157,202,121,0.6); }
+          12%  { opacity: 0; transform: scale(1.8); box-shadow: 0 0 0 rgba(255,255,255,0); }
+          100% { opacity: 0; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+function Annotation({ top, left, children }: { top: string; left: string; children: React.ReactNode }) {
+  return (
+    <p
+      className="font-mono-newe absolute"
+      style={{
+        top, left,
+        fontSize: 9,
+        letterSpacing: "0.3em",
+        textTransform: "uppercase",
+        color: "rgba(192,192,192,0.32)",
+      }}
+    >
+      {children}
+    </p>
+  );
+}
+
+function MeasureCross({ top, left }: { top: string; left: string }) {
+  return (
+    <span
+      aria-hidden
+      className="absolute"
+      style={{ top, left, width: 14, height: 14, transform: "translate(-50%,-50%)" }}
+    >
+      <span style={{ position: "absolute", left: 0, right: 0, top: "50%", height: 1, backgroundColor: "rgba(157,202,121,0.45)" }} />
+      <span style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, backgroundColor: "rgba(157,202,121,0.45)" }} />
+    </span>
+  );
+}
+
 /* ── Botões verdes com barra lateral ── */
 function Starfield() {
   const ref = useRef<HTMLDivElement>(null);
