@@ -222,7 +222,7 @@ function ParallaxHero() {
               color: "#F7F6F4",
               textShadow: "0 0 80px rgba(157,202,121,0.15)",
               position: "relative",
-              paddingLeft: "0.02em",
+              paddingLeft: "0",
             }}
           >
             <span
@@ -230,14 +230,14 @@ function ParallaxHero() {
               className="nexus-bar"
               style={{
                 position: "absolute",
-                left: 0,
-                top: "0.13em",
-                height: "0.72em",
-                width: "0.018em",
+                left: "0.07em",
+                top: "0.16em",
+                height: "0.68em",
+                width: "0.05em",
                 backgroundColor: "#9DCA79",
               }}
             />
-            <span className="nexus-letter" style={{ ["--i" as any]: 0, marginLeft: "-0.01em" }}>N</span>
+            <span className="nexus-letter" style={{ ["--i" as any]: 0 }}>N</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 1 }}>E</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 2, color: "#9DCA79" }}>X</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 3 }}>U</span>
@@ -308,9 +308,16 @@ function ParallaxHero() {
         .nexus-icon-glow {
           animation: nexusIconGlow 4.5s ease-in-out infinite;
         }
+        .nexus-icon-stroke {
+          animation: nexusIconStroke 4.5s ease-in-out infinite;
+        }
         @keyframes nexusIconGlow {
-          0%, 100% { filter: drop-shadow(0 0 0 rgba(157,202,121,0)); opacity: 0.85; }
-          50%      { filter: drop-shadow(0 0 10px rgba(157,202,121,0.85)) drop-shadow(0 0 18px rgba(200,240,154,0.45)); opacity: 1; }
+          0%, 100% { box-shadow: 0 0 0 rgba(157,202,121,0); }
+          50%      { box-shadow: 0 0 18px rgba(157,202,121,0.55), 0 0 32px rgba(200,240,154,0.25); }
+        }
+        @keyframes nexusIconStroke {
+          0%, 100% { color: #9A9A9A; filter: drop-shadow(0 0 0 rgba(157,202,121,0)); }
+          50%      { color: #C8F09A; filter: drop-shadow(0 0 6px rgba(157,202,121,0.9)); }
         }
       `}</style>
     </section>
@@ -462,7 +469,7 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
     strokeWidth: 1,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
-    className: "nexus-icon-glow",
+    className: "nexus-icon-stroke",
   };
   switch (shape) {
     case "circle":
@@ -530,7 +537,7 @@ function ModuleBlock({
         className="w-full flex items-center gap-4 sm:gap-6 p-5 sm:p-7 md:p-8 text-left hover:bg-[#161614] transition-colors"
       >
         <div
-          className="shrink-0 flex items-center justify-center"
+          className="shrink-0 flex items-center justify-center nexus-icon-glow"
           style={{
             width: 56,
             height: 56,
