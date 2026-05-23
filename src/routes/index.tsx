@@ -237,7 +237,7 @@ function ParallaxHero() {
                 backgroundColor: "#9DCA79",
               }}
             />
-            <span className="nexus-letter" style={{ ["--i" as any]: 0 }}>N</span>
+            <span className="nexus-letter" style={{ ["--i" as any]: 0, marginLeft: "-0.01em" }}>N</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 1 }}>E</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 2, color: "#9DCA79" }}>X</span>
             <span className="nexus-letter" style={{ ["--i" as any]: 3 }}>U</span>
