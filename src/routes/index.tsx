@@ -305,6 +305,13 @@ function ParallaxHero() {
           12%  { opacity: 0; transform: scale(1.8); box-shadow: 0 0 0 rgba(255,255,255,0); }
           100% { opacity: 0; }
         }
+        .nexus-icon-glow {
+          animation: nexusIconGlow 4.5s ease-in-out infinite;
+        }
+        @keyframes nexusIconGlow {
+          0%, 100% { filter: drop-shadow(0 0 0 rgba(157,202,121,0)); opacity: 0.85; }
+          50%      { filter: drop-shadow(0 0 10px rgba(157,202,121,0.85)) drop-shadow(0 0 18px rgba(200,240,154,0.45)); opacity: 1; }
+        }
       `}</style>
     </section>
   );
