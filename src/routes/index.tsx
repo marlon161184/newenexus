@@ -53,71 +53,7 @@ function NexusHome() {
   return (
     <div className="w-full" style={{ backgroundColor: "#0A0A0A" }}>
 
-      {/* ── HERO ── */}
-      <section
-        className="relative overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 pt-24 sm:pt-32 md:pt-40 pb-24 md:pb-36 min-h-[88vh] flex flex-col justify-center"
-        style={{
-          backgroundColor: "#0A0A0A",
-          backgroundImage:
-            "radial-gradient(ellipse at 50% 100%, rgba(157,202,121,0.10), transparent 65%),radial-gradient(ellipse at 20% 10%, rgba(80,120,200,0.06), transparent 60%)",
-        }}
-      >
-        <Starfield />
-
-        <div className="relative z-10 flex flex-col items-center text-center w-full">
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "2.5rem" }}>
-            <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
-            <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.35em] uppercase" style={{ color: "#9DCA79" }}>
-              Sistema Operacional da Cultura
-            </p>
-            <span style={{ display: "block", width: 32, height: 1, backgroundColor: "#9DCA79" }} />
-          </div>
-
-          {/* NEXUS — wordmark dominante */}
-          <h1 className="relative">
-            <span className="sr-only">Nexus</span>
-            <span
-              aria-hidden
-              className="font-display inline-flex items-stretch leading-[0.85]"
-              style={{
-                fontWeight: 200,
-                fontSize: "clamp(96px, 22vw, 360px)",
-                letterSpacing: "-0.04em",
-                color: "#F7F6F4",
-                textShadow: "0 0 80px rgba(157,202,121,0.15)",
-                position: "relative",
-                paddingLeft: "0.18em",
-              }}
-            >
-              <span
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  top: "0.13em",
-                  height: "0.72em",
-                  width: "0.025em",
-                  backgroundColor: "#9DCA79",
-                  boxShadow: "0 0 18px rgba(157,202,121,0.45)",
-                }}
-              />
-              <span>N</span>
-              <span>E</span>
-              <span style={{ color: "#9DCA79" }}>X</span>
-              <span>U</span>
-              <span>S</span>
-            </span>
-          </h1>
-
-          <div className="mt-8 flex items-center gap-4">
-            <span style={{ display: "block", width: 48, height: 1, backgroundColor: "#2E2E2E" }} />
-            <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.45em] uppercase" style={{ color: "#6B6B6B" }}>
-              Nosso Jeito de Ser · Hyndra · Newe
-            </p>
-            <span style={{ display: "block", width: 48, height: 1, backgroundColor: "#2E2E2E" }} />
-          </div>
-        </div>
-      </section>
+      <ParallaxHero />
 
       {/* ── MÓDULOS — accordion vertical ── */}
       <section
