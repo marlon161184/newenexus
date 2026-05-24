@@ -476,25 +476,32 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
       return (
         <svg {...common}>
           <circle cx="12" cy="12" r="9" />
-          <circle cx="12" cy="12" r="4" />
+          <circle cx="12" cy="12" r="5" />
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
         </svg>
       );
     case "circle-small":
       return (
         <svg {...common}>
-          <circle cx="12" cy="12" r="6" />
+          <path d="M12 3l8 4.5v5L12 17l-8-4.5v-5L12 3z" />
+          <path d="M12 3v14" />
+          <path d="M4 7.5l8 4.5 8-4.5" />
         </svg>
       );
     case "triangle":
       return (
         <svg {...common}>
-          <path d="M12 4l9 16H3z" />
+          <circle cx="9" cy="7" r="2.5" />
+          <path d="M4 20c0-3.5 2.2-5 5-5s5 1.5 5 5" />
+          <circle cx="16" cy="7" r="2" />
+          <path d="M14.5 15c1-.4 2.1-.5 2.5-.5 2.5 0 4.5 1.3 4.5 4.5" />
         </svg>
       );
     case "square":
       return (
         <svg {...common}>
-          <rect x="4" y="4" width="16" height="16" />
+          <path d="M12 2l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5l7-3z" />
+          <polyline points="9 12 11 14 15 10" />
         </svg>
       );
     case "diamond":
@@ -505,8 +512,13 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
       );
     case "circle-dashed":
       return (
-        <svg {...common} strokeDasharray="3 3">
-          <circle cx="12" cy="12" r="9" />
+        <svg {...common}>
+          <circle cx="12" cy="5" r="2" />
+          <circle cx="5" cy="19" r="2" />
+          <circle cx="19" cy="19" r="2" />
+          <line x1="12" y1="7" x2="5" y2="17" />
+          <line x1="12" y1="7" x2="19" y2="17" />
+          <line x1="5" y1="19" x2="19" y2="19" />
         </svg>
       );
   }
