@@ -141,35 +141,6 @@ export function Topbar() {
         <span className="font-mono-newe text-[9px] tracking-[0.3em] uppercase">+ Contribuir</span>
       </button>
 
-      <div className="relative hidden md:block">
-        <button
-          aria-label="Notificações"
-          onClick={() => setNotifOpen((v) => !v)}
-          className="inline-flex items-center justify-center w-9 h-9 transition-colors hover:bg-[#1C1C1C]"
-          style={{ border: "1px solid #2E2E2E", borderRadius: 2, color: "#9DCA79" }}
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-            <path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9z" />
-            <path d="M10 21a2 2 0 004 0" />
-          </svg>
-        </button>
-        {notifOpen && (
-          <>
-            <div className="fixed inset-0 z-40" onClick={() => setNotifOpen(false)} />
-            <div
-              className="absolute right-0 mt-2 w-[260px] p-4 z-50"
-              style={{ backgroundColor: "#1C1C1C", border: "1px solid #2E2E2E", borderRadius: 2 }}
-            >
-              <p className="font-mono-newe text-[9px] tracking-[0.3em] uppercase mb-2" style={{ color: "#9DCA79" }}>
-                Notificações
-              </p>
-              <p className="font-body font-light text-[12px]" style={{ color: "#6B6B6B" }}>
-                Nenhuma notificação no momento.
-              </p>
-            </div>
-          </>
-        )}
-      </div>
     </header>
 
       {searchOpen && <SearchModal onClose={() => setSearchOpen(false)} />}
