@@ -270,10 +270,32 @@ function SearchModal({ onClose }: { onClose: () => void }) {
 function ContributeModal({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState({ nome: "", email: "", area: "", contribuicao: "" });
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("https://formspree.io/f/mredyagj", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: form.nome,
+          email: form.email,
+          modulo: form.area,
+          contribuicao: form.contribuicao,
+        }),
+      });
+      if (!res.ok) throw new Error("fail");
+      setSent(true);
+      setTimeout(() => onClose(), 3000);
+    } catch {
+      setError("Algo deu errado. Tente novamente.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const fieldStyle = {
@@ -368,7 +390,8 @@ function ContributeModal({ onClose }: { onClose: () => void }) {
             />
             <button
               type="submit"
-              className="h-10 mt-1 font-mono-newe text-[10px] tracking-[0.3em] uppercase transition-colors"
+              disabled={submitting}
+              className="h-10 mt-1 font-mono-newe text-[10px] tracking-[0.3em] uppercase transition-colors disabled:opacity-60"
               style={{
                 backgroundColor: "#9DCA79",
                 color: "#0A0A0A",
@@ -376,8 +399,13 @@ function ContributeModal({ onClose }: { onClose: () => void }) {
                 borderRadius: 2,
               }}
             >
-              Enviar contribuição
+              {submitting ? "Enviando..." : "Enviar contribuição"}
             </button>
+            {error && (
+              <p className="font-body font-light text-[12px] text-center" style={{ color: "#c45c5c" }}>
+                {error}
+              </p>
+            )}
           </form>
         )}
       </div>
