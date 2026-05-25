@@ -107,7 +107,7 @@ function NexusHome() {
             Nosso Jeito de Ser · Hyndra Group
           </p>
           <div className="mt-8 md:mt-10">
-            <GreenSideButton href="https://newemanifesto.lovable.app" label="Ler o Nosso Jeito de Ser ↗" external />
+            <GreenSideButton href="https://cultura-nossojeitodeser.lovable.app" label="Ler o Nosso Jeito de Ser ↗" external />
           </div>
         </div>
       </section>
@@ -750,7 +750,7 @@ function ProductsFooter() {
           Nexus · Sistema Operacional da Cultura · Hyndra Group
         </p>
         <a
-          href="https://newemanifesto.lovable.app"
+          href="https://cultura-nossojeitodeser.lovable.app"
           target="_blank"
           rel="noopener noreferrer"
           className="font-mono-newe text-[9px] tracking-[0.3em] uppercase hover:opacity-80"
@@ -775,7 +775,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Nosso Jeito de Ser",
         tagline: "Manifesto · Hyndra Group",
-        url: "https://newemanifesto.lovable.app",
+        url: "https://cultura-nossojeitodeser.lovable.app",
         logoImg: nossoJeitoLogo,
         logoText: "Nosso Jeito de Ser",
         logoSub: "MANIFESTO · HYNDRA GROUP",
@@ -795,7 +795,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "All Aboard",
         tagline: "Plataforma de Embarque",
-        url: "https://newe-welcome-journey.lovable.app",
+        url: "https://allaboardnewe.lovable.app",
         logoImg: allAboardLogo,
         logoText: "all aboard",
         logoSub: "PLATAFORMA DE EMBARQUE",
@@ -805,7 +805,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "PAR 2026",
         tagline: "Participação Anual nos Resultados",
-        url: "https://par-nexus.lovable.app",
+        url: "https://par-hyndra-newe.lovable.app",
         logoImg: par2026Logo,
         logoText: "PAR 2026",
         logoSub: "Programa de Participação Anual",
@@ -815,7 +815,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Decidir com Intenção",
         tagline: "Ferramenta de decisão estratégica",
-        url: "https://choice-compass-suite.lovable.app",
+        url: "https://decidircomintencao.lovable.app",
         logoImg: decidirIntencaoLogo,
         logoText: "Decidir com intenção.",
         logoBg: "#0A0A0A",
@@ -834,7 +834,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Academia de Líderes Newe",
         tagline: "Formação em liderança · by Hyndra",
-        url: "https://kindred-prompter.lovable.app",
+        url: "https://academiadelideresnewe.lovable.app",
         logoImg: academiaLideresLogo,
         logoText: "academia de líderes",
         logoSub: "NEWE · BY HYNDRA",
@@ -844,7 +844,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Academia de Vendas Newe",
         tagline: "Formação em venda consultiva · by Hyndra",
-        url: "https://elevate-newe-forge.lovable.app",
+        url: "https://academiadevendasnewe.lovable.app",
         logoImg: academiaVendasLogo,
         logoText: "academia de vendas",
         logoSub: "NEWE · BY HYNDRA",
@@ -864,7 +864,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "HYNstaNewe",
         tagline: "Rede social interna do grupo",
-        url: "https://hynstanewe.lovable.app/",
+        url: "https://hynstanewe.lovable.app",
         logoImg: hynstaneweLogo,
         logoText: "HYNstaNewe",
         logoSub: "REDE INTERNA",
@@ -874,7 +874,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Habitar a Estrutura",
         tagline: "Quem somos, em camadas",
-        url: "https://hyndra-animated-core.lovable.app",
+        url: "https://habitaraestrutura.lovable.app",
         logoImg: habitarEstruturaLogo,
         logoText: "Habitar a estrutura",
         logoSub: "— quem somos, em camadas.",
@@ -894,7 +894,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Plataforma de Marca",
         tagline: "Brand Book · Toolkit · Artefatos",
-        url: "https://newebrandingac.lovable.app",
+        url: "https://brandbook-newe.lovable.app",
         logoImg: plataformaMarcaLogo,
         logoBg: "#0A0A0A",
         logoTextColor: "#FFFFFF",
@@ -902,7 +902,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "HUB Hyndra",
         tagline: "Políticas e procedimentos do grupo",
-        url: "https://hyndra-hub-core.lovable.app",
+        url: "https://hub-hyndra.lovable.app",
         logoImg: hubHyndraLogo,
         logoText: "HUB Hyndra",
         logoSub: "POLÍTICAS & PROCEDIMENTOS",
