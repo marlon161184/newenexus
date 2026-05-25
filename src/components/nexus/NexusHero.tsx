@@ -42,7 +42,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Nosso Jeito de Ser",
         tagline: "Manifesto e cultura Hyndra · Newe",
-        url: "https://newemanifesto.lovable.app",
+        url: "https://cultura-nossojeitodeser.lovable.app",
         logoType: "text",
         logoText: "Nosso Jeito de Ser",
         logoSub: "MANIFESTO · HYNDRA GROUP",
@@ -62,7 +62,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "All Aboard",
         tagline: "Plataforma de Embarque",
-        url: "https://newe-welcome-journey.lovable.app",
+        url: "https://allaboardnewe.lovable.app",
         logoType: "text",
         logoText: "all aboard",
         logoSub: "PLATAFORMA DE EMBARQUE",
@@ -72,7 +72,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "PAR 2026",
         tagline: "Programa de Participação Anual nos Resultados",
-        url: "https://par-nexus.lovable.app",
+        url: "https://par-hyndra-newe.lovable.app",
         logoType: "text",
         logoText: "PAR 2026",
         logoSub: "Participação Anual nos Resultados",
@@ -82,7 +82,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Decidir com Intenção",
         tagline: "Ferramenta de decisão estratégica",
-        url: "https://choice-compass-suite.lovable.app",
+        url: "https://decidircomintencao.lovable.app",
         logoType: "text",
         logoText: "Decidir com intenção.",
         logoBg: "#0A0A0A",
@@ -101,7 +101,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Academia de Líderes Newe",
         tagline: "Formação em quem constrói o urbanismo · by Hyndra",
-        url: "https://kindred-prompter.lovable.app",
+        url: "https://academiadelideresnewe.lovable.app",
         logoType: "text",
         logoText: "academia de líderes",
         logoSub: "newe · by hyndra",
@@ -111,7 +111,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Academia de Vendas Newe",
         tagline: "Formação em venda consultiva · by Hyndra",
-        url: "https://elevate-newe-forge.lovable.app",
+        url: "https://academiadevendasnewe.lovable.app",
         logoType: "text",
         logoText: "academia de vendas",
         logoSub: "newe · by hyndra",
@@ -131,7 +131,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Habitar a Estrutura",
         tagline: "Quem somos, em camadas",
-        url: "https://hyndra-animated-core.lovable.app",
+        url: "https://habitaraestrutura.lovable.app",
         logoType: "text",
         logoText: "Habitar a estrutura",
         logoSub: "— quem somos, em camadas",
@@ -151,7 +151,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "HUB Hyndra",
         tagline: "Políticas e procedimentos do grupo",
-        url: "https://hyndra-hub-core.lovable.app",
+        url: "https://hub-hyndra.lovable.app",
         logoType: "text",
         logoText: "HUB",
         logoSub: "Hyndra",
@@ -171,7 +171,7 @@ const MODULES: ModuleEntry[] = [
       {
         name: "Plataforma de Marca",
         tagline: "Brand book · Toolkit · Artefatos estratégicos",
-        url: "https://newebrandingac.lovable.app",
+        url: "https://brandbook-newe.lovable.app",
         logoType: "text",
         logoText: "NEWE",
         logoSub: "PLATAFORMA DE MARCA",
