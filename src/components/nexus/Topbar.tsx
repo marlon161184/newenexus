@@ -57,8 +57,6 @@ export function Topbar() {
   const crumbs = useCrumbs();
   const [searchOpen, setSearchOpen] = useState(false);
   const [contribOpen, setContribOpen] = useState(false);
-  const [notifOpen, setNotifOpen] = useState(false);
-
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
@@ -67,7 +65,6 @@ export function Topbar() {
       } else if (e.key === "Escape") {
         setSearchOpen(false);
         setContribOpen(false);
-        setNotifOpen(false);
       }
     };
     window.addEventListener("keydown", onKey);
