@@ -499,9 +499,9 @@ function ModuleShape({ shape }: { shape: ModuleEntry["shape"] }) {
       );
     case "square":
       return (
-        <svg {...common}>
-          <path d="M12 2l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5l7-3z" />
-          <polyline points="9 12 11 14 15 10" />
+        <svg {...common} viewBox="0 0 64 64">
+          <path d="M32 10 L52 18 L52 32 C 52 44, 42 52, 32 56 C 22 52, 12 44, 12 32 L12 18 Z" />
+          <path d="M22 32 L30 40 L44 24" />
         </svg>
       );
     case "diamond":
