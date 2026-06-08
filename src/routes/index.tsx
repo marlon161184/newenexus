@@ -64,7 +64,7 @@ function NexusHome() {
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "1rem" }}>
           <span style={{ display: "block", width: 24, height: 1, backgroundColor: "#9DCA79" }} />
           <p className="font-mono-newe text-[10px] sm:text-[11px] tracking-[0.3em] uppercase" style={{ color: "#9DCA79" }}>
-            Módulos · 5 territórios · 10 produtos
+            Módulos · 5 territórios · 12 produtos
           </p>
         </div>
         <h2 className="font-display font-extralight text-[22px] sm:text-[28px] md:text-[34px] mb-10 md:mb-14 leading-[1.1] tracking-[-0.01em]" style={{ color: "#F7F6F4" }}>
@@ -789,7 +789,7 @@ const MODULES: ModuleEntry[] = [
     tag: "Módulo · 02",
     title: "Pessoas",
     desc: "Jornada, desenvolvimento, remuneração e sua trajetória no grupo.",
-    count: "3 produtos",
+    count: "4 produtos",
     shape: "triangle",
     products: [
       {
@@ -819,6 +819,15 @@ const MODULES: ModuleEntry[] = [
         logoImg: decidirIntencaoLogo,
         logoText: "Decidir com intenção.",
         logoBg: "#0A0A0A",
+        logoTextColor: "#FFFFFF",
+      },
+      {
+        name: "Ciclo de Gente",
+        tagline: "Ciclo de Gente · Nexus",
+        url: "https://ciclodegentenexus.lovable.app/",
+        logoText: "CICLO DE GENTE",
+        logoSub: "PESSOAS · NEXUS",
+        logoBg: "#1C1C1C",
         logoTextColor: "#FFFFFF",
       },
     ],
@@ -888,7 +897,7 @@ const MODULES: ModuleEntry[] = [
     tag: "Módulo · 05",
     title: "Governança",
     desc: "Políticas, compliance e a estrutura que sustenta o grupo.",
-    count: "2 produtos",
+    count: "3 produtos",
     shape: "square",
     products: [
       {
@@ -908,6 +917,15 @@ const MODULES: ModuleEntry[] = [
         logoSub: "POLÍTICAS & PROCEDIMENTOS",
         logoBg: "#F7F6F4",
         logoTextColor: "#0A0A0A",
+      },
+      {
+        name: "OKRs 2026",
+        tagline: "Objetivos e Resultados-Chave",
+        url: "https://okr-hyndra.lovable.app",
+        logoText: "OKRs 2026",
+        logoSub: "GOVERNANÇA · HYNDRA",
+        logoBg: "#1C1C1C",
+        logoTextColor: "#FFFFFF",
       },
     ],
   },
