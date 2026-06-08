@@ -40,6 +40,8 @@ const SEARCH_ITEMS: SearchItem[] = [
   { name: "Habitar a Estrutura", kind: "Produto", url: "https://habitaraestrutura.lovable.app" },
   { name: "Plataforma de Marca", kind: "Produto", url: "https://brandbook-newe.lovable.app" },
   { name: "HUB Hyndra", kind: "Produto", url: "https://hub-hyndra.lovable.app" },
+  { name: "Ciclo de Gente", kind: "Produto", url: "https://ciclodegentenexus.lovable.app/" },
+  { name: "OKRs 2026", kind: "Produto", url: "https://okr-hyndra.lovable.app" },
   { name: "Cultura", kind: "Módulo", anchor: "modulos" },
   { name: "Pessoas", kind: "Módulo", anchor: "modulos" },
   { name: "Conhecimento", kind: "Módulo", anchor: "modulos" },
