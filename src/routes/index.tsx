@@ -703,7 +703,7 @@ function ProductsFooter() {
           Produtos · ecossistema Nexus
         </p>
       </div>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
         {all.map((p) => {
           const isPlaceholder = p.url === "#";
           return (
@@ -714,13 +714,12 @@ function ProductsFooter() {
               rel={isPlaceholder ? undefined : "noopener noreferrer"}
               onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
               title={p.name}
-              className="group relative flex items-center justify-center transition-all hover:-translate-y-0.5"
+              className="group relative flex flex-col overflow-hidden transition-all hover:-translate-y-0.5"
               style={{
-                backgroundColor: p.logoBg ?? "#111110",
-                border: "1px solid #2E2E2E",
+                backgroundColor: "#F7F6F4",
+                border: "1px solid #1C1C1C",
                 borderRadius: 2,
-                height: 64,
-                opacity: isPlaceholder ? 0.45 : 0.85,
+                opacity: isPlaceholder ? 0.5 : 1,
                 cursor: isPlaceholder ? "default" : "pointer",
               }}
             >
@@ -730,21 +729,43 @@ function ProductsFooter() {
                 style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, backgroundColor: "#9DCA79" }}
               />
               {p.logoImg ? (
-                <img
-                  src={p.logoImg}
-                  alt={p.name}
-                  className="w-full h-full object-contain"
-                  style={{ padding: 6 }}
-                  loading="lazy"
-                />
-              ) : (
-                <span
-                  className="font-mono-newe text-[8px] tracking-[0.2em] uppercase text-center px-1"
-                  style={{ color: p.logoTextColor ?? "#F7F6F4" }}
+                <div
+                  className="flex items-center justify-center w-full"
+                  style={{ height: 84, padding: 14 }}
                 >
-                  {p.logoText}
-                </span>
+                  <img
+                    src={p.logoImg}
+                    alt={p.name}
+                    className="max-w-full max-h-full object-contain"
+                    style={{ filter: "saturate(0.95)" }}
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div
+                  className="flex items-center justify-center w-full text-center px-2"
+                  style={{ height: 84, backgroundColor: "#0A0A0A" }}
+                >
+                  <span
+                    className="font-display font-extralight"
+                    style={{ fontSize: 13, color: "#F7F6F4", letterSpacing: "-0.01em", lineHeight: 1.15 }}
+                  >
+                    {p.logoText}
+                  </span>
+                </div>
               )}
+              <div
+                className="px-3 py-2"
+                style={{ borderTop: "1px solid #EBEBEB", backgroundColor: "#FAFAFA" }}
+              >
+                <p
+                  className="font-mono-newe truncate"
+                  style={{ fontSize: 8, letterSpacing: "0.22em", textTransform: "uppercase", color: "#2E2E2E" }}
+                  title={p.name}
+                >
+                  {p.name}
+                </p>
+              </div>
             </a>
           );
         })}
