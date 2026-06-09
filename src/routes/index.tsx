@@ -11,6 +11,10 @@ import decidirIntencaoLogo from "@/assets/products/decidir-intencao.jpg";
 import allAboardLogo from "@/assets/products/all-aboard.jpg";
 import plataformaMarcaLogo from "@/assets/products/plataforma-marca.jpg";
 import hynstaneweLogo from "@/assets/products/hynstanewe.png";
+import cicloDeGenteAsset from "@/assets/ciclo-de-gente.jpg.asset.json";
+import okr2026Asset from "@/assets/okr-2026.jpg.asset.json";
+const cicloDeGenteLogo = cicloDeGenteAsset.url;
+const okr2026Logo = okr2026Asset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -825,6 +829,7 @@ const MODULES: ModuleEntry[] = [
         name: "Ciclo de Gente",
         tagline: "Ciclo de Gente · Nexus",
         url: "https://ciclodegentenexus.lovable.app/",
+        logoImg: cicloDeGenteLogo,
         logoText: "CICLO DE GENTE",
         logoSub: "PESSOAS · NEXUS",
         logoBg: "#1C1C1C",
@@ -922,6 +927,7 @@ const MODULES: ModuleEntry[] = [
         name: "OKRs 2026",
         tagline: "Objetivos e Resultados-Chave",
         url: "https://okr-hyndra.lovable.app",
+        logoImg: okr2026Logo,
         logoText: "OKRs 2026",
         logoSub: "GOVERNANÇA · HYNDRA",
         logoBg: "#1C1C1C",
