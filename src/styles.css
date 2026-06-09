@@ -5,7 +5,6 @@
 @custom-variant dark (&:is(.dark *));
 
 /* Newe Brand Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500&family=Outfit:wght@300;400;500&family=Space+Mono&display=swap");
 
 /* Newe Brand Tokens (monochrome — never replace with color) */
 :root {
